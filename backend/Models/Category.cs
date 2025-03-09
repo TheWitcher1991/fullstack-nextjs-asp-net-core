@@ -1,26 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace backend.Models
+﻿namespace backend.Models
 {
     public class Category
     {
-        private Category(string title)
+        private Category(Guid id, string title)
         {
+            Id = id;
             Title = title;
         }
  
-        public int Id { get; }
+        public Guid Id { get; }
         public string Title { get; } = string.Empty;
         public List<Book> Books { get; } = new();
 
-        public static (Category Category, string Error) Create(string title)
+        public static Category Create(Guid id, string title)
         {
-            var error = string.Empty;
-
-            var category = new Category(title);
-
-            return (category, error);
+            return new Category(id, title);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace backend.Configurations
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
             builder.HasKey(u => u.Id);
-            builder.Property(u => u.Id).ValueGeneratedOnAdd();
 
             builder.Property(u => u.FirstName).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
 

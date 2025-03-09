@@ -9,7 +9,6 @@ namespace backend.Configurations
         public void Configure(EntityTypeBuilder<BookEntity> builder)
         {
             builder.HasKey(b => b.Id);
-            builder.Property(b => b.Id).ValueGeneratedOnAdd();
 
             builder.Property(b => b.Title).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
 

@@ -2,7 +2,7 @@
 
 namespace backend.Contracts
 {
-    public record BooksResponse(
+    public record BooksRequest(
         int Id,
         string Title,
         string Description,

@@ -9,7 +9,6 @@ namespace backend.Configurations
         public void Configure(EntityTypeBuilder<CategoryEntity> builder)
         {
             builder.HasKey(c => c.Id);
-            builder.Property(c => c.Id).ValueGeneratedOnAdd();
 
             builder.Property(c => c.Title).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
         }
