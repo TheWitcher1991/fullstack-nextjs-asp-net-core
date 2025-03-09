@@ -1,6 +1,6 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
-using backend.Models;
+using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,49 +18,43 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<BooksResponse>>> GetBooks()
+        public async Task<ActionResult<List<BookDto>>> GetBooks([FromQuery] FilterBookDto query)
         {
-            var books = await service.GetAllBooks();
+            var books = await service.GetAllBooks(query);
 
-            var response = books.Select(b => new BooksResponse(b.Id, b.Title, b.Description, b.Price, b.Category, b.User));
+            var response = books.Select(b => new BookDto(b.Id, b.Title, b.Description, b.Price, b.Category, b.User));
 
             return Ok(response);
         }
 
+        [HttpGet("{id:guid}")]
+        [Authorize]
+        public async Task<ActionResult<BookDto>> GetBook(Guid id)
+        {
+            return Ok(await service.GetBook(id));
+        }
+
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<int>> CreateBook([FromBody] BooksRequest request)
+        public async Task<ActionResult<Guid>> CreateBook([FromBody] CreateBookDto request)
         {
-            var (book, error) = Book.Create(
-                request.Title,
-                request.Description,
-                request.Price,
-                request.Category,
-                request.User
-            );
-
-            if (!string.IsNullOrEmpty(error))
-            {
-                return BadRequest(error);
-            }
-
-            var bookId = await service.CreateBook(book);
+            var bookId = await service.CreateBook(request);
 
             return Ok(bookId);
         }
 
-        [HttpPatch("{id:int}")]
+        [HttpPatch("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<int>> UpdateBook(int id, [FromBody] BooksRequest request)
+        public async Task<ActionResult<Guid>> UpdateBook(Guid id, [FromBody] UpdateBookDto request)
         {
-            var bookId = await service.UpdateBook(id, request.Title, request.Description, request.Price, request.Category, request.User);
+            var bookId = await service.UpdateBook(id, request);
 
             return Ok(bookId);
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<int>> DeleteBook(int id)
+        public async Task<ActionResult<Guid>> DeleteBook(Guid id)
         {
             return Ok(await service.DeleteBook(id));
         }

@@ -14,6 +14,7 @@ namespace backend.Models
             FirstName = firstName;
             LastName = lastName;
             Password = password;
+            CreatedAt = DateTime.Now;
         }
 
         public Guid Id { get; }
@@ -23,6 +24,7 @@ namespace backend.Models
         public string FirstName { get; } = string.Empty;
         public string LastName { get; } = string.Empty;
         public string Password { get; } = string.Empty;
+        public DateTime CreatedAt { get; }
         public List<Book> Books { get; } = new();
 
         public static User Create(Guid id, string email, string phone, string firstName, string lastName, string password)

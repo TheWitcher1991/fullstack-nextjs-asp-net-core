@@ -1,12 +1,14 @@
-﻿using backend.Models;
+﻿using backend.Contracts;
+using backend.Models;
 
-namespace backend.Abstractions
+namespace backend.Services
 {
     public interface IBooksService
     {
-        Task<int> CreateBook(Book book);
-        Task<int> DeleteBook(int id);
-        Task<List<Book>> GetAllBooks();
-        Task<int> UpdateBook(int id, string title, string description, decimal price, Category category, User user);
+        Task<Guid> CreateBook(CreateBookDto dto);
+        Task<Guid> DeleteBook(Guid id);
+        Task<List<Book>> GetAllBooks(FilterBookDto query);
+        Task<Book> GetBook(Guid id);
+        Task<Guid> UpdateBook(Guid id, UpdateBookDto book);
     }
 }

@@ -2,12 +2,13 @@
 
 namespace backend.Contracts
 {
-    public record BooksRequest(
-        int Id,
+    public record BookDto(
+        Guid Id,
         string Title,
         string Description,
         decimal Price,
         Category Category,
-        User User
+        User User,
+        DateTime CreatedAt
     );
 }
