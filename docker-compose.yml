@@ -1,1 +1,47 @@
+version: '3'
 
+services:
+  postgres:
+    image: ${IMAGE_NAME_POSTGRES}:${IMAGE_TAG_POSTGRES}
+    container_name: postgres-service
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: api-service
+    depends_on:
+      postgres:
+          condition: service_healthy
+    networks:
+      - frontend
+      - backend
+    restart: always
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: web-service
+    networks:
+      - frontend
+    restart: always
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -5,7 +5,15 @@
 #
 FROM node:20-alpine AS base
 
-ENV CLIENT_DIR=/actor/frontend/admin
+ARG NEXT_PUBLIC_API_URL
+
+ENV DIR=/home/frontend \
+    COREPACK_INTEGRITY_KEYS="0" \
+    PNPM_HOME="/pnpm" \
+    PATH="$PNPM_HOME:$PATH"
+
+RUN corepack enable pnpm
+RUN corepack use pnpm@10.0.0
 
 #
 # ---------------------------------------------------------
@@ -18,12 +26,7 @@ WORKDIR $CLIENT_DIR
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
 
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 #
 # ---------------------------------------------------------
@@ -35,12 +38,9 @@ WORKDIR $CLIENT_DIR
 COPY --from=deps $CLIENT_DIR/node_modules ./node_modules
 COPY . .
 
-RUN \
-  if [ -f yarn.lock ]; then yarn run build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN pnpm prebuild
+
+RUN pnpm build
 
 #
 # ---------------------------------------------------------
@@ -49,8 +49,7 @@ FROM base AS runner
 
 WORKDIR $CLIENT_DIR
 
-ENV NODE_ENV=production \
-    NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -62,6 +61,6 @@ COPY --from=builder --chown=nextjs:nodejs $CLIENT_DIR/node_modules ./node_module
 
 USER nextjs
 
-EXPOSE 3001
+EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["pnpm", "start"]
