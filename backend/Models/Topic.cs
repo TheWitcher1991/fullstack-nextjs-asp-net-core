@@ -1,22 +1,22 @@
 ﻿namespace backend.Models
 {
-    public class Category
+    public class Topic
     {
-        private Category(Guid id, string title)
+        private Topic(Guid id, string title)
         {
             Id = id;
             Title = title;
             CreatedAt = DateTime.Now;
         }
- 
+
         public Guid Id { get; }
         public string Title { get; } = string.Empty;
         public DateTime CreatedAt { get; }
         public virtual List<Book> Books { get; } = new();
 
-        public static Category Create(Guid id, string title)
+        public static Topic Create(Guid id, string title)
         {
-            return new Category(id, title);
+            return new Topic(id, title);
         }
     }
 }

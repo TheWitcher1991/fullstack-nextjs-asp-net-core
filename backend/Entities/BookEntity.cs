@@ -1,6 +1,4 @@
-﻿using backend.Models;
-
-namespace backend.Entities
+﻿namespace backend.Entities
 {
     public class BookEntity
     {
@@ -9,12 +7,11 @@ namespace backend.Entities
         public string Description { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public DateTime CreatedAt { get; }
-
+        public Guid TopicId { get; set; }
         public Guid CategoryId { get; set; }
         public Guid UserId { get; set; }
-
-        public Category Category { get; set; } = null!;
-
-        public User User { get; set; } = null!;
+        public virtual TopicEntity Topic { get; set; } = null!;
+        public virtual CategoryEntity Category { get; set; } = null!;
+        public virtual UserEntity User { get; set; } = null!;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using backend.Contracts;
 using backend.Entities;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;

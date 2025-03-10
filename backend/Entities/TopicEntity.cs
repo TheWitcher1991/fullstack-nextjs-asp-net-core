@@ -1,6 +1,6 @@
 ﻿namespace backend.Entities
 {
-    public class CategoryEntity
+    public class TopicEntity
     {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;

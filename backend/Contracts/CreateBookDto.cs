@@ -3,10 +3,11 @@
 namespace backend.Contracts
 {
     public record CreateBookDto(
-        [Required] string title,
-        [Required] string description,
-        [Required] decimal price,
-        [Required] Guid category,
-        [Required] Guid user
+        [Required] string Title,
+        [Required] string Description,
+        [Required] decimal Price,
+        [Required] Guid Category,
+        [Required] Guid Topic,
+        [Required] Guid User
     );
 }

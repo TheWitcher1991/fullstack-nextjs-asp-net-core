@@ -1,4 +1,5 @@
 ﻿using backend.Contracts;
+using backend.Models;
 
 namespace backend.Services
 {
@@ -6,5 +7,6 @@ namespace backend.Services
     {
         Task<string> Login(string email, string password);
         Task Register(CreateUserDto dto);
+        Task<User> Profile(Guid id);
     }
 }

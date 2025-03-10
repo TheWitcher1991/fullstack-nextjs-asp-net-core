@@ -1,3 +1,4 @@
+using AutoMapper;
 using backend;
 using backend.Abstractions;
 using backend.Repositories;
@@ -20,10 +21,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddScoped<ITopicsService, TopicsService>();
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 
@@ -56,6 +59,14 @@ builder.Services
             }
         };
     });
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
 

@@ -1,8 +1,8 @@
 ﻿namespace backend.Contracts
 {
     public record UpdateBookDto(
-        string ?title,
-        string? description,
-        decimal? price
+        string Title,
+        string Description,
+        decimal Price
     );
 }

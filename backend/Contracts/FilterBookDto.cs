@@ -1,12 +1,13 @@
 ﻿namespace backend.Contracts
 {
     public record FilterBookDto(
-        string ?search,
-        string ?ordering,
-        Guid ?category,
-        decimal ?minPrice,
-        decimal ?maxPrice,
-        int page = 1,
-        int pageSize = 15
+        string ?Search,
+        string ?Ordering,
+        Guid ?Category,
+        Guid ?Topic,
+        decimal ?MinPrice,
+        decimal ?MaxPrice,
+        int Page = 1,
+        int PageSize = 15
     );
 }

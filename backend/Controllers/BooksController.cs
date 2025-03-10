@@ -18,13 +18,22 @@ namespace backend.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<BookDto>>> GetBooks([FromQuery] FilterBookDto query)
         {
             var books = await service.GetAllBooks(query);
 
-            var response = books.Select(b => new BookDto(b.Id, b.Title, b.Description, b.Price, b.Category, b.User));
+            var response = books.Select(b => new BookDto(b.Id, b.Title, b.Description, b.Price, b.Topic, b.Category, b.User, b.CreatedAt));
 
             return Ok(response);
+        }
+
+        [HttpGet("by-topic")]
+        public async Task<ActionResult<List<TopicBooksDto>>> GetBooksByTopic([FromQuery] FilterBookDto query)
+        {
+            var topics = await service.GetBooksGroupedByTopic(query);
+
+            return Ok(topics);
         }
 
         [HttpGet("{id:guid}")]
@@ -43,7 +52,7 @@ namespace backend.Controllers
             return Ok(bookId);
         }
 
-        [HttpPatch("{id:guid}")]
+        [HttpPut("{id:guid}")]
         [Authorize]
         public async Task<ActionResult<Guid>> UpdateBook(Guid id, [FromBody] UpdateBookDto request)
         {

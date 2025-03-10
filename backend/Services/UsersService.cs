@@ -19,14 +19,14 @@ namespace backend.Services
 
         public async Task Register(CreateUserDto dto)
         {
-            var hashedPassword = _passwordHasher.Generate(dto.password);
+            var hashedPassword = _passwordHasher.Generate(dto.Password);
 
             var user = User.Create(
                 Guid.NewGuid(),
-                dto.email,
-                dto.phone,
-                dto.firstName,
-                dto.lastName,
+                dto.Email,
+                dto.Phone,
+                dto.FirstName,
+                dto.LastName,
                 hashedPassword);
 
             await repository.Create(user);
@@ -46,6 +46,11 @@ namespace backend.Services
             var token = _jwtProvider.Sign(user);
 
             return token;
+        }
+
+        public async Task<User> Profile(Guid id)
+        {
+            return await repository.GetById(id);
         }
     }
 }

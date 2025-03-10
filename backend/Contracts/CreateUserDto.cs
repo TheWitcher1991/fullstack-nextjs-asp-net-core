@@ -3,10 +3,10 @@
 namespace backend.Contracts
 {
     public record CreateUserDto(
-        [Required] string email,
-        [Required] string phone,
-        [Required] string firstName,
-        [Required] string lastName,
-        [Required] string password
+        [Required] string Email,
+        [Required] string Phone,
+        [Required] string FirstName,
+        [Required] string LastName,
+        [Required] string Password
     );
 }

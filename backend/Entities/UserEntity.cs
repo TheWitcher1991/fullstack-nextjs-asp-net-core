@@ -12,6 +12,6 @@ namespace backend.Entities
         public string LastName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public DateTime CreatedAt { get; }
-        public List<BookEntity> Books { get; set; } = new();
+        public virtual List<BookEntity> Books { get; set; } = new();
     }
 }

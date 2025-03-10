@@ -25,7 +25,7 @@ namespace backend.Models
         public string LastName { get; } = string.Empty;
         public string Password { get; } = string.Empty;
         public DateTime CreatedAt { get; }
-        public List<Book> Books { get; } = new();
+        public virtual List<Book> Books { get; } = new();
 
         public static User Create(Guid id, string email, string phone, string firstName, string lastName, string password)
         {

@@ -3,7 +3,7 @@
 namespace backend.Contracts
 {
     public record LoginUserDto(
-        [Required] string email,
-        [Required] string password
+        [Required] string Email,
+        [Required] string Password
     );
 }
