@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { JSXElementConstructor } from 'react'
 
 declare module '*.css'
 declare module '*.scss'
@@ -6,6 +6,12 @@ declare module '*.sass'
 
 declare global {
 	type EmptyObject = Record<string, never>
+
+	export type OnUploadProgress = (
+		progress: number,
+		uploaded: number,
+		total: number,
+	) => void
 
 	type Nullable<T> = T | null
 

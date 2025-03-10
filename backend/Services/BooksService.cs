@@ -3,8 +3,6 @@ using backend.Abstractions;
 using backend.Contracts;
 using backend.Models;
 using backend.Repositories;
-using System.Linq;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace backend.Services
 {
@@ -14,6 +12,7 @@ namespace backend.Services
         private readonly IUserRepository _userRepository;
         private readonly ITopicRepository _topicRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IFileService _fileService;
         private readonly IMapper _mapper;
 
         public BooksService(
@@ -21,12 +20,14 @@ namespace backend.Services
             IUserRepository userRepository,
             ITopicRepository topicRepository,
             ICategoryRepository categoryRepository,
+            IFileService fileService,
             IMapper mapper)
         {
             repository = bookRepository;
             _userRepository = userRepository;
             _topicRepository = topicRepository;
             _categoryRepository = categoryRepository;
+            _fileService = fileService;
             _mapper = mapper;
         }
 
@@ -36,6 +37,8 @@ namespace backend.Services
 
             var response = books.Select(b => new BookDto(
                     b.Id, 
+                    b.ImagePath,
+                    b.FilePath,
                     b.Title,
                     b.Description,
                     b.Price,
@@ -59,6 +62,8 @@ namespace backend.Services
                     g.Key.Title,
                     g.Select(b => new BookDto(
                         b.Id,
+                        b.ImagePath,
+                        b.FilePath,
                         b.Title,
                         b.Description,
                         b.Price,
@@ -85,11 +90,25 @@ namespace backend.Services
 
             if (topic == null || category == null || user == null)
             {
-                throw new Exception("Bad request");
+                throw new BadHttpRequestException("Bad request");
             }
+
+            string? imagePath = null;
+            string? filePath = null;
+             
+            if (dto.Image == null || dto.File == null)
+            {
+                throw new BadHttpRequestException("Bad request");
+            }
+
+            imagePath = await _fileService.SaveFileAsync(dto.Image);
+            filePath = await _fileService.SaveFileAsync(dto.File);
+
 
             var book = Book.Create(
                 Guid.NewGuid(),
+                imagePath,
+                filePath,
                 dto.Title,
                 dto.Description,
                 dto.Price,
@@ -103,7 +122,16 @@ namespace backend.Services
 
         public async Task<Guid> UpdateBook(Guid id, UpdateBookDto book)
         {
-            return await repository.Update(id, book);
+            string? imagePath = null;
+            string? filePath = null;
+
+            if (book.Image != null)
+                imagePath = await _fileService.SaveFileAsync(book.Image);
+
+            if (book.File != null)
+                filePath = await _fileService.SaveFileAsync(book.File);
+
+            return await repository.Update(id, book, imagePath, filePath);
         }
 
         public async Task<Guid> DeleteBook(Guid id)

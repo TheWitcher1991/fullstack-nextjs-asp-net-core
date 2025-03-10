@@ -3,6 +3,8 @@
 namespace backend.Contracts
 {
     public record CreateBookDto(
+        [Required] IFormFile Image,
+        [Required] IFormFile File,
         [Required] string Title,
         [Required] string Description,
         [Required] decimal Price,

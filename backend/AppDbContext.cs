@@ -11,5 +11,6 @@ namespace backend
         public DbSet<BookEntity> Books { get; set; } = null!;
         public DbSet<TopicEntity> Topics { get; set; } = null!;
         public DbSet<CategoryEntity> Categories { get; set; } = null!;
+        public DbSet<FavoriteEntity> Favorites { get; set; } = null!;
     }
 }

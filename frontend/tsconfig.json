@@ -1,6 +1,6 @@
 {
   "extends": [
-    "nextjs.json",
+    "./nextjs.json",
     "@gravity-ui/tsconfig/tsconfig"
   ],
   "compilerOptions": {

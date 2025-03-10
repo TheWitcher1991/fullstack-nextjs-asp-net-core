@@ -43,16 +43,16 @@ namespace backend.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> CreateBook([FromBody] CreateBookDto request)
+        public async Task<ActionResult<Guid>> CreateBook([FromForm] CreateBookDto request)
         {
             var bookId = await service.CreateBook(request);
 
             return Ok(bookId);
         }
 
-        [HttpPut("{id:guid}")]
+        [HttpPatch("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> UpdateBook(Guid id, [FromBody] UpdateBookDto request)
+        public async Task<ActionResult<Guid>> UpdateBook(Guid id, [FromForm] UpdateBookDto request)
         {
             var bookId = await service.UpdateBook(id, request);
 

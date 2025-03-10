@@ -1,8 +1,12 @@
-﻿namespace backend.Contracts
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.Contracts
 {
     public record UpdateBookDto(
-        string Title,
-        string Description,
-        decimal Price
+        IFormFile ?Image,
+        IFormFile ?File,
+        [Required] string Title,
+        [Required] string Description,
+        [Required] decimal Price
     );
 }

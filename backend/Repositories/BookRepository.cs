@@ -49,12 +49,15 @@ namespace backend.Repositories
 
             var books = bookEntities.Select(b => Book.Create(
                 b.Id, 
+                b.ImagePath,
+                b.FilePath,
                 b.Title, 
                 b.Description, 
                 b.Price,
                 _mapper.Map<Topic>(b.Topic),
                 _mapper.Map<Category>(b.Category),
-                _mapper.Map<User>(b.User))).ToList();
+                _mapper.Map<User>(b.User)))
+                .ToList();
 
             return books;
         }
@@ -71,6 +74,8 @@ namespace backend.Repositories
             var bookEntity = new BookEntity
             {
                 Id = book.Id,
+                ImagePath = book.ImagePath,
+                FilePath = book.FilePath,
                 Title = book.Title,
                 Description = book.Description,
                 Price = book.Price,
@@ -85,17 +90,16 @@ namespace backend.Repositories
             return bookEntity.Id;
         }
 
-        public async Task<Guid> Update(Guid id, UpdateBookDto book)
+        public async Task<Guid> Update(Guid id, UpdateBookDto book, string ?imagePath, string? filePath)
         {
-            // var user = _context.Users.Where(u => u.Id == id).First();
-            // var category = _context.Categories.Where(c => c.Id == id).First();
-
             await _context.Books
                 .Where(b => b.Id == id)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.Title, b => book.Title)
                     .SetProperty(b => b.Description, b => book.Description)
-                    .SetProperty(b => b.Price, b => book.Price));
+                    .SetProperty(b => b.Price, b => book.Price)
+                    .SetProperty(b => b.ImagePath, b => imagePath ?? b.ImagePath)
+                    .SetProperty(b => b.FilePath, b => filePath ?? b.FilePath));
 
             return id;
         }

@@ -11,5 +11,6 @@ namespace backend
         public static string TOKEN_NAME = "access_token";
         public static string SECRET_KEY = "*********";
         public static byte[] SECRET_KEY_BYTES = Encoding.UTF8.GetBytes(Config.SECRET_KEY);
+        public static string MEDIA_FOLDER_NAME = "uploads";
     }
 }

@@ -11,6 +11,7 @@ namespace backend
         {
             CreateMap<BookEntity, Book>();
             CreateMap<BookEntity, BookDto>();
+            CreateMap<BookEntity, FavoriteBookDto>();
 
             CreateMap<TopicEntity, Topic>();
             CreateMap<TopicEntity, TopicDto>();
@@ -20,6 +21,9 @@ namespace backend
 
             CreateMap<UserEntity, User>();
             CreateMap<UserEntity, UserDto>();
+
+            CreateMap<FavoriteEntity, Favorite>();
+            CreateMap<FavoriteEntity, FavoriteDto>();
         }
     }
 }

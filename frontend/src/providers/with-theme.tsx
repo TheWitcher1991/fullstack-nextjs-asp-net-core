@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react'
 
 export default function WithTheme({ children }: PropsWithChildren) {
 	return (
-		<ThemeProvider theme={'dark'}>
+		<ThemeProvider theme={'light'}>
 			<>{children}</>
 		</ThemeProvider>
 	)

@@ -9,6 +9,6 @@ namespace backend.Abstractions
         Task<Guid> Delete(Guid id);
         Task<Book> GetById(Guid id);
         Task<List<Book>> List(FilterBookDto query);
-        Task<Guid> Update(Guid id, UpdateBookDto book);
+        Task<Guid> Update(Guid id, UpdateBookDto book, string? imagePath, string? filePath);
     }
 }
