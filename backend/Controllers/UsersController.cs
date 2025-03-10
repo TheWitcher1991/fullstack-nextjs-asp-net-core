@@ -43,6 +43,15 @@ namespace backend.Controllers
             return Ok(token);
         }
 
+        [HttpPost("logout")]
+        [AllowAnonymous]
+        public ActionResult<string> Logout()
+        {
+            httpContext?.Response.Cookies.Delete(Config.TOKEN_NAME);
+
+            return Ok("You have been logged out");
+        }
+
         [HttpGet("profile")]
         [Authorize]
         public async Task<ActionResult<UserDto>> GetProfile()

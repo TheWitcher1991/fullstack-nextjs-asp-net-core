@@ -130,6 +130,21 @@ declare global {
 		React.TextareaHTMLAttributes<HTMLTextAreaElement>,
 		HTMLTextAreaElement
 	>
+
+	export type Mapping = {
+		[key: string | number | symbol]: any
+	}
+
+	export interface PaginationPageSize {
+		page: number
+		pageSize: number
+	}
+
+	export interface UseModelOptions<ORDERING = string>
+		extends PaginationPageSize {
+		search: string
+		ordering: ORDERING
+	}
 }
 
 export {}

@@ -8,6 +8,8 @@ export const BASE_ROOT_URL = '/'
 
 export const IMAGE_FILE_TYPES = ['image/jpeg', 'image/png']
 
+export const BOOK_FILE_TYPES = ['application/pdf']
+
 export const ACCESS_TOKEN_NAME = 'access_token'
 
 export const REFRESH_TOKEN_NAME = 'refresh_token'

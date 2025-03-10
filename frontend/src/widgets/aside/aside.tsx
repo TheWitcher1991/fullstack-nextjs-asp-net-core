@@ -13,11 +13,14 @@ import { AsideHeader } from '@gravity-ui/navigation'
 import { useRouter } from 'next/navigation'
 import { Fragment, PropsWithChildren } from 'react'
 
+import { useLogout } from '~models/account'
+
 import links from '~packages/links'
 
 import styles from './aside.module.scss'
 
 export default function Aside({ children }: PropsWithChildren) {
+	const logout = useLogout()
 	const router = useRouter()
 
 	return (
@@ -37,37 +40,37 @@ export default function Aside({ children }: PropsWithChildren) {
 			renderContent={() => <>{children}</>}
 			menuItems={[
 				{
-					id: '1',
+					id: 'books',
 					title: 'Книги',
 					icon: Book,
 					current: true,
 					onItemClick: () => router.replace(links.books.index),
 				},
 				{
-					id: '1',
+					id: 'favorites',
 					title: 'Избранное',
 					icon: Bookmark,
 				},
 				{
-					id: '2',
+					id: 'search',
 					title: 'Поиск',
 					icon: Magnifier,
 					onItemClick: () => router.replace(links.search),
 				},
 				{
-					id: '2',
+					id: 'profile',
 					title: 'Профиль',
 					icon: Person,
 					onItemClick: () => router.replace(links.profile),
 				},
 				{
-					id: '3',
+					id: 'logout',
 					title: 'Выход',
 					icon: ArrowRightFromSquare,
-					onItemClick: () => router.replace(links.login),
+					onItemClick: async () => await logout(),
 				},
 				{
-					id: '6',
+					id: 'create',
 					title: 'Добавить книгу',
 					icon: Plus,
 					onItemClick: () => router.replace(links.books.create),
