@@ -4,7 +4,6 @@
          string Email,
          string Phone,
          string FirstName,
-         string LastName,
-         string Password
+         string LastName
      );
 }

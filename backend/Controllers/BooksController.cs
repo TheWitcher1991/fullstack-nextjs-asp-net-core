@@ -1,5 +1,4 @@
-﻿using backend.Abstractions;
-using backend.Contracts;
+﻿using backend.Contracts;
 using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +22,11 @@ namespace backend.Controllers
         {
             var books = await service.GetAllBooks(query);
 
-            var response = books.Select(b => new BookDto(b.Id, b.Title, b.Description, b.Price, b.Topic, b.Category, b.User, b.CreatedAt));
-
-            return Ok(response);
+            return Ok(books);
         }
 
         [HttpGet("by-topic")]
+        [Authorize]
         public async Task<ActionResult<List<TopicBooksDto>>> GetBooksByTopic([FromQuery] FilterBookDto query)
         {
             var topics = await service.GetBooksGroupedByTopic(query);

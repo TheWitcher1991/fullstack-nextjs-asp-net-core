@@ -5,8 +5,9 @@ namespace backend.Services
 {
     public interface IUsersService
     {
+        Task<UserDto> GetProfile(string token);
         Task<string> Login(string email, string password);
         Task Register(CreateUserDto dto);
-        Task<User> Profile(Guid id);
+        Task<Guid> UpdateProfile(string token, UpdateUserDto dto);
     }
 }

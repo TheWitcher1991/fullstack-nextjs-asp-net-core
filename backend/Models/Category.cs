@@ -12,7 +12,6 @@
         public Guid Id { get; }
         public string Title { get; } = string.Empty;
         public DateTime CreatedAt { get; }
-        public virtual List<Book> Books { get; } = new();
 
         public static Category Create(Guid id, string title)
         {

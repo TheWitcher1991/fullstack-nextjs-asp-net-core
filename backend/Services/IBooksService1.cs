@@ -3,7 +3,7 @@ using backend.Models;
 
 namespace backend.Services
 {
-    public interface IBooksService
+    public interface IBooksService1
     {
         Task<Guid> CreateBook(CreateBookDto dto);
         Task<Guid> DeleteBook(Guid id);

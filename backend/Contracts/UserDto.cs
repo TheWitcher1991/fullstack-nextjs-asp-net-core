@@ -1,7 +1,7 @@
 ﻿namespace backend.Contracts
 {
     public record UserDto(
-         Guid id,
+         Guid Id,
          string Email,
          string Phone,
          string FirstName,

@@ -7,9 +7,9 @@ namespace backend.Contracts
         string Title,
         string Description,
         decimal Price,
-        Topic Topic,
-        Category Category,
-        User User,
+        TopicDto Topic,
+        CategoryDto Category,
+        UserDto User,
         DateTime CreatedAt
     );
 }

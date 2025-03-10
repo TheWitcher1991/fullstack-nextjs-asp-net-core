@@ -1,6 +1,10 @@
-﻿using backend.Abstractions;
+﻿using AutoMapper;
+using backend.Abstractions;
 using backend.Contracts;
 using backend.Models;
+using backend.Repositories;
+using System.Linq;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace backend.Services
 {
@@ -10,22 +14,39 @@ namespace backend.Services
         private readonly IUserRepository _userRepository;
         private readonly ITopicRepository _topicRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IMapper _mapper;
 
         public BooksService(
             IBookRepository bookRepository,
             IUserRepository userRepository,
             ITopicRepository topicRepository,
-            ICategoryRepository categoryRepository)
+            ICategoryRepository categoryRepository,
+            IMapper mapper)
         {
             repository = bookRepository;
             _userRepository = userRepository;
             _topicRepository = topicRepository;
             _categoryRepository = categoryRepository;
+            _mapper = mapper;
         }
 
-        public async Task<List<Book>> GetAllBooks(FilterBookDto query)
+        public async Task<List<BookDto>> GetAllBooks(FilterBookDto query)
         {
-            return await repository.List(query);
+            var books = await repository.List(query);
+
+            var response = books.Select(b => new BookDto(
+                    b.Id, 
+                    b.Title,
+                    b.Description,
+                    b.Price,
+                    _mapper.Map<TopicDto>(b.Topic),
+                    _mapper.Map<CategoryDto>(b.Category),
+                    _mapper.Map<UserDto>(b.User),
+                    b.CreatedAt
+                ))
+                .ToList();
+
+            return response;
         }
 
         public async Task<List<TopicBooksDto>> GetBooksGroupedByTopic(FilterBookDto query)
@@ -36,7 +57,15 @@ namespace backend.Services
                 .Select(g => new TopicBooksDto(
                     g.Key.Id,
                     g.Key.Title,
-                    g.Select(b => new BookDto(b.Id, b.Title, b.Description, b.Price, b.Topic, b.Category, b.User, b.CreatedAt)).ToList()
+                    g.Select(b => new BookDto(
+                        b.Id,
+                        b.Title,
+                        b.Description,
+                        b.Price,
+                        _mapper.Map<TopicDto>(b.Topic),
+                        _mapper.Map<CategoryDto>(b.Category),
+                        _mapper.Map<UserDto>(b.User),
+                        b.CreatedAt)).ToList()
                 ))
                 .ToList();
 

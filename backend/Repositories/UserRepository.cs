@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using backend.Abstractions;
+using backend.Contracts;
 using backend.Entities;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +33,18 @@ namespace backend.Repositories
             await _context.SaveChangesAsync();
 
             return user.Id;
+        }
+
+        public async Task<Guid> Update(Guid id, UpdateUserDto book)
+        {
+            await _context.Users
+                .Where(b => b.Id == id)
+                .ExecuteUpdateAsync(s => s
+                    .SetProperty(b => b.Email, b => book.Email)
+                    .SetProperty(b => b.Phone, b => book.Phone)
+                    .SetProperty(b => b.FirstName, b => book.LastName));
+
+            return id;
         }
 
         public async Task<User> GetByEmail(string email)
