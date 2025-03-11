@@ -34,9 +34,7 @@ namespace backend.Services
             var userId = _jwtProvider.Decode(token);
 
             if (userId == Guid.Empty)
-            {
                 throw new BadHttpRequestException("Invalid token");
-            }
 
             var user = await _userRepository.GetById(userId);
 
@@ -64,10 +62,8 @@ namespace backend.Services
             var user = await this.DecodeUserToken(token);
             var book = await _bookRepository.GetById(dto.Book);
 
-            if (book == null)
-            {
+            if (book == null || user == null)
                 throw new BadHttpRequestException("Bad request");
-            }
 
             var favorite = Favorite.Create(
                 Guid.NewGuid(),

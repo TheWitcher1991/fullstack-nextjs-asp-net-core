@@ -50,3 +50,12 @@ C:\Project\.NET\nextjs-asp-net-core\backend\obj\Debug\net7.0\refint\backend.dll
 C:\Project\.NET\nextjs-asp-net-core\backend\obj\Debug\net7.0\backend.pdb
 C:\Project\.NET\nextjs-asp-net-core\backend\obj\Debug\net7.0\backend.genruntimeconfig.cache
 C:\Project\.NET\nextjs-asp-net-core\backend\obj\Debug\net7.0\ref\backend.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll

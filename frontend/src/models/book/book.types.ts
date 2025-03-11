@@ -21,6 +21,4 @@ export type ITopicBooks = {
 export type UseBooks = UseModelOptions & {
 	category: string
 	topic: string
-	minPrice?: number
-	maxPrice?: number
 }

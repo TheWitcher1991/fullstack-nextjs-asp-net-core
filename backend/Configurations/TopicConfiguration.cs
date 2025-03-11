@@ -8,9 +8,13 @@ namespace backend.Configurations
     {
         public void Configure(EntityTypeBuilder<TopicEntity> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder.HasKey(t => t.Id);
 
-            builder.Property(c => c.Title).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
+            builder.Property(t => t.Title).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
+
+            builder.HasMany(t => t.Categories)
+                .WithOne(c => c.Topic)
+                .HasForeignKey(c => c.TopicId);
         }
     }
 }

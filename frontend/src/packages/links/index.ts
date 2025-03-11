@@ -33,6 +33,14 @@ const links = {
 		return `${this.root}profile`
 	},
 
+	get billing() {
+		return `${this.root}billing`
+	},
+
+	get favorites() {
+		return `${this.root}favorites`
+	},
+
 	books: {
 		get index() {
 			return `${BASE_ROOT_URL}books`

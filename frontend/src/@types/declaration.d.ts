@@ -55,7 +55,7 @@ declare global {
 
 	type ChipVariant = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
-	export interface ListResponse<T> {
+	interface ListResponse<T> {
 		meta: {
 			current_page: number
 			total_rows: number
@@ -131,20 +131,53 @@ declare global {
 		HTMLTextAreaElement
 	>
 
-	export type Mapping = {
+	type Mapping = {
 		[key: string | number | symbol]: any
 	}
 
-	export interface PaginationPageSize {
+	interface PaginationPageSize {
 		page: number
 		pageSize: number
 	}
 
-	export interface UseModelOptions<ORDERING = string>
-		extends PaginationPageSize {
+	interface UseModelOptions<ORDERING = string> extends PaginationPageSize {
 		search: string
 		ordering: ORDERING
 	}
+
+	interface Collection {
+		id: number
+		title: string
+	}
+
+	type ModelListField<
+		T,
+		U extends Record<string, any>,
+		M extends Record<string, any> = Record<string, any>,
+	> = {
+		count: number
+		loading: boolean
+		fetching?: boolean
+		list: T[]
+		filter: U
+		meta: M
+		checked?: Collection[]
+	}
+
+	type ModelListState<
+		T,
+		U extends Record<string, any>,
+		M extends Record<string, any> = Record<string, any>,
+	> = {
+		setCount: (count: number) => void
+		setLoading: (loading: boolean) => void
+		setFetching: (fetching: boolean) => void
+		setChecked: (checked: Collection[]) => void
+		setList: (list: T[]) => void
+		setMeta: (meta: M) => void
+		setFilter: (filter: U) => void
+		reset: () => void
+	} & ModelListField<T, U, M>
 }
 
 export {}

@@ -1,8 +1,7 @@
 import { HTTP } from '~packages/lib'
-import { API_URL } from '~packages/system'
 
 const config = {
-	baseURL: `${API_URL}/`,
+	baseURL: `/api/`,
 	withCredentials: true,
 	xsrfCookieName: 'csrftoken',
 	xsrfHeaderName: 'X-CSRFToken',

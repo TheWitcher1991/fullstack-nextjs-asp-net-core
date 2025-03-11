@@ -4,6 +4,9 @@
     {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; }
+        public Guid TopicId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public virtual TopicEntity Topic { get; set; } = null!;
+        public virtual List<BookEntity> Books { get; set; } = new List<BookEntity>();
     }
 }

@@ -7,6 +7,10 @@ namespace backend.Contracts
         IFormFile ?File,
         [Required] string Title,
         [Required] string Description,
-        [Required] decimal Price
+        [Required] string Publisher,
+        string? Holder,
+        string? Translator,
+        [Required] int Age,
+        [Required] int Pages
     );
 }

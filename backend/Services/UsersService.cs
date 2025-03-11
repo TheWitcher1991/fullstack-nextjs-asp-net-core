@@ -41,9 +41,7 @@ namespace backend.Services
             var result = _passwordHasher.Verify(password, user.Password);
 
             if (result)
-            {
                 throw new BadHttpRequestException("Failed to login");
-            }
 
             var token = _jwtProvider.Sign(user);
 

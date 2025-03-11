@@ -7,9 +7,12 @@ namespace backend.Contracts
         [Required] IFormFile File,
         [Required] string Title,
         [Required] string Description,
-        [Required] decimal Price,
-        [Required] Guid Category,
-        [Required] Guid Topic,
+        [Required] string Publisher,
+        string? Holder,
+        string? Translator,
+        [Required] int Age,
+        [Required] int Pages,
+        [Required] List<Guid> Categories,
         [Required] Guid User
     );
 }

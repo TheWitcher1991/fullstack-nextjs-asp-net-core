@@ -14,7 +14,13 @@ namespace backend.Configurations
 
             builder.Property(b => b.Description).IsRequired().HasMaxLength(Config.MAX_DESCRIPTION_LENGTH);
 
-            builder.Property(b => b.Price).IsRequired();
+            builder.HasMany(b => b.Categories)
+                .WithMany(c => c.Books);
+
+            builder.HasOne(b => b.User)
+                .WithMany(u => u.Books)
+                .HasForeignKey(b => b.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

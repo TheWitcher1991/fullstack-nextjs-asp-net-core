@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
@@ -25,6 +23,9 @@ namespace backend.Models
         public string LastName { get; } = string.Empty;
         public string Password { get; } = string.Empty;
         public DateTime CreatedAt { get; }
+        public virtual List<Book> Books { get; } = new List<Book>();
+        public virtual List<Favorite> Favorites { get; } = new List<Favorite>();
+        public virtual List<Impression> Impressions { get; } = new List<Impression>();
 
         public static User Create(Guid id, string email, string phone, string firstName, string lastName, string password)
         {

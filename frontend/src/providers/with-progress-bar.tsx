@@ -8,7 +8,7 @@ export default function WithProgressBar({ children }: PropsWithChildren) {
 		<>
 			<ProgressBar
 				height='3px'
-				color='#111111'
+				color='#166666'
 				options={{ showSpinner: false }}
 			/>
 			{children}

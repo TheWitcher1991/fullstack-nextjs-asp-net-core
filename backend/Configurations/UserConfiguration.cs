@@ -14,9 +14,19 @@ namespace backend.Configurations
 
             builder.Property(u => u.LastName).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
 
-            builder.Property(u => u.Email).IsRequired();
+            builder.Property(u => u.Email).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
 
             builder.HasIndex(u => u.Email).IsUnique();
+
+            builder.HasMany(u => u.Books)
+                .WithOne(b => b.User)
+                .HasForeignKey(b => b.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(u => u.Favorites)
+                .WithOne(f => f.User)
+                .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

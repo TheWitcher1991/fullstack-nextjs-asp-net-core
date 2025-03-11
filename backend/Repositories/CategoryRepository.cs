@@ -20,9 +20,22 @@ namespace backend.Services
         {
             var categoryEntities = await _context.Categories.AsNoTracking().ToListAsync();
 
-            var categories = categoryEntities.Select(b => Category.Create(b.Id, b.Title)).ToList();
+            var categories = categoryEntities.Select(c => Category.Create(
+                c.Id, 
+                c.Title,
+                _mapper.Map<Topic>(c.Topic)))
+                .ToList();
 
             return categories;
+        }
+
+        public async Task<List<Category>> GetByIds(List<Guid> ids)
+        {
+            var categoryEntities = await _context.Categories
+                .Where(c => ids.Contains(c.Id))
+                .ToListAsync();
+
+            return categoryEntities.Select(c => Category.Create(c.Id, c.Title, _mapper.Map<Topic>(c.Topic))).ToList();
         }
 
         public async Task<Category> GetById(Guid id)
@@ -38,6 +51,7 @@ namespace backend.Services
             {
                 Id = category.Id,
                 Title = category.Title,
+                TopicId = category.TopicId,
             };
 
             await _context.Categories.AddAsync(categoryEntity);

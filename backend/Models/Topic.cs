@@ -12,6 +12,7 @@
         public Guid Id { get; }
         public string Title { get; } = string.Empty;
         public DateTime CreatedAt { get; }
+        public virtual List<Category> Categories { get; } = new List<Category>();
 
         public static Topic Create(Guid id, string title)
         {

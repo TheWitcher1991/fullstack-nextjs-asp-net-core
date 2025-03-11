@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	env: {
+		API_URL: process.env.API_URL,
+	},
 	images: {
 		remotePatterns: [],
 	},
@@ -21,7 +24,7 @@ const nextConfig: NextConfig = {
 		return [
 			{
 				source: '/api/:path*',
-				destination: 'https://localhost:8000/api/:path*',
+				destination: `${process.env.API_URL}/:path*`,
 			},
 		]
 	},

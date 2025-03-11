@@ -6,9 +6,12 @@
         string FilePath,
         string Title,
         string Description,
-        decimal Price,
-        TopicDto Topic,
-        CategoryDto Category,
+        string Publisher,
+        string? Holder,
+        string? Translator,
+        int Age,
+        int Pages,
+        List<CategoryDto> categories,
         DateTime CreatedAt
     );
 }

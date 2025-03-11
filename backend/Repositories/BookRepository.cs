@@ -26,16 +26,7 @@ namespace backend.Repositories
                 bookQuery = bookQuery.Where(b => b.Title.ToLower().Contains(query.Search.ToLower()));
 
             if (query.Category.HasValue)
-                bookQuery = bookQuery.Where(b => b.CategoryId == query.Category.Value);
-
-            if (query.Topic.HasValue)
-                bookQuery = bookQuery.Where(b => b.TopicId == query.Topic.Value);
-
-            if (query.MinPrice.HasValue)
-                bookQuery = bookQuery.Where(b => b.Price >= query.MinPrice.Value);
-
-            if (query.MaxPrice.HasValue)
-                bookQuery = bookQuery.Where(b => b.Price <= query.MaxPrice.Value);
+                bookQuery = bookQuery.Where(b => b.Categories.Any(c => c.Id == query.Category.Value));
 
             if (query.Ordering == "desc")
                 bookQuery = bookQuery.OrderByDescending(b => b.CreatedAt);
@@ -48,15 +39,18 @@ namespace backend.Repositories
                .ToListAsync();
 
             var books = bookEntities.Select(b => Book.Create(
-                b.Id, 
+                b.Id,
                 b.ImagePath,
                 b.FilePath,
-                b.Title, 
-                b.Description, 
-                b.Price,
-                _mapper.Map<Topic>(b.Topic),
-                _mapper.Map<Category>(b.Category),
-                _mapper.Map<User>(b.User)))
+                b.Title,
+                b.Description,
+                b.Publisher,
+                b.Age,
+                b.Pages,
+                _mapper.Map<User>(b.User),
+                _mapper.Map<List<Category>>(b.Categories),
+                b.Holder,
+                b.Translator))
                 .ToList();
 
             return books;
@@ -78,11 +72,26 @@ namespace backend.Repositories
                 FilePath = book.FilePath,
                 Title = book.Title,
                 Description = book.Description,
-                Price = book.Price,
-                TopicId = book.Topic.Id,
-                CategoryId = book.Category.Id,
+                Publisher = book.Publisher,
+                Holder = book.Holder,
+                Translator = book.Translator,
+                Age = book.Age,
+                Pages = book.Pages,
                 UserId = book.User.Id
             };
+
+            foreach (var category in book.Categories)
+            {
+                var categoryEntity = new CategoryEntity
+                {
+                    Id = category.Id,
+                    Title = category.Title,
+                    TopicId = category.TopicId,
+                };
+
+                bookEntity.Categories.Add(categoryEntity);
+            }
+
 
             await _context.Books.AddAsync(bookEntity);
             await _context.SaveChangesAsync();
@@ -97,7 +106,11 @@ namespace backend.Repositories
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(b => b.Title, b => book.Title)
                     .SetProperty(b => b.Description, b => book.Description)
-                    .SetProperty(b => b.Price, b => book.Price)
+                    .SetProperty(b => b.Publisher, b => book.Publisher)
+                    .SetProperty(b => b.Translator, b => book.Translator)
+                    .SetProperty(b => b.Holder, b => book.Holder)
+                    .SetProperty(b => b.Age, b => book.Age)
+                    .SetProperty(b => b.Pages, b => book.Pages)
                     .SetProperty(b => b.ImagePath, b => imagePath ?? b.ImagePath)
                     .SetProperty(b => b.FilePath, b => filePath ?? b.FilePath));
 

@@ -1,6 +1,8 @@
-﻿namespace backend.Contracts
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.Contracts
 {
     public record CreateFavoriteDto(
-       Guid Book
+       [Required] Guid Book
    );
 }

@@ -8,7 +8,19 @@ namespace backend.Configurations
     {
         public void Configure(EntityTypeBuilder<FavoriteEntity> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder.HasKey(f => f.Id);
+
+            builder.HasOne(f => f.Book)
+                .WithMany()
+                .HasForeignKey(f => f.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(f => f.User)
+                .WithMany(u => u.Favorites)
+                .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasIndex(f => new { f.UserId, f.BookId }).IsUnique();
         }
     }
 }

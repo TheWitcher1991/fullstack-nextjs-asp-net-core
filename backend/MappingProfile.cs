@@ -21,9 +21,13 @@ namespace backend
 
             CreateMap<UserEntity, User>();
             CreateMap<UserEntity, UserDto>();
+            CreateMap<UserEntity, UserBookDto>();
 
             CreateMap<FavoriteEntity, Favorite>();
             CreateMap<FavoriteEntity, FavoriteDto>();
+
+            CreateMap<ImpressionEntity, Impression>();
+            CreateMap<ImpressionEntity, ImpressionDto>();
         }
     }
 }

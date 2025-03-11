@@ -4,9 +4,7 @@
         string ?Search,
         string ?Ordering,
         Guid ?Category,
-        Guid ?Topic,
-        decimal ?MinPrice,
-        decimal ?MaxPrice,
+        Guid ?User,
         int Page = 1,
         int PageSize = 15
     );

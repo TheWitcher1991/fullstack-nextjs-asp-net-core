@@ -1,9 +1,19 @@
-﻿namespace backend.Contracts
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.Contracts
 {
     public record UpdateUserDto(
-         string Email,
-         string Phone,
-         string FirstName,
-         string LastName
+        [Required]
+        [EmailAddress] 
+        string Email,
+
+        [Required]
+        string Phone,
+
+        [Required]
+        string FirstName,
+
+        [Required]
+        string LastName
      );
 }

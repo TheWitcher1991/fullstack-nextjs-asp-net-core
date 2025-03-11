@@ -4,13 +4,14 @@ import {
 	ArrowRightFromSquare,
 	Book,
 	Bookmark,
+	CreditCard,
 	LogoNotion,
 	Magnifier,
 	Person,
 	Plus,
 } from '@gravity-ui/icons'
 import { AsideHeader } from '@gravity-ui/navigation'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Fragment, PropsWithChildren } from 'react'
 
 import { useLogout } from '~models/account'
@@ -21,6 +22,7 @@ import styles from './aside.module.scss'
 
 export default function Aside({ children }: PropsWithChildren) {
 	const logout = useLogout()
+	const pathname = usePathname()
 	const router = useRouter()
 
 	return (
@@ -41,27 +43,38 @@ export default function Aside({ children }: PropsWithChildren) {
 			menuItems={[
 				{
 					id: 'books',
-					title: 'Книги',
+					title: 'Главное',
 					icon: Book,
-					current: true,
+					current: pathname.startsWith(links.books.index),
 					onItemClick: () => router.replace(links.books.index),
 				},
 				{
 					id: 'favorites',
-					title: 'Избранное',
+					title: 'Мои книги',
 					icon: Bookmark,
+					current: pathname.startsWith(links.favorites),
+					onItemClick: () => router.replace(links.favorites),
 				},
 				{
 					id: 'search',
 					title: 'Поиск',
 					icon: Magnifier,
+					current: pathname.startsWith(links.search),
 					onItemClick: () => router.replace(links.search),
 				},
 				{
 					id: 'profile',
 					title: 'Профиль',
 					icon: Person,
+					current: pathname.startsWith(links.profile),
 					onItemClick: () => router.replace(links.profile),
+				},
+				{
+					id: 'billing',
+					title: 'Биллинг',
+					icon: CreditCard,
+					current: pathname.startsWith(links.billing),
+					onItemClick: () => router.replace(links.billing),
 				},
 				{
 					id: 'logout',

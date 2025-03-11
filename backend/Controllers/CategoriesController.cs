@@ -38,7 +38,7 @@ namespace backend.Controllers
         [Authorize]
         public async Task<ActionResult<Guid>> CreateCategory([FromBody] CreateCategoryDto request)
         {
-            var categoryId = await service.CreateCategory(request.Title);
+            var categoryId = await service.CreateCategory(request);
 
             return Ok(categoryId);
         }

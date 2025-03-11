@@ -11,24 +11,21 @@ namespace backend.Controllers
     public class FavoritesController : ControllerBase
     {
         private readonly IFavoritesService service;
+        private readonly IToolkit _toolkit;
         private readonly HttpContext? httpContext;
 
-        public FavoritesController(IFavoritesService favoritesService, IHttpContextAccessor httpContextAccessor)
+        public FavoritesController(IFavoritesService favoritesService, IToolkit toolkit, IHttpContextAccessor httpContextAccessor)
         {
             service = favoritesService;
+            _toolkit = toolkit;
             httpContext = httpContextAccessor.HttpContext;
-        }
-
-        private string? getToken()
-        {
-            return httpContext?.Request.Cookies[Config.TOKEN_NAME];
         }
 
         [HttpGet]
         [Authorize]
         public async Task<ActionResult<List<FavoriteDto>>> GetFavorites()
         {
-            var token = this.getToken();
+            var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
                 return Unauthorized("No token found");
@@ -42,7 +39,7 @@ namespace backend.Controllers
         [Authorize]
         public async Task<ActionResult<Guid>> AddFavorite([FromBody] CreateFavoriteDto request)
         {
-            var token = this.getToken();
+            var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
                 return Unauthorized("No token found");

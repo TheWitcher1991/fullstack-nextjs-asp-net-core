@@ -33,6 +33,22 @@ namespace backend.Repositories
             return favorites;
         }
 
+        public async Task<HashSet<Guid>> ListIdByUserId(Guid? userId)
+        {
+            if (userId == null)
+            {
+                return new HashSet<Guid>();
+            }
+
+            return new HashSet<Guid>(
+                await _context.Favorites
+                    .AsNoTracking()
+                    .Where(f => f.UserId == userId)
+                    .Select(f => f.BookId)
+                    .ToListAsync()
+            );
+        }
+
         public async Task<List<Favorite>> ListByUserId(Guid userId)
         {
             var favoriteEntities = await _context.Favorites

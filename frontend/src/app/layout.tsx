@@ -28,6 +28,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru' suppressHydrationWarning>
+			<head>
+				<script
+					crossOrigin='anonymous'
+					src='//unpkg.com/react-scan/dist/auto.global.js'
+				/>
+			</head>
 			<body>
 				<WithProviders>{children}</WithProviders>
 			</body>

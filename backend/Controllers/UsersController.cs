@@ -1,4 +1,5 @@
-﻿using backend.Contracts;
+﻿using backend.Abstractions;
+using backend.Contracts;
 using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,17 +11,14 @@ namespace backend.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUsersService service;
+        private readonly IToolkit _toolkit;
         private readonly HttpContext ?httpContext;
 
-        public UsersController(IUsersService usersService, IHttpContextAccessor httpContextAccessor)
+        public UsersController(IUsersService usersService, IToolkit toolkit, IHttpContextAccessor httpContextAccessor)
         {
             service = usersService;
+            _toolkit = toolkit;
             httpContext = httpContextAccessor.HttpContext;
-        }
-
-        private string? getToken()
-        {
-            return httpContext?.Request.Cookies[Config.TOKEN_NAME];
         }
 
         [HttpPost("register")]
@@ -56,7 +54,7 @@ namespace backend.Controllers
         [Authorize]
         public async Task<ActionResult<UserDto>> GetProfile()
         {
-            var token = this.getToken();
+            var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
                 return Unauthorized("No token found");
@@ -70,7 +68,7 @@ namespace backend.Controllers
         [Authorize]
         public async Task<ActionResult<Guid>> UpdateProfile([FromBody] UpdateUserDto request)
         {
-            var token = this.getToken();
+            var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
                 return Unauthorized("No token found");

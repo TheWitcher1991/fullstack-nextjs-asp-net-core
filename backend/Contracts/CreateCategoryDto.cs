@@ -3,6 +3,7 @@
 namespace backend.Contracts
 {
     public record CreateCategoryDto(
-        [Required] string Title
+        [Required] string Title,
+        [Required] Guid Topic
     );
 }
