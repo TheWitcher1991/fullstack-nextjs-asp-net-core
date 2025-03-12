@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import {
+	IAccount,
 	IUpdateAccount,
 	UpdateAccountSchema,
 	useUpdateAccount,
@@ -15,15 +16,21 @@ import {
 import { query } from '~packages/lib'
 import { FormCard, FormSection, Spacing } from '~packages/ui'
 
-export default function ProfileForm() {
+interface ProfileFormProps {
+	profile: IAccount
+}
+
+export default function ProfileForm({ profile }: ProfileFormProps) {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<IUpdateAccount>({
 		defaultValues: {
-			email: '',
-			password: '',
+			email: profile?.email,
+			firstName: profile?.firstName,
+			lastName: profile?.lastName,
+			phone: profile?.phone,
 		},
 		resolver: zodResolver(UpdateAccountSchema),
 	})

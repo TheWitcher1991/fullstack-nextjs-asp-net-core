@@ -19,15 +19,19 @@ namespace backend
             CreateMap<CategoryEntity, Category>();
             CreateMap<CategoryEntity, CategoryDto>();
 
+            CreateMap<FavoriteEntity, Favorite>();
+            CreateMap<FavoriteEntity, FavoriteDto>();
+
+            CreateMap<EmotionEntity, Emotion>();
+            CreateMap<EmotionEntity, EmotionDto>();
+
             CreateMap<UserEntity, User>();
             CreateMap<UserEntity, UserDto>();
             CreateMap<UserEntity, UserBookDto>();
 
-            CreateMap<FavoriteEntity, Favorite>();
-            CreateMap<FavoriteEntity, FavoriteDto>();
-
             CreateMap<ImpressionEntity, Impression>();
             CreateMap<ImpressionEntity, ImpressionDto>();
+            CreateMap<ImpressionEntity, ImpressionUserDto>();
         }
     }
 }

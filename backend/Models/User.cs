@@ -12,7 +12,7 @@ namespace backend.Models
             FirstName = firstName;
             LastName = lastName;
             Password = password;
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.UtcNow;
         }
 
         public Guid Id { get; }
@@ -22,7 +22,7 @@ namespace backend.Models
         public string FirstName { get; } = string.Empty;
         public string LastName { get; } = string.Empty;
         public string Password { get; } = string.Empty;
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; } = DateTime.UtcNow;
         public virtual List<Book> Books { get; } = new List<Book>();
         public virtual List<Favorite> Favorites { get; } = new List<Favorite>();
         public virtual List<Impression> Impressions { get; } = new List<Impression>();

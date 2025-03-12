@@ -1,4 +1,4 @@
-﻿using backend.Models;
+﻿using backend.Contracts;
 
 namespace backend.Abstractions
 {
@@ -6,7 +6,7 @@ namespace backend.Abstractions
     {
         Task<Guid> CreateTopic(string title);
         Task<Guid> DeleteTopic(Guid id);
-        Task<List<Topic>> GetAllTopics();
-        Task<Topic> GetTopic(Guid id);
+        Task<List<TopicDto>> GetAllTopics();
+        Task<TopicDto> GetTopic(Guid id);
     }
 }

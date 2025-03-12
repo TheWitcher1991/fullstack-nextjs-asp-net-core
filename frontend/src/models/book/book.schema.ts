@@ -2,14 +2,17 @@ import { z } from 'zod'
 
 import { AccountSchema } from '~models/account'
 import { CategorySchema } from '~models/category'
-import { TopicSchema } from '~models/topic'
 
 import { zShape } from '~packages/schemas'
 
 export const BaseBookSchema = z.object({
 	title: zShape.title,
 	description: zShape.text,
-	price: zShape.decimal,
+	publisher: zShape.title,
+	holder: zShape.string.nullable(),
+	translator: zShape.string.nullable(),
+	age: zShape.range(1, 120),
+	pages: zShape.range(1, 1000),
 })
 
 export const BookSchema = BaseBookSchema.extend({
@@ -17,14 +20,17 @@ export const BookSchema = BaseBookSchema.extend({
 	imagePath: zShape.url,
 	filePath: zShape.url,
 	createdAt: zShape.datetime,
-	topic: TopicSchema,
-	category: CategorySchema,
-	user: AccountSchema,
+	categories: CategorySchema.array(),
+	isFavorite: z.boolean(),
+	user: AccountSchema.pick({
+		id: true,
+		firstName: true,
+		lastName: true,
+	}),
 })
 
 export const CreateBookSchema = BaseBookSchema.extend({
-	topic: zShape.id,
-	category: zShape.id,
+	categories: z.string().min(1),
 	user: zShape.id,
 	image: zShape.image,
 	file: zShape.file,

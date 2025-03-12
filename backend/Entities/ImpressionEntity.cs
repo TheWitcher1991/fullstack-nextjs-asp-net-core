@@ -6,18 +6,11 @@ namespace backend.Entities
     {
         public Guid Id { get; set; }
         public string Text { get; set; } = string.Empty;
-        public bool IsAdvise { get; set; }
-        public bool IsNoAsdvise { get; set; }
-        public bool IsToTearss { get; set; }
-        public bool IsNice { get; set; }
-        public bool IsBoring { get; set; }
-        public bool IsScary { get; set; }
-        public bool IsWisely { get; set; }
-        public bool IsUnclear { get; set; }
         public Guid UserId { get; set; }
         public Guid BookId { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public virtual UserEntity User { get; } = null!;
-        public virtual BookEntity Book { get; } = null!;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public virtual UserEntity User { get; set;  } = null!;
+        public virtual BookEntity Book { get; set; } = null!;
+        public virtual List<EmotionEntity> Emotions { get; set; } = new List<EmotionEntity>();
     }
 }

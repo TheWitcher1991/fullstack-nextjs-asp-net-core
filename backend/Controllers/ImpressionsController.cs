@@ -1,5 +1,4 @@
-﻿using backend.Abstractions;
-using backend.Contracts;
+﻿using backend.Contracts;
 using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +27,7 @@ namespace backend.Controllers
 
         [HttpGet("user/{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<List<ImpressionDto>>> GetImpressionsByUserId(Guid id)
+        public async Task<ActionResult<List<ImpressionUserDto>>> GetImpressionsByUserId(Guid id)
         {
             var books = await service.GetImpressionsByUserId(id);
 
@@ -44,7 +43,7 @@ namespace backend.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> CreateImpression([FromForm] CreateImpressionDto request)
+        public async Task<ActionResult<Guid>> CreateImpression([FromBody] CreateImpressionDto request)
         {
             var bookId = await service.CreateImpression(request);
 
@@ -53,7 +52,7 @@ namespace backend.Controllers
 
         [HttpPatch("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> UpdateImpression(Guid id, [FromForm] UpdateImpressionDto request)
+        public async Task<ActionResult<Guid>> UpdateImpression(Guid id, [FromBody] UpdateImpressionDto request)
         {
             var bookId = await service.UpdateImpression(id, request);
 

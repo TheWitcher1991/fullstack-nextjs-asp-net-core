@@ -25,16 +25,10 @@ namespace backend.Repositories
             var impressions = impressionEntities.Select(i => Impression.Create(
                 i.Id,
                 i.Text,
-                i.IsAdvise,
-                i.IsNoAsdvise,
-                i.IsToTearss,
-                i.IsNice,
-                i.IsBoring,
-                i.IsScary,
-                i.IsWisely,
-                i.IsUnclear,
                 _mapper.Map<User>(i.User),
-                _mapper.Map<Book>(i.Book)))
+                _mapper.Map<Book>(i.Book),
+                _mapper.Map<List<Emotion>>(i.Emotions)
+                ))
                 .ToList();
 
             return impressions;
@@ -47,16 +41,9 @@ namespace backend.Repositories
             var impressions = impressionEntities.Select(i => Impression.Create(
                 i.Id,
                 i.Text,
-                i.IsAdvise,
-                i.IsNoAsdvise,
-                i.IsToTearss,
-                i.IsNice,
-                i.IsBoring,
-                i.IsScary,
-                i.IsWisely,
-                i.IsUnclear,
                 _mapper.Map<User>(i.User),
-                _mapper.Map<Book>(i.Book)))
+                _mapper.Map<Book>(i.Book),
+                _mapper.Map<List<Emotion>>(i.Emotions)))
                 .ToList();
 
             return impressions;
@@ -75,17 +62,22 @@ namespace backend.Repositories
             {
                 Id = impression.Id,
                 Text = impression.Text,
-                IsAdvise = impression.IsAdvise,
-                IsNoAsdvise = impression.IsNoAsdvise,
-                IsToTearss = impression.IsToTearss,
-                IsNice = impression.IsNice,
-                IsBoring = impression.IsBoring,
-                IsScary = impression.IsScary,
-                IsWisely = impression.IsWisely,
-                IsUnclear = impression.IsUnclear,
                 UserId = impression.User.Id,
                 BookId = impression.Book.Id,
             };
+
+            foreach (var emotion in impression.Emotions)
+            {
+                var emotionEntity = new EmotionEntity
+                {
+                    Id = emotion.Id,
+                    Name = emotion.Name,
+                    Label = emotion.Label,
+                    Unicode = emotion.Unicode
+                };
+
+                impressionEntity.Emotions.Add(emotionEntity);
+            }
 
             await _context.Impressions.AddAsync(impressionEntity);
             await _context.SaveChangesAsync();

@@ -65,12 +65,12 @@ namespace backend.Services
             return books.Select(b => MapToBookDto(b, favoriteIds)).ToList();
         }
 
-        public async Task<List<TopicBooksDto>> GetBooksGroupedByTopic(FilterBookDto query)
+        public async Task<List<CategoryBooksDto>> GetBooksGroupedByCategory(FilterBookDto query)
         {
             var favoriteIds = await GetFavoriteIds(query.User);
             var books = await repository.List(query);
 
-            var groupedBooks = new Dictionary<Guid, TopicBooksDto>();
+            var groupedBooks = new Dictionary<Guid, CategoryBooksDto>();
 
             foreach (var book in books)
             {
@@ -78,7 +78,7 @@ namespace backend.Services
                 {
                     if (!groupedBooks.ContainsKey(category.Id))
                     {
-                        groupedBooks[category.Id] = new TopicBooksDto(
+                        groupedBooks[category.Id] = new CategoryBooksDto(
                             category.Id,
                             category.Title,
                             new List<BookDto>()
@@ -92,9 +92,17 @@ namespace backend.Services
             return groupedBooks.Values.ToList();
         }
 
-        public async Task<Book> GetBook(Guid id)
+        public async Task<List<TopicBooksDto>> GetBooksGroupedByTopic(FilterBookDto query)
         {
-            return await repository.GetById(id);
+            var groupedBooks = await repository.List(query);
+
+            return _mapper.Map<List<TopicBooksDto>>(groupedBooks);
+        }
+
+        public async Task<BookDto> GetBook(Guid id)
+        {
+            var book = await repository.GetById(id);
+            return _mapper.Map<BookDto>(book);
         }
 
         private async Task<(string imagePath, string filePath)> SaveFiles(CreateBookDto dto)

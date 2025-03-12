@@ -10,6 +10,8 @@ export const CategorySchema = BaseCategorySchema.extend({
 	id: zShape.id,
 })
 
-export const CreateCategorySchema = BaseCategorySchema
+export const CreateCategorySchema = BaseCategorySchema.extend({
+	topic: zShape.id,
+})
 
 export const UpdateCategorySchema = BaseCategorySchema

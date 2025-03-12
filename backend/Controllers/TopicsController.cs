@@ -22,9 +22,7 @@ namespace backend.Controllers
         {
             var topics = await service.GetAllTopics();
 
-            var response = topics.Select(b => new TopicDto(b.Id, b.Title));
-
-            return Ok(response);
+            return Ok(topics);
         }
 
         [HttpGet("{id:guid}")]

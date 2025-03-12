@@ -13,6 +13,9 @@ namespace backend.Configurations
 
             builder.Property(c => c.Title).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
 
+            builder.Property(c => c.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
             builder.HasOne(c => c.Topic)
                 .WithMany(t => t.Categories)
                 .HasForeignKey(c => c.TopicId)
@@ -20,6 +23,9 @@ namespace backend.Configurations
 
             builder.HasMany(c => c.Books)
                 .WithMany(b => b.Categories);
+
+            builder.HasIndex(c => c.Title);
+            builder.HasIndex(c => c.TopicId);
         }
     }
 }

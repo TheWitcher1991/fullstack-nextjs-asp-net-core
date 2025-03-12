@@ -59,3 +59,6 @@ C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\Microsoft.Extension
 C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
 C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\System.Text.Encodings.Web.dll
 C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\FluentValidation.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll

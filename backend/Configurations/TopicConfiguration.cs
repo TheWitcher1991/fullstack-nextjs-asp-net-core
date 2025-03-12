@@ -10,11 +10,18 @@ namespace backend.Configurations
         {
             builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.Title).IsRequired().HasMaxLength(Config.MAX_TITLE_LENGTH);
+            builder.Property(t => t.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            builder.Property(t => t.Title)
+                .IsRequired()
+                .HasMaxLength(Config.MAX_TITLE_LENGTH);
 
             builder.HasMany(t => t.Categories)
                 .WithOne(c => c.Topic)
                 .HasForeignKey(c => c.TopicId);
+
+            builder.HasIndex(t => t.Title);
         }
     }
 }

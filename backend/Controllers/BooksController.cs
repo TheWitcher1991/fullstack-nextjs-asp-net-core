@@ -25,6 +25,15 @@ namespace backend.Controllers
             return Ok(books);
         }
 
+        [HttpGet("by-category")]
+        [Authorize]
+        public async Task<ActionResult<List<CategoryBooksDto>>> GetBooksByCategory([FromQuery] FilterBookDto query)
+        {
+            var categories = await service.GetBooksGroupedByCategory(query);
+
+            return Ok(categories);
+        }
+
         [HttpGet("by-topic")]
         [Authorize]
         public async Task<ActionResult<List<TopicBooksDto>>> GetBooksByTopic([FromQuery] FilterBookDto query)

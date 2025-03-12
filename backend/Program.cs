@@ -42,6 +42,7 @@ builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+builder.Services.AddScoped<IEmotionRepository, EmotionRepository>();
 builder.Services.AddScoped<IImpressionRepository, ImpressionRepository>();
 
 builder.Services.AddScoped<IBooksService, BooksService>();
@@ -49,6 +50,7 @@ builder.Services.AddScoped<ITopicsService, TopicsService>();
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IFavoritesService, FavoritesService>();
+builder.Services.AddScoped<IEmotionsService, EmotionsService>();
 builder.Services.AddScoped<IImpressionsService, ImpressionsService>();
 
 builder.Services.AddScoped<IFileService, FileService>();

@@ -1,4 +1,6 @@
-﻿namespace backend.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.Models
 {
     public class Book
     {
@@ -29,7 +31,7 @@
             Publisher = publisher;
             Age = age;
             Pages = pages;
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.UtcNow;
         }
 
         public Guid Id { get; }
@@ -40,9 +42,11 @@
         public string Publisher { get; } = string.Empty;
         public string? Holder { get; }
         public string? Translator { get; }
+        [Range(0, 120)]
         public int Age { get; }
+        [Range(1, int.MaxValue)]
         public int Pages { get; }
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; } = DateTime.UtcNow;
         public Guid UserId { get; }
         public virtual User User { get; }
         public virtual List<Category> Categories { get; } = new List<Category>();

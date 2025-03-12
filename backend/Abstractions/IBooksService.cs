@@ -1,5 +1,4 @@
 ﻿using backend.Contracts;
-using backend.Models;
 
 namespace backend.Services
 {
@@ -8,7 +7,8 @@ namespace backend.Services
         Task<Guid> CreateBook(CreateBookDto dto);
         Task<Guid> DeleteBook(Guid id);
         Task<List<BookDto>> GetAllBooks(FilterBookDto query);
-        Task<Book> GetBook(Guid id);
+        Task<BookDto> GetBook(Guid id);
+        Task<List<CategoryBooksDto>> GetBooksGroupedByCategory(FilterBookDto query);
         Task<List<TopicBooksDto>> GetBooksGroupedByTopic(FilterBookDto query);
         Task<Guid> UpdateBook(Guid id, UpdateBookDto book);
     }

@@ -1,4 +1,6 @@
-﻿using backend.Abstractions;
+﻿using AutoMapper;
+using backend.Abstractions;
+using backend.Contracts;
 using backend.Models;
 
 namespace backend.Services
@@ -6,21 +8,24 @@ namespace backend.Services
     public class TopicsService : ITopicsService
     {
         private readonly ITopicRepository repository;
+        private readonly IMapper _mapper;
 
-        public TopicsService(ITopicRepository topicRepository)
+        public TopicsService(ITopicRepository topicRepository, IMapper mapper)
         {
-
             repository = topicRepository;
+            _mapper = mapper;
         }
 
-        public async Task<List<Topic>> GetAllTopics()
+        public async Task<List<TopicDto>> GetAllTopics()
         {
-            return await repository.List();
+            var topics = await repository.List();
+            return topics.Select(t => new TopicDto(t.Id, t.Title)).ToList();
         }
 
-        public async Task<Topic> GetTopic(Guid id)
+        public async Task<TopicDto> GetTopic(Guid id)
         {
-            return await repository.GetById(id);
+            var topic = await repository.GetById(id);
+            return _mapper.Map<TopicDto>(topic);
         }
 
         public async Task<Guid> CreateTopic(string title)

@@ -1,4 +1,5 @@
-﻿using backend.Abstractions;
+﻿using AutoMapper;
+using backend.Abstractions;
 using backend.Contracts;
 using backend.Models;
 
@@ -8,22 +9,27 @@ namespace backend.Services
     {
         private readonly ICategoryRepository repository;
         private readonly ITopicRepository _topicResository;
+        private readonly IMapper _mapper;
 
-        public CategoriesService(ICategoryRepository categoryRepository, ITopicRepository topicResository)
+        public CategoriesService(ICategoryRepository categoryRepository, ITopicRepository topicResository, IMapper mapper)
         {
 
             repository = categoryRepository;
             _topicResository = topicResository;
+            _mapper = mapper;
         }
 
-        public async Task<List<Category>> GetAllCategories()
+        public async Task<List<CategoryDto>> GetAllCategories()
         {
-            return await repository.List();
+            var categories = await repository.List();
+            return categories.Select(c => new CategoryDto(c.Id, c.Title)).ToList();
         }
 
-        public async Task<Category> GetCategory(Guid id)
+        public async Task<CategoryDto> GetCategory(Guid id)
         {
-            return await repository.GetById(id);
+            var category = await repository.GetById(id);
+
+            return _mapper.Map<CategoryDto>(category);
         }
 
         public async Task<Guid> CreateCategory(CreateCategoryDto dto)

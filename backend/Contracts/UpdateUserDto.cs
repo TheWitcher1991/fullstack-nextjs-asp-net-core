@@ -3,11 +3,10 @@
 namespace backend.Contracts
 {
     public record UpdateUserDto(
-        [Required]
-        [EmailAddress] 
+        [Required, EmailAddress]
         string Email,
 
-        [Required]
+        [Required, Phone]
         string Phone,
 
         [Required]

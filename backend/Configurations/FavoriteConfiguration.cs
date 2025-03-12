@@ -10,6 +10,9 @@ namespace backend.Configurations
         {
             builder.HasKey(f => f.Id);
 
+            builder.Property(f => f.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
             builder.HasOne(f => f.Book)
                 .WithMany()
                 .HasForeignKey(f => f.BookId)

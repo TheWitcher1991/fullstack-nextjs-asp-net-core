@@ -7,13 +7,13 @@
             Id = id;
             Title = title;
             Topic = topic;
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.UtcNow;
         }
  
         public Guid Id { get; }
         public string Title { get; } = string.Empty;
         public Guid TopicId { get; }
-        public DateTime CreatedAt { get; }
+        public DateTime CreatedAt { get; } = DateTime.UtcNow;
         public virtual Topic Topic { get; }
         public virtual List<Book> Books { get; } = new List<Book>();
 

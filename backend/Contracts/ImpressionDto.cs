@@ -1,19 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace backend.Contracts
+﻿namespace backend.Contracts
 {
     public record ImpressionDto(
         Guid Id,
         string Text,
-        bool IsAdvise,
-        bool IsNoAsdvise,
-        bool IsToTearss,
-        bool IsNice,
-        bool IsBoring,
-        bool IsScary,
-        bool IsWisely,
-        bool IsUnclear,
+        BookDto Book,
         UserBookDto User,
+        List<EmotionDto> emotions,
         DateTime CreatedAt
     );
 }

@@ -1,4 +1,4 @@
-﻿using backend.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace backend.Entities
 {
@@ -12,9 +12,11 @@ namespace backend.Entities
         public string Publisher { get; set; } = string.Empty;
         public string? Holder { get; set; }
         public string? Translator { get; set; }
+        [Range(0, 120)]
         public int Age { get; set; }
+        [Range(1, int.MaxValue)]
         public int Pages { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public Guid UserId { get; set; }
         public virtual UserEntity User { get; set; } = null!;
         public virtual List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();

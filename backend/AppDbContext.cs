@@ -2,7 +2,6 @@
 using backend.Entities;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace backend
 {
     public class AppDbContext : DbContext
@@ -14,6 +13,7 @@ namespace backend
         public DbSet<CategoryEntity> Categories { get; set; } = null!;
         public DbSet<FavoriteEntity> Favorites { get; set; } = null!;
         public DbSet<ImpressionEntity> Impressions { get; set; } = null!;
+        public DbSet<EmotionEntity> Emotions { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,7 @@ namespace backend
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new FavoriteConfiguration());
             modelBuilder.ApplyConfiguration(new ImpressionConfiguration());
+            modelBuilder.ApplyConfiguration(new EmotionConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,5 +1,4 @@
 ﻿using backend.Contracts;
-using backend.Models;
 
 namespace backend.Abstractions
 {
@@ -7,7 +6,7 @@ namespace backend.Abstractions
     {
         Task<Guid> CreateCategory(CreateCategoryDto dto);
         Task<Guid> DeleteCategory(Guid id);
-        Task<List<Category>> GetAllCategories();
-        Task<Category> GetCategory(Guid id);
+        Task<List<CategoryDto>> GetAllCategories();
+        Task<CategoryDto> GetCategory(Guid id);
     }
 }

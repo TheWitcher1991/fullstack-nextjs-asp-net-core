@@ -3,11 +3,10 @@
 namespace backend.Contracts
 {
     public record CreateUserDto(
-        [Required]
-        [EmailAddress] 
+        [Required, EmailAddress]
         string Email,
 
-        [Required] 
+        [Required, Phone] 
         string Phone,
 
         [Required] 
