@@ -1,5 +1,6 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
+using backend.Enums;
 using backend.Models;
 using backend.Repositories;
 using backend.Toolkit;
@@ -29,7 +30,8 @@ namespace backend.Services
                 dto.Phone,
                 dto.FirstName,
                 dto.LastName,
-                hashedPassword);
+                hashedPassword,
+                Role.User);
 
             await repository.Create(user);
         }

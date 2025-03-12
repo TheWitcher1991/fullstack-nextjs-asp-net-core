@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using backend.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
     public class User
     {
-        private User(Guid id, string email, string phone, string firstName, string lastName, string password)
+        private User(Guid id, string email, string phone, string firstName, string lastName, string password, Role role)
         {
             Id = id;
             Email = email;
@@ -12,6 +13,7 @@ namespace backend.Models
             FirstName = firstName;
             LastName = lastName;
             Password = password;
+            Role = role;
             CreatedAt = DateTime.UtcNow;
         }
 
@@ -19,6 +21,7 @@ namespace backend.Models
         [EmailAddress]
         public string Email { get; } = string.Empty;
         public string Phone { get; } = string.Empty;
+        public Role Role { get; } = Role.User;
         public string FirstName { get; } = string.Empty;
         public string LastName { get; } = string.Empty;
         public string Password { get; } = string.Empty;
@@ -27,9 +30,9 @@ namespace backend.Models
         public virtual List<Favorite> Favorites { get; } = new List<Favorite>();
         public virtual List<Impression> Impressions { get; } = new List<Impression>();
 
-        public static User Create(Guid id, string email, string phone, string firstName, string lastName, string password)
+        public static User Create(Guid id, string email, string phone, string firstName, string lastName, string password, Role role)
         {
-            return new User(id, email, phone, firstName, lastName, password);
+            return new User(id, email, phone, firstName, lastName, password, role);
         }
     }
 }
