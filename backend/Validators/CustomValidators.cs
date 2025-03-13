@@ -1,28 +1,31 @@
 ﻿using backend.Shared;
-using CSharpFunctionalExtensions;
 using FluentValidation;
 
 namespace backend.Validators
 {
- 
-
     public static class CustomValidators
     {
         public static IRuleBuilderOptionsConditions<T, TElement> MustBeValueObject<T, TElement, TValueObject>(
-        this IRuleBuilder<T, TElement> ruleBulder,
-            Func<TElement, Result<TValueObject, Error>> factorMethod)
+            this IRuleBuilder<T, TElement> ruleBuilder,
+            Func<TElement, Result<TValueObject>> factoryMethod)
         {
-            return ruleBulder.Custom((value, context) =>
+            return ruleBuilder.Custom((value, context) =>
             {
-                Result<TValueObject, Error> result = factorMethod(value);
+                Result<TValueObject> result = factoryMethod(value);
 
                 if (result.IsSuccess)
-                {
                     return;
-                }
 
-                context.AddFailure(result.Error.Message);
+                var errorsSerialized = result.Errors.Select(e => e.Serialize());
+
+                context.AddFailure(string.Join('\n', errorsSerialized));
             });
+        }
+
+        public static IRuleBuilderOptions<T, TProperty> WithError<T, TProperty>(
+            this IRuleBuilderOptions<T, TProperty> rule, Error error)
+        {
+            return rule.WithMessage(error.Serialize());
         }
     }
 }

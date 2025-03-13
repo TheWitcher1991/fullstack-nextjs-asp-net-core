@@ -1,5 +1,6 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
+using backend.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,18 +19,18 @@ namespace backend.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<EmotionDto>>> GetEmotions()
+        public async Task<IResult> GetEmotions()
         {
             var emotions = await service.GetEmotions();
 
-            return Ok(emotions);
+            return ResultResponse.Ok(emotions);
         }
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<EmotionDto>> GetEmotion(Guid id)
+        public async Task<IResult> GetEmotion(Guid id)
         {
-            return Ok(await service.GetEmotion(id));
+            return ResultResponse.Ok(await service.GetEmotion(id));
         }
     }
 }

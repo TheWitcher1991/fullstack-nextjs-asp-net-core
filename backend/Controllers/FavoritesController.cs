@@ -1,6 +1,7 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
 using backend.Services;
+using backend.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,37 +24,37 @@ namespace backend.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<FavoriteDto>>> GetFavorites()
+        public async Task<IResult> GetFavorites()
         {
             var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
-                return Unauthorized("No token found");
+                return ResultResponse.Unauthorized();
 
             var response = await service.GetAllFavorites(token);
 
-            return Ok(response);
+            return ResultResponse.Ok(response);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> AddFavorite([FromBody] CreateFavoriteDto request)
+        public async Task<IResult> AddFavorite([FromBody] CreateFavoriteDto request)
         {
             var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
-                return Unauthorized("No token found");
+                return ResultResponse.Unauthorized();
 
             var response = await service.AddFavorite(token, request);
 
-            return Ok(response);
+            return ResultResponse.Ok(response);
         }
 
         [HttpDelete("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> DeleteFavorite(Guid id)
+        public async Task<IResult> DeleteFavorite(Guid id)
         {
-            return Ok(await service.DeleteFavorite(id));
+            return ResultResponse.Ok(await service.DeleteFavorite(id));
         }
     }
 }

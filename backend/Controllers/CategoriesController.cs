@@ -1,5 +1,6 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
+using backend.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,34 +19,34 @@ namespace backend.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<CategoryDto>>> GetCategories()
+        public async Task<IResult> GetCategories()
         {
             var categories = await service.GetAllCategories();
 
-            return Ok(categories);
+            return ResultResponse.Ok(categories);
         }
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<CategoryDto>> GetCategory(Guid id)
+        public async Task<IResult> GetCategory(Guid id)
         {
-            return Ok(await service.GetCategory(id));
+            return ResultResponse.Ok(await service.GetCategory(id));
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> CreateCategory([FromBody] CreateCategoryDto request)
+        public async Task<IResult> CreateCategory([FromBody] CreateCategoryDto request)
         {
             var categoryId = await service.CreateCategory(request);
 
-            return Ok(categoryId);
+            return ResultResponse.Ok(categoryId);
         }
 
         [HttpDelete("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> DeleteCategory(Guid id)
+        public async Task<IResult> DeleteCategory(Guid id)
         {
-            return Ok(await service.DeleteCategory(id));
+            return ResultResponse.Ok(await service.DeleteCategory(id));
         }
     }
 }

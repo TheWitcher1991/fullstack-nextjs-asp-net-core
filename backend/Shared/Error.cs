@@ -59,5 +59,9 @@ namespace backend.Shared
 
             return new Error(parts[0], parts[1], type);
         }
+
+        public ErrorList ToErrorList() {
+            return new ErrorList(new List<Error> { this });
+        }
     }
 }

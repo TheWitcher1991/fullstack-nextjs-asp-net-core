@@ -1,5 +1,6 @@
 ﻿using backend.Contracts;
 using backend.Services;
+using backend.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,52 +19,52 @@ namespace backend.Controllers
 
         [HttpGet("book/{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<List<ImpressionDto>>> GetImpressionsByBookId(Guid id)
+        public async Task<IResult> GetImpressionsByBookId(Guid id)
         {
             var books = await service.GetImpressionsByBookId(id);
 
-            return Ok(books);
+            return ResultResponse.Ok(books);
         }
 
         [HttpGet("user/{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<List<ImpressionUserDto>>> GetImpressionsByUserId(Guid id)
+        public async Task<IResult> GetImpressionsByUserId(Guid id)
         {
             var books = await service.GetImpressionsByUserId(id);
 
-            return Ok(books);
+            return ResultResponse.Ok(books);
         }
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<ImpressionDto>> GetImpression(Guid id)
+        public async Task<IResult> GetImpression(Guid id)
         {
-            return Ok(await service.GetImpression(id));
+            return ResultResponse.Ok(await service.GetImpression(id));
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> CreateImpression([FromBody] CreateImpressionDto request)
+        public async Task<IResult> CreateImpression([FromBody] CreateImpressionDto request)
         {
             var bookId = await service.CreateImpression(request);
 
-            return Ok(bookId);
+            return ResultResponse.Ok(bookId);
         }
 
         [HttpPatch("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> UpdateImpression(Guid id, [FromBody] UpdateImpressionDto request)
+        public async Task<IResult> UpdateImpression(Guid id, [FromBody] UpdateImpressionDto request)
         {
             var bookId = await service.UpdateImpression(id, request);
 
-            return Ok(bookId);
+            return ResultResponse.Ok(bookId);
         }
 
         [HttpDelete("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> DeleteImpression(Guid id)
+        public async Task<IResult> DeleteImpression(Guid id)
         {
-            return Ok(await service.DeleteImpression(id));
+            return ResultResponse.Ok(await service.DeleteImpression(id));
         }
     }
 }

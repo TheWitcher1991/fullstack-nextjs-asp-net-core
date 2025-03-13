@@ -5,7 +5,7 @@ namespace backend.Extensions
 {
     public static class ValidationExtensions
     {
-        public static List<Error> ToList(this ValidationResult validationResult)
+        public static ErrorList ToList(this ValidationResult validationResult)
         {
             var validationErrors = validationResult.Errors;
 

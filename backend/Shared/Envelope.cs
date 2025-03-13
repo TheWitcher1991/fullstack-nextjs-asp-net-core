@@ -1,40 +1,55 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace backend.Shared
 {
-    public record ResponseError(string? ErrorCode, string? ErrorMessage, string? InvalidField);
+    public record Envelope
+    {
+        public object? Result { get; }
+
+        public ErrorList? Errors { get; }
+
+        public bool IsError => Errors != null || (Errors != null && Errors.Any());
+
+        public DateTime TimeGenerated { get; }
+
+        [JsonConstructor]
+        private Envelope(object? result, ErrorList? errors)
+        {
+            Result = result;
+            Errors = errors;
+            TimeGenerated = DateTime.Now;
+        }
+
+        public static Envelope Ok(object? result = null) =>
+            new(result, null);
+
+        public static Envelope Error(ErrorList errors) =>
+            new(null, errors);
+    }
 
     public record Envelope<T>
     {
-        private Envelope(T? result, List<Error> errors)
-        {
-            Result = result;
-            Errors = errors.ToList();
-            TimeGenerated = DateTime.UtcNow;
-        }
-
         public T? Result { get; }
-        public List<Error> Errors { get; } = new();
+
+        public ErrorList? Errors { get; }
+
+        public bool IsError => Errors != null || (Errors != null && Errors.Any());
+
         public DateTime TimeGenerated { get; }
 
-        public static Envelope<T> Ok(T? result = default)
+        [JsonConstructor]
+        private Envelope(T? result, ErrorList? errors)
         {
-            return new Envelope<T>(result, new List<Error>());
+            Result = result;
+            Errors = errors;
+            TimeGenerated = DateTime.Now;
         }
 
-        public static Envelope<T> Error(List<Error> errors)
-        {
-            return new Envelope<T>(default, errors);
-        }
+        public static Envelope<T> Ok(T? result = default) =>
+            new(result, null);
 
-        public static Envelope<T> Error(Error error)
-        {
-            return new Envelope<T>(default, new List<Error> { error });
-        }
-
-        public static implicit operator ActionResult<Envelope<T>>(Envelope<T> envelope)
-        {
-            return new OkObjectResult(envelope);
-        }
+        public static Envelope<T> Error(ErrorList errors) =>
+            new(default, errors);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
 using backend.Services;
+using backend.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,59 +24,59 @@ namespace backend.Controllers
 
         [HttpPost("register")]
         [AllowAnonymous]
-        public async Task<ActionResult> Register([FromBody] CreateUserDto request)
+        public async Task<IResult> Register([FromBody] CreateUserDto request)
         {
             await service.Register(request);
 
-            return Ok();
+            return ResultResponse.Ok();
         }
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<string>> Login([FromBody] LoginUserDto request)
+        public async Task<IResult> Login([FromBody] LoginUserDto request)
         {
             var token = await service.Login(request.Email, request.Password);
 
             httpContext?.Response.Cookies.Append(Config.TOKEN_NAME, token);
 
-            return Ok(token);
+            return ResultResponse.Ok(token);
         }
 
         [HttpPost("logout")]
         [AllowAnonymous]
-        public ActionResult<string> Logout()
+        public IResult Logout()
         {
             httpContext?.Response.Cookies.Delete(Config.TOKEN_NAME);
 
-            return Ok("You have been logged out");
+            return ResultResponse.Ok("You have been logged out");
         }
 
         [HttpGet("profile")]
         [Authorize]
-        public async Task<ActionResult<UserDto>> GetProfile()
+        public async Task<IResult> GetProfile()
         {
             var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
-                return Unauthorized("No token found");
+                return ResultResponse.Unauthorized();
 
             var user = await service.GetProfile(token);
 
-            return Ok(user);
+            return ResultResponse.Ok(user);
         }
 
         [HttpPut("profile")]
         [Authorize]
-        public async Task<ActionResult<Guid>> UpdateProfile([FromBody] UpdateUserDto request)
+        public async Task<IResult> UpdateProfile([FromBody] UpdateUserDto request)
         {
             var token = _toolkit.getUserToken(httpContext);
 
             if (string.IsNullOrEmpty(token))
-                return Unauthorized("No token found");
+                return ResultResponse.Unauthorized();
 
             var user = await service.UpdateProfile(token, request);
 
-            return Ok(user);
+            return ResultResponse.Ok(user);
         }
     }
 }

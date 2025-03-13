@@ -1,5 +1,6 @@
 ﻿using backend.Abstractions;
 using backend.Contracts;
+using backend.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,34 +19,34 @@ namespace backend.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<TopicDto>>> GetTopics()
+        public async Task<IResult> GetTopics()
         {
             var topics = await service.GetAllTopics();
 
-            return Ok(topics);
+            return ResultResponse.Ok(topics);
         }
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<TopicDto>> GetTopic(Guid id)
+        public async Task<IResult> GetTopic(Guid id)
         {
-            return Ok(await service.GetTopic(id));
+            return ResultResponse.Ok(await service.GetTopic(id));
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Guid>> CreateTopic([FromBody] CreateTopicDto request)
+        public async Task<IResult> CreateTopic([FromBody] CreateTopicDto request)
         {
             var topicId = await service.CreateTopic(request.Title);
 
-            return Ok(topicId);
+            return ResultResponse.Ok(topicId);
         }
 
         [HttpDelete("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<Guid>> DeleteTopic(Guid id)
+        public async Task<IResult> DeleteTopic(Guid id)
         {
-            return Ok(await service.DeleteTopic(id));
+            return ResultResponse.Ok(await service.DeleteTopic(id));
         }
     }
 }
