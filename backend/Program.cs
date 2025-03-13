@@ -1,8 +1,10 @@
 using AutoMapper;
 using backend;
 using backend.Abstractions;
+using backend.Middlewares;
 using backend.Repositories;
 using backend.Services;
+using backend.Shared;
 using backend.Toolkit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.CookiePolicy;
@@ -106,6 +108,8 @@ builder.Services.AddResponseCompression(options =>
 });
 
 var app = builder.Build();
+
+app.UseExceptionMiddleware();
 
 if (app.Environment.IsDevelopment())
 {

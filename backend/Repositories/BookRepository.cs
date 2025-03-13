@@ -65,38 +65,49 @@ namespace backend.Repositories
 
         public async Task<Guid> Create(Book book)
         {
-            var bookEntity = new BookEntity
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                Id = book.Id,
-                ImagePath = book.ImagePath,
-                FilePath = book.FilePath,
-                Title = book.Title,
-                Description = book.Description,
-                Publisher = book.Publisher,
-                Holder = book.Holder,
-                Translator = book.Translator,
-                Age = book.Age,
-                Pages = book.Pages,
-                UserId = book.User.Id
-            };
-
-            foreach (var category in book.Categories)
-            {
-                var categoryEntity = new CategoryEntity
+                try
                 {
-                    Id = category.Id,
-                    Title = category.Title,
-                    TopicId = category.TopicId,
-                };
+                    var bookEntity = new BookEntity
+                    {
+                        Id = book.Id,
+                        ImagePath = book.ImagePath,
+                        FilePath = book.FilePath,
+                        Title = book.Title,
+                        Description = book.Description,
+                        Publisher = book.Publisher,
+                        Holder = book.Holder,
+                        Translator = book.Translator,
+                        Age = book.Age,
+                        Pages = book.Pages,
+                        UserId = book.User.Id
+                    };
 
-                bookEntity.Categories.Add(categoryEntity);
+                    foreach (var category in book.Categories)
+                    {
+                        var categoryEntity = new CategoryEntity
+                        {
+                            Id = category.Id,
+                            Title = category.Title,
+                            TopicId = category.TopicId,
+                        };
+
+                        bookEntity.Categories.Add(categoryEntity);
+                    }
+
+                    await _context.Books.AddAsync(bookEntity);
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+
+                    return bookEntity.Id;
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    return Guid.Empty;
+                }
             }
-
-
-            await _context.Books.AddAsync(bookEntity);
-            await _context.SaveChangesAsync();
-
-            return bookEntity.Id;
         }
 
         public async Task<Guid> Update(Guid id, UpdateBookDto book, string ?imagePath, string? filePath)

@@ -1,6 +1,6 @@
 ﻿using backend.Abstractions;
 
-namespace backend.Toolkit
+namespace backend.Shared
 {
     public class FileService : IFileService
     {

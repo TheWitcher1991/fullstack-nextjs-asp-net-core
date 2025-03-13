@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace backend.Response
+namespace backend.Shared
 {
     public record ResponseError(string? ErrorCode, string? ErrorMessage, string? InvalidField);
 
     public record Envelope<T>
     {
-        private Envelope(T? result, IEnumerable<ResponseError> errors)
+        private Envelope(T? result, List<Error> errors)
         {
             Result = result;
             Errors = errors.ToList();
@@ -14,22 +14,22 @@ namespace backend.Response
         }
 
         public T? Result { get; }
-        public List<ResponseError> Errors { get; } = new();
+        public List<Error> Errors { get; } = new();
         public DateTime TimeGenerated { get; }
 
         public static Envelope<T> Ok(T? result = default)
         {
-            return new Envelope<T>(result, new List<ResponseError>());
+            return new Envelope<T>(result, new List<Error>());
         }
 
-        public static Envelope<T> Error(IEnumerable<ResponseError> errors)
+        public static Envelope<T> Error(List<Error> errors)
         {
             return new Envelope<T>(default, errors);
         }
 
-        public static Envelope<T> Error(ResponseError error)
+        public static Envelope<T> Error(Error error)
         {
-            return new Envelope<T>(default, new List<ResponseError> { error });
+            return new Envelope<T>(default, new List<Error> { error });
         }
 
         public static implicit operator ActionResult<Envelope<T>>(Envelope<T> envelope)

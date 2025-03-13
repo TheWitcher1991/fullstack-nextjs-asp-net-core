@@ -19,19 +19,6 @@ services:
       timeout: 5s
       retries: 5
 
-  api:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: api-service
-    depends_on:
-      postgres:
-          condition: service_healthy
-    networks:
-      - frontend
-      - backend
-    restart: always
-
   web:
     build:
       context: ./frontend
