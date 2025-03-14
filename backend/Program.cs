@@ -1,11 +1,11 @@
 using AutoMapper;
-using backend;
-using backend.Abstractions;
-using backend.Middlewares;
-using backend.Repositories;
-using backend.Services;
+using backend.Api.Middlewares;
+using backend.Application.Authentication;
+using backend.Application.Services;
+using backend.Communication.Repositories;
+using backend.Domain;
+using backend.Domain.Abstractions;
 using backend.Shared;
-using backend.Toolkit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.ResponseCompression;

@@ -1,4 +1,6 @@
-﻿namespace backend.Shared
+﻿using backend.Shared.Core;
+
+namespace backend.Shared
 {
     public static class ResultResponse
     {

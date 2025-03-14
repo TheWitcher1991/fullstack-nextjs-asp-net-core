@@ -29,8 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Commands\" />
+    <Folder Include="Application\Queries\" />
     <Folder Include="Migrations\" />
     <Folder Include="uploads\" />
+    <Folder Include="Shared\Validators\Update\" />
   </ItemGroup>
 
 </Project>

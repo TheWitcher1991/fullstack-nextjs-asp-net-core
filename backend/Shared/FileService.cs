@@ -1,4 +1,4 @@
-﻿using backend.Abstractions;
+﻿using backend.Domain.Abstractions;
 
 namespace backend.Shared
 {

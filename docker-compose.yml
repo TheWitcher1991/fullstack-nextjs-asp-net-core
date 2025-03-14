@@ -19,6 +19,26 @@ services:
       timeout: 5s
       retries: 5
 
+  api:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+      args:
+        NUGET_USERNAME: ${NUGET_USERNAME}
+        NUGET_PASSWORD: ${NUGET_PASSWORD}
+    container_name: api-service
+    ports:
+      - "8000:8000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - backend
+    restart: always
+
   web:
     build:
       context: ./frontend
