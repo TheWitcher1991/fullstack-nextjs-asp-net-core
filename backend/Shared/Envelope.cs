@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace backend.Shared
 {
@@ -21,11 +20,15 @@ namespace backend.Shared
             TimeGenerated = DateTime.Now;
         }
 
-        public static Envelope Ok(object? result = null) =>
-            new(result, null);
+        public static Envelope Ok(object? result = null)
+        {
+            return new(result, null);
+        }
 
-        public static Envelope Error(ErrorList errors) =>
-            new(null, errors);
+        public static Envelope Error(ErrorList errors)
+        {
+            return new(null, errors);
+        }
     }
 
     public record Envelope<T>
@@ -46,10 +49,14 @@ namespace backend.Shared
             TimeGenerated = DateTime.Now;
         }
 
-        public static Envelope<T> Ok(T? result = default) =>
-            new(result, null);
+        public static Envelope<T> Ok(T? result = default)
+        {
+            return new(result, null);
+        }
 
-        public static Envelope<T> Error(ErrorList errors) =>
-            new(default, errors);
+        public static Envelope<T> Error(ErrorList errors)
+        {
+            return new(default, errors);
+        }
     }
 }

@@ -18,10 +18,25 @@
         public bool IsSuccess { get; }
         public bool IsFailure => !IsSuccess;
 
-        public static Result Success() => new(true, new List<Error> { Error.None });
-        public static Result Failure(Error error) => new(false, new List<Error> { error });
-        public static implicit operator Result(Error error) => new(false, new List<Error> { error });
-        public static implicit operator Result(ErrorList errors) => new(false, errors);
+        public static Result Success() 
+        {
+            return new(true, new List<Error> { Error.None });
+        }
+
+        public static Result Failure(Error error)
+        {
+            return new(false, new List<Error> { error });
+        }
+
+        public static implicit operator Result(Error error)
+        {
+            return new(false, new List<Error> { error });
+        }
+
+        public static implicit operator Result(ErrorList errors)
+        {
+            return new(false, errors);
+        }
 
         public override string ToString()
         {
@@ -43,11 +58,29 @@
             ? _value
             : throw new InvalidOperationException("The value of a failure result cannot be accessed");
 
-        public static Result<TValue> Success(TValue value) => new(value, true, new List<Error> { Error.None });
-        public new static Result<TValue> Failure(Error error) => new(default!, false, new List<Error> { error });
+        public static Result<TValue> Success(TValue value)
+        {
+            return new(value, true, new List<Error> { Error.None });
+        }
 
-        public static implicit operator Result<TValue>(TValue value) => new(value, true, new List<Error> { Error.None });
-        public static implicit operator Result<TValue>(Error error) => new(default!, false, new List<Error> { error });
-        public static implicit operator Result<TValue>(ErrorList errors) => new(default!, false, errors);
+        public new static Result<TValue> Failure(Error error)
+        {
+            return new(default!, false, new List<Error> { error });
+        }
+
+        public static implicit operator Result<TValue>(TValue value)
+        {
+            return new(value, true, new List<Error> { Error.None });
+        }
+
+        public static implicit operator Result<TValue>(Error error)
+        {
+            return new(default!, false, new List<Error> { error });
+        }
+
+        public static implicit operator Result<TValue>(ErrorList errors)
+        {
+            return new(default!, false, errors);
+        }
     }
 }

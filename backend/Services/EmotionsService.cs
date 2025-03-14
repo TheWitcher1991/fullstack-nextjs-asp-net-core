@@ -18,11 +18,11 @@ namespace backend.Services
         public async Task<List<EmotionDto>> GetEmotions()
         {
             var emotions = await repository.List();
-            return emotions.Select(i => new EmotionDto(
-                i.Id,
-                i.Label,
-                i.Name,
-                i.Unicode)).ToList();
+            return emotions.Select(e => new EmotionDto(
+                e.Id,
+                e.Label,
+                e.Name,
+                e.Unicode)).ToList();
         }
 
         public async Task<EmotionDto> GetEmotion(Guid id)

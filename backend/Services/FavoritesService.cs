@@ -47,10 +47,10 @@ namespace backend.Services
 
             var favorites = await repository.ListByUserId(user.Id);
 
-            var response = favorites.Select(b => new FavoriteDto(
-                    b.Id,
-                    _mapper.Map<FavoriteBookDto>(b.Book),
-                    b.CreatedAt
+            var response = favorites.Select(f => new FavoriteDto(
+                    f.Id,
+                    _mapper.Map<FavoriteBookDto>(f.Book),
+                    f.CreatedAt
                 ))
                 .ToList();
 

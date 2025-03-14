@@ -58,31 +58,42 @@ namespace backend.Repositories
 
         public async Task<Guid> Create(Impression impression)
         {
-            var impressionEntity = new ImpressionEntity
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                Id = impression.Id,
-                Text = impression.Text,
-                UserId = impression.User.Id,
-                BookId = impression.Book.Id,
-            };
-
-            foreach (var emotion in impression.Emotions)
-            {
-                var emotionEntity = new EmotionEntity
+                try
                 {
-                    Id = emotion.Id,
-                    Name = emotion.Name,
-                    Label = emotion.Label,
-                    Unicode = emotion.Unicode
-                };
+                    var impressionEntity = new ImpressionEntity
+                    {
+                        Id = impression.Id,
+                        Text = impression.Text,
+                        UserId = impression.User.Id,
+                        BookId = impression.Book.Id,
+                    };
 
-                impressionEntity.Emotions.Add(emotionEntity);
+                    foreach (var emotion in impression.Emotions)
+                    {
+                        var emotionEntity = new EmotionEntity
+                        {
+                            Id = emotion.Id,
+                            Name = emotion.Name,
+                            Label = emotion.Label,
+                            Unicode = emotion.Unicode
+                        };
+
+                        impressionEntity.Emotions.Add(emotionEntity);
+                    }
+
+                    await _context.Impressions.AddAsync(impressionEntity);
+                    await _context.SaveChangesAsync();
+                    transaction.Commit();
+
+                    return impressionEntity.Id;
+                } catch
+                {
+                    transaction.Rollback();
+                    return Guid.Empty;
+                }
             }
-
-            await _context.Impressions.AddAsync(impressionEntity);
-            await _context.SaveChangesAsync();
-
-            return impressionEntity.Id;
         }
 
         public async Task<Guid> Update(Guid id, UpdateImpressionDto impression)
