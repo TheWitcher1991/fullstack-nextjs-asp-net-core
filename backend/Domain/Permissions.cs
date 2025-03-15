@@ -50,6 +50,14 @@
             public const string DELETE_TOPICS = "topics.delete";
         }
 
+        public static class Authors
+        {
+            public const string READ_AUTHORS = "authors.read";
+            public const string CREATE_AUTHORS = "authors.create";
+            public const string UPDATE_AUTHORS = "authors.update";
+            public const string DELETE_AUTHORS = "authors.delete";
+        }
+
         public static class Accounts
         {
             public const string ENROLL_ACCOUNT = "accounts.enroll";

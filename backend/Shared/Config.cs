@@ -13,5 +13,6 @@ namespace backend.Shared
         public static string SECRET_KEY = "qVzWwz2G6HqZx3tWn4J0uNdJmNz8u2Y0pL3MwO5V3tw=";
         public static byte[] SECRET_KEY_BYTES = Encoding.UTF8.GetBytes(SECRET_KEY);
         public static string MEDIA_FOLDER_NAME = "uploads";
+        public static string ROOT_FOLDER_NAME = "wwwroot";
     }
 }

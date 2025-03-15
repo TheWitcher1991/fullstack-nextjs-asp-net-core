@@ -22,7 +22,7 @@ export function BookCard({ book }: BookCardProps) {
 			/>
 			<Spacing v={'xs'} />
 			<Text variant={'body-2'} color={'hint'}>
-				{trimText(book.author, 23)}
+				{trimText(book.author.fullName, 23)}
 			</Text>
 			<div></div>
 			<Text variant={'body-2'}>{trimText(book.holder, 49)}</Text>

@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 import { AccountSchema } from '~models/account'
+import { AuthorSchema } from '~models/author'
 import { CategorySchema } from '~models/category'
 
 import { zShape } from '~packages/schemas'
@@ -23,6 +24,7 @@ export const BookSchema = BaseBookSchema.extend({
 	createdAt: zShape.datetime,
 	categories: CategorySchema.array(),
 	isFavorite: z.boolean(),
+	author: AuthorSchema,
 	user: AccountSchema.pick({
 		id: true,
 		firstName: true,
@@ -32,6 +34,7 @@ export const BookSchema = BaseBookSchema.extend({
 
 export const CreateBookSchema = BaseBookSchema.extend({
 	categories: zShape.id.array(),
+	author: zShape.id,
 	user: zShape.id,
 	image: zShape.image,
 	file: zShape.file,
@@ -39,6 +42,7 @@ export const CreateBookSchema = BaseBookSchema.extend({
 
 export const CreateBookFormSchema = BaseBookSchema.extend({
 	categories: z.string().min(1),
+	author: zShape.id,
 	user: zShape.id,
 	image: zShape.image,
 	file: zShape.file,

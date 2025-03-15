@@ -44,8 +44,14 @@ namespace backend.Domain.Configurations
                 .HasForeignKey(b => b.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasOne(b => b.Author)
+                .WithMany(a => a.Books)
+                .HasForeignKey(b => b.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.HasIndex(b => b.Title);
             builder.HasIndex(b => b.UserId);
+            builder.HasIndex(b => b.AuthorId);
         }
     }
 }

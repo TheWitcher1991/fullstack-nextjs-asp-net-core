@@ -3,10 +3,8 @@ using backend.Communication.Contracts;
 using backend.Domain;
 using backend.Domain.Abstractions;
 using backend.Domain.Entities;
-using backend.Domain.Mappers;
 using backend.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace backend.Communication.Repositories
 {
@@ -32,6 +30,9 @@ namespace backend.Communication.Repositories
             if (query.Category.HasValue)
                 bookQuery = bookQuery.Where(b => b.Categories.Any(c => c.Id == query.Category.Value));
 
+            if (query.Author.HasValue)
+                bookQuery = bookQuery.Where(b => b.AuthorId == query.Author.Value);
+
             if (query.Ordering == "desc")
                 bookQuery = bookQuery.OrderByDescending(b => b.CreatedAt);
             else
@@ -47,6 +48,7 @@ namespace backend.Communication.Repositories
 
             var bookEntities = await bookQuery
                 .Include(b => b.User)
+                .Include(b => b.Author)
                 .Include(b => b.Categories)
                 .ToListAsync();
 
@@ -60,6 +62,7 @@ namespace backend.Communication.Repositories
                 b.Age,
                 b.Pages,
                 _mapper.Map<User>(b.User),
+                _mapper.Map<Author>(b.Author),
                 b.Categories.Select(c => _mapper.Map<Category>(c)).ToList(),
                 b.Holder,
                 b.Translator))
@@ -93,7 +96,8 @@ namespace backend.Communication.Repositories
                     Translator = book.Translator,
                     Age = book.Age,
                     Pages = book.Pages,
-                    UserId = book.User.Id
+                    UserId = book.User.Id,
+                    AuthorId = book.Author.Id,
                 };
 
                 foreach (var category in book.Categories)

@@ -46,7 +46,7 @@ namespace backend.Shared.Core
         {
             Result = result;
             Errors = errors;
-            TimeGenerated = DateTime.Now;
+            TimeGenerated = DateTime.UtcNow;
         }
 
         public static Envelope<T> Ok(T? result = default)

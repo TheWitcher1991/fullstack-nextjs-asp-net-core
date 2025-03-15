@@ -11,6 +11,7 @@
         string? Translator,
         int Age,
         int Pages,
+        AuthorDto Author,
         List<CategoryDto> categories,
         DateTime CreatedAt
     );

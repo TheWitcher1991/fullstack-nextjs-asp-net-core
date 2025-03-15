@@ -15,6 +15,7 @@ namespace backend.Domain.Models
             int age,
             int pages,
             User user,
+            Author author,
             List<Category> categories,
             string? holder,
             string? translator
@@ -26,6 +27,7 @@ namespace backend.Domain.Models
             Title = title;
             Description = description;
             User = user;
+            Author = author;
             Categories = categories;
             Holder = holder;
             Translator = translator;
@@ -49,7 +51,9 @@ namespace backend.Domain.Models
         public int Pages { get; }
         public DateTime CreatedAt { get; } = DateTime.UtcNow;
         public Guid UserId { get; }
+        public Guid AuthorId { get; }
         public virtual User User { get; }
+        public virtual Author Author { get; }
         public virtual List<Category> Categories { get; } = new List<Category>();
         public virtual List<Impression> Impressions { get; } = new List<Impression>();
 
@@ -63,6 +67,7 @@ namespace backend.Domain.Models
             int age,
             int pages,
             User user,
+            Author author,
             List<Category> categories,
             string? holder,
             string? translator
@@ -78,6 +83,7 @@ namespace backend.Domain.Models
                 age,
                 pages,
                 user,
+                author,
                 categories,
                 holder,
                 translator);

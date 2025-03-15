@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using backend.Communication.Contracts;
 using backend.Domain.Abstractions;
+using backend.Domain.Mappers;
 using backend.Domain.Models;
 
 namespace backend.Application.Services
@@ -22,7 +23,7 @@ namespace backend.Application.Services
         public async Task<List<CategoryDto>> GetAllCategories()
         {
             var categories = await repository.List();
-            return categories.Select(c => new CategoryDto(c.Id, c.Title)).ToList();
+            return categories.Select(c => CategoryMapper.ToCategoryDto(c)).ToList();
         }
 
         public async Task<CategoryDto> GetCategory(Guid id)

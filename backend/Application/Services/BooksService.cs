@@ -10,6 +10,7 @@ namespace backend.Application.Services
     {
         private readonly IBookRepository repository;
         private readonly IUserRepository _userRepository;
+        private readonly IAuthorRepository _authorRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IFavoriteRepository _favoriteRepository;
         private readonly IFileService _fileService;
@@ -18,6 +19,7 @@ namespace backend.Application.Services
         public BooksService(
             IBookRepository bookRepository,
             IUserRepository userRepository,
+            IAuthorRepository authorRepository,
             ICategoryRepository categoryRepository,
             IFavoriteRepository favoriteRepository,
             IFileService fileService,
@@ -25,6 +27,7 @@ namespace backend.Application.Services
         {
             repository = bookRepository;
             _userRepository = userRepository;
+            _authorRepository = authorRepository;
             _categoryRepository = categoryRepository;
             _favoriteRepository = favoriteRepository;
             _fileService = fileService;
@@ -126,8 +129,9 @@ namespace backend.Application.Services
         {
             var categories = await _categoryRepository.GetByIds(dto.Categories);
             var user = await _userRepository.GetById(dto.User);
+            var author = await _authorRepository.GetById(dto.Author);
 
-            if (categories is null)
+            if (categories is null || user is null || author is null)
                 throw new BadHttpRequestException("Bad request");
 
             if (dto.Image is null || dto.File is null)
@@ -145,6 +149,7 @@ namespace backend.Application.Services
                 dto.Age,
                 dto.Pages,
                 user,
+                author,
                 categories,
                 dto.Holder,
                 dto.Translator

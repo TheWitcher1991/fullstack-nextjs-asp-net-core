@@ -20,6 +20,7 @@ namespace backend.Domain.Mappers
                 b.Pages,
                 b.Categories.ToListCategoryDto(),
                 b.User.ToUserBookDto(),
+                b.Author.ToAuthorDto(),
                 b.CreatedAt,
                 favoriteIds.Contains(b.Id)
             );
@@ -38,6 +39,7 @@ namespace backend.Domain.Mappers
                 b.Translator,
                 b.Age,
                 b.Pages,
+                b.Author.ToAuthorDto(),
                 b.Categories.ToListCategoryDto(),
                 b.CreatedAt
             );

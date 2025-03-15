@@ -6,6 +6,7 @@ import { FieldPath, useForm, UseFormWatch } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { account } from '~models/account'
+import { AuthorSelect } from '~models/author'
 import {
 	CreateBookFormSchema,
 	ICreateBookForm,
@@ -21,7 +22,6 @@ import {
 	FileButton,
 	FormCard,
 	FormSection,
-	ImageButton,
 	QueryProgress,
 	Spacing,
 } from '~packages/ui'
@@ -104,6 +104,25 @@ export default function BookCreate() {
 								value.join(','),
 							)
 							setError('categories', {
+								message: '',
+							})
+						}}
+					/>
+				</FormSection>
+
+				<FormSection label={'Автор'}>
+					<AuthorSelect
+						value={String(
+							watch('author' as UseFormWatch<ICreateBookForm>),
+						).split(',')}
+						errorMessage={errors.author?.message}
+						register={register}
+						onSelect={value => {
+							setValue(
+								'author' as FieldPath<ICreateBookForm>,
+								value.join(','),
+							)
+							setError('author', {
 								message: '',
 							})
 						}}

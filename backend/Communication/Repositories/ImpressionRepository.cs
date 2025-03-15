@@ -59,42 +59,39 @@ namespace backend.Communication.Repositories
 
         public async Task<Guid> Create(Impression impression)
         {
-            using (var transaction = _context.Database.BeginTransaction())
+            var transaction = _context.Database.BeginTransaction();
+
+            try
             {
-                try
+                var impressionEntity = new ImpressionEntity
                 {
-                    var impressionEntity = new ImpressionEntity
-                    {
-                        Id = impression.Id,
-                        Text = impression.Text,
-                        UserId = impression.User.Id,
-                        BookId = impression.Book.Id,
-                    };
+                    Id = impression.Id,
+                    Text = impression.Text,
+                    UserId = impression.User.Id,
+                    BookId = impression.Book.Id,
+                };
 
-                    foreach (var emotion in impression.Emotions)
+                foreach (var emotion in impression.Emotions)
+                {
+                    var existingEmotion = await _context.Emotions.FindAsync(emotion.Id);
+                    if (existingEmotion == null)
                     {
-                        var emotionEntity = new EmotionEntity
-                        {
-                            Id = emotion.Id,
-                            Name = emotion.Name,
-                            Label = emotion.Label,
-                            Unicode = emotion.Unicode
-                        };
+                        throw new BadHttpRequestException($"Emotion with ID {emotion.Id} not found.");
 
-                        impressionEntity.Emotions.Add(emotionEntity);
                     }
-
-                    await _context.Impressions.AddAsync(impressionEntity);
-                    await _context.SaveChangesAsync();
-                    transaction.Commit();
-
-                    return impressionEntity.Id;
+                    impressionEntity.Emotions.Add(existingEmotion);
                 }
-                catch
-                {
-                    transaction.Rollback();
-                    return Guid.Empty;
-                }
+
+                await _context.Impressions.AddAsync(impressionEntity);
+                await _context.SaveChangesAsync();
+                transaction.Commit();
+
+                return impressionEntity.Id;
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new BadHttpRequestException(e.ToString());
             }
         }
 

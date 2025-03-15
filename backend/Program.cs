@@ -43,6 +43,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddHealthChecks();
 
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITopicRepository, TopicRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -51,6 +52,7 @@ builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 builder.Services.AddScoped<IEmotionRepository, EmotionRepository>();
 builder.Services.AddScoped<IImpressionRepository, ImpressionRepository>();
 
+builder.Services.AddScoped<IAuthorsService, AuthorsService>();
 builder.Services.AddScoped<IBooksService, BooksService>();
 builder.Services.AddScoped<ITopicsService, TopicsService>();
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
@@ -137,8 +139,8 @@ app.MapControllers();
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/{Config.MEDIA_FOLDER_NAME}")),
-    RequestPath = $"/wwwroot/{Config.MEDIA_FOLDER_NAME}"
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), Config.ROOT_FOLDER_NAME)),
+    RequestPath = $"/{Config.ROOT_FOLDER_NAME}"
 });
 
 app.UseHealthChecks("/health");

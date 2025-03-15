@@ -5,6 +5,7 @@
         string? Ordering,
         Guid? Category,
         Guid? User,
+        Guid? Author,
         int Page = 1,
         int PageSize = 15
     );

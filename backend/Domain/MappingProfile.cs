@@ -41,6 +41,10 @@ namespace backend.Domain
             CreateMap<ImpressionEntity, ImpressionUserDto>();
             CreateMap<Impression, ImpressionDto>();
             CreateMap<Impression, ImpressionUserDto>();
+
+            CreateMap<AuthorEntity, Author>();
+            CreateMap<AuthorEntity, AuthorDto>();
+            CreateMap<Author, AuthorDto>();
         }
     }
 }

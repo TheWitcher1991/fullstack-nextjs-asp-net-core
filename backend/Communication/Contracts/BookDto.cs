@@ -13,6 +13,7 @@
         int Pages,
         List<CategoryDto> categories,
         UserBookDto User,
+        AuthorDto Author,
         DateTime CreatedAt,
         bool IsFavorite
     );

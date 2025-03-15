@@ -13,6 +13,7 @@ namespace backend.Communication.Contracts
         [Required] int Age,
         [Required] int Pages,
         [Required] List<Guid> Categories,
-        [Required] Guid User
+        [Required] Guid User,
+        [Required] Guid Author
     );
 }
