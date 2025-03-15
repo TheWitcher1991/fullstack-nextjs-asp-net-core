@@ -37,14 +37,15 @@ namespace backend.Communication.Repositories
             return user.Id;
         }
 
-        public async Task<Guid> Update(Guid id, UpdateUserDto book)
+        public async Task<Guid> Update(Guid id, UpdateUserDto user)
         {
             await _context.Users
-                .Where(b => b.Id == id)
+                .Where(u => u.Id == id)
                 .ExecuteUpdateAsync(s => s
-                    .SetProperty(b => b.Email, b => book.Email)
-                    .SetProperty(b => b.Phone, b => book.Phone)
-                    .SetProperty(b => b.FirstName, b => book.LastName));
+                    .SetProperty(u => u.Email, b => user.Email)
+                    .SetProperty(u => u.Phone, b => user.Phone)
+                    .SetProperty(u => u.FirstName, b => user.FirstName)
+                    .SetProperty(u => u.LastName, b => user.LastName));
 
             return id;
         }

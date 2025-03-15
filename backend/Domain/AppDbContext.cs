@@ -1,6 +1,7 @@
 ﻿using backend.Domain.Configurations;
 using backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using static backend.Domain.Permissions;
 
 namespace backend.Domain
 {
@@ -18,12 +19,16 @@ namespace backend.Domain
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BookConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new FavoriteConfiguration());
             modelBuilder.ApplyConfiguration(new ImpressionConfiguration());
             modelBuilder.ApplyConfiguration(new EmotionConfiguration());
+
+            modelBuilder.Entity<TopicEntity>().HasData(DbInitializer.TopicsData());
+            modelBuilder.Entity<CategoryEntity>().HasData(DbInitializer.CategoriesData());
+            modelBuilder.Entity<EmotionEntity>().HasData(DbInitializer.EmotionsData());
 
             base.OnModelCreating(modelBuilder);
         }

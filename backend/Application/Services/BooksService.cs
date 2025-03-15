@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using backend.Communication.Contracts;
 using backend.Domain.Abstractions;
+using backend.Domain.Mappers;
 using backend.Domain.Models;
 
 namespace backend.Application.Services
@@ -37,31 +38,11 @@ namespace backend.Application.Services
                 : new HashSet<Guid>(await _favoriteRepository.ListIdByUserId(userId));
         }
 
-        private BookDto MapToBookDto(Book b, HashSet<Guid> favoriteIds)
-        {
-            return new BookDto(
-                b.Id,
-                b.ImagePath,
-                b.FilePath,
-                b.Title,
-                b.Description,
-                b.Publisher,
-                b.Holder,
-                b.Translator,
-                b.Age,
-                b.Pages,
-                _mapper.Map<List<CategoryDto>>(b.Categories),
-                _mapper.Map<UserBookDto>(b.User),
-                b.CreatedAt,
-                favoriteIds.Contains(b.Id)
-            );
-        }
-
         public async Task<List<BookDto>> GetAllBooks(FilterBookDto query)
         {
             var favoriteIds = await GetFavoriteIds(query.User);
             var books = await repository.List(query);
-            return books.Select(b => MapToBookDto(b, favoriteIds)).ToList();
+            return books.Select(b => BookMapper.ToBookDto(b, favoriteIds)).ToList();
         }
 
         public async Task<List<CategoryBooksDto>> GetBooksGroupedByCategory(FilterBookDto query)
@@ -84,7 +65,7 @@ namespace backend.Application.Services
                         );
                     }
 
-                    groupedBooks[category.Id].Books.Add(MapToBookDto(book, favoriteIds));
+                    groupedBooks[category.Id].Books.Add(BookMapper.ToBookDto(book, favoriteIds));
                 }
             }
 
@@ -93,9 +74,35 @@ namespace backend.Application.Services
 
         public async Task<List<TopicBooksDto>> GetBooksGroupedByTopic(FilterBookDto query)
         {
-            var groupedBooks = await repository.List(query);
+            var favoriteIds = await GetFavoriteIds(query.User);
+            var books = await repository.List(query);
 
-            return _mapper.Map<List<TopicBooksDto>>(groupedBooks);
+            var groupedBooks = new Dictionary<Guid, TopicBooksDto>();
+
+            foreach (var book in books)
+            {
+                foreach (var category in book.Categories)
+                {
+                    var _category = await _categoryRepository.GetById(category.Id);
+                    var topic = _category.Topic;
+
+                    if (topic is null)
+                        continue;
+
+                    if (!groupedBooks.ContainsKey(topic.Id))
+                    {
+                        groupedBooks[topic.Id] = new TopicBooksDto(
+                            topic.Id,
+                            topic.Title,
+                            new List<BookDto>()
+                        );
+                    }
+
+                    groupedBooks[topic.Id].Books.Add(BookMapper.ToBookDto(book, favoriteIds));
+                }
+            }
+
+            return groupedBooks.Values.ToList();
         }
 
         public async Task<BookDto> GetBook(Guid id)
@@ -120,10 +127,10 @@ namespace backend.Application.Services
             var categories = await _categoryRepository.GetByIds(dto.Categories);
             var user = await _userRepository.GetById(dto.User);
 
-            if (categories == null)
+            if (categories is null)
                 throw new BadHttpRequestException("Bad request");
 
-            if (dto.Image == null || dto.File == null)
+            if (dto.Image is null || dto.File is null)
                 throw new BadHttpRequestException("Bad request");
 
             var (imagePath, filePath) = await SaveFiles(dto);
@@ -144,6 +151,7 @@ namespace backend.Application.Services
             );
 
             return await repository.Create(book);
+
         }
 
         public async Task<Guid> UpdateBook(Guid id, UpdateBookDto book)

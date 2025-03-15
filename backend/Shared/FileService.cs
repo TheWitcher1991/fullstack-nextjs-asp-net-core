@@ -6,9 +6,9 @@ namespace backend.Shared
     {
         private readonly string _rootPath;
 
-        public FileService(IWebHostEnvironment env)
+        public FileService()
         {
-            _rootPath = env.WebRootPath;
+            _rootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
         }
 
         public async Task<string> SaveFileAsync(IFormFile file)

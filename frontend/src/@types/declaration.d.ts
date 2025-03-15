@@ -55,13 +55,26 @@ declare global {
 
 	type ChipVariant = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
-	interface ListResponse<T> {
-		meta: {
-			current_page: number
-			total_rows: number
-			total_pages: number
-		}
-		response: T[]
+	enum ErrorType {
+		None,
+		Validation,
+		NotFound,
+		Failure,
+		Null,
+		Conflict,
+	}
+
+	interface ResultError {
+		code: string
+		message: string
+		type: ErrorType
+	}
+
+	interface ResultResponse<T> {
+		result: T
+		errors: Nullable<ResultError[]>
+		isError: boolean
+		timeGenerated: string
 	}
 
 	interface ValidationErrorResponse<
@@ -79,7 +92,7 @@ declare global {
 	}
 
 	interface PagesListResponse<T> {
-		pages: ListResponse<T>[]
+		pages: ResultResponse<T>[]
 		pageParams: number[]
 	}
 

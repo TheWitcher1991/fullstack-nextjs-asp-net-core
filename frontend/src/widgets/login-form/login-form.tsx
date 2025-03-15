@@ -28,7 +28,7 @@ export default function LoginForm() {
 	const onSubmit = async (data: ILogin) => {
 		await query(async () => {
 			const res = await req.mutateAsync(data)
-			login(res.data)
+			login(res.data.result.account)
 			window.location.replace(links.books.index)
 		})
 	}

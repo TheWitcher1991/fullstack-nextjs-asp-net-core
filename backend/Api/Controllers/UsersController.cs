@@ -27,18 +27,18 @@ namespace backend.Api.Controllers
         {
             await service.Register(request);
 
-            return ResultResponse.Ok();
+            return ResultResponse.Ok("Register successfully");
         }
 
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IResult> Login([FromBody] LoginUserDto request)
         {
-            var token = await service.Login(request.Email, request.Password);
+            var res = await service.Login(request.Email, request.Password);
 
-            httpContext?.Response.Cookies.Append(Config.TOKEN_NAME, token);
+            httpContext?.Response.Cookies.Append(Config.TOKEN_NAME, res.token);
 
-            return ResultResponse.Ok(token);
+            return ResultResponse.Ok(res);
         }
 
         [HttpPost("logout")]

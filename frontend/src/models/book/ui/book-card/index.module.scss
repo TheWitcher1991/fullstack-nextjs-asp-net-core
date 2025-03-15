@@ -1,0 +1,11 @@
+.book__card {
+    width: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

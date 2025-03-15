@@ -4,6 +4,8 @@ export const IS_PROD = process.env.NODE_ENV === 'production'
 
 export const API_URL = process.env.API_URL
 
+export const STATIC_URL = `${process.env.API_URL}/wwwroot`
+
 export const BASE_ROOT_URL = '/'
 
 export const IMAGE_FILE_TYPES = ['image/jpeg', 'image/png']

@@ -1,7 +1,7 @@
 import { Skeleton } from '@gravity-ui/uikit'
 
 export default function TopicsMostSkeletons() {
-	return [...Array(15)].map((_, i) => (
+	return [...Array(14)].map((_, i) => (
 		<Skeleton
 			key={i}
 			style={{

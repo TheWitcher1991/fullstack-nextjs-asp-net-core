@@ -22,7 +22,7 @@ namespace backend.Api.Controllers
         public async Task<IResult> GetBooks([FromQuery] FilterBookDto query)
         {
             var books = await service.GetAllBooks(query);
-            return ResultResponse.Ok();
+            return ResultResponse.Ok(books);
         }
 
         [HttpGet("by-category")]

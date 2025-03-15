@@ -4,6 +4,8 @@ import { Moon, Sun } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
 import { Icon, RadioButton, User } from '@gravity-ui/uikit'
 
+import { account, accountFullName } from '~models/account'
+
 import styles from './index.module.scss'
 
 export default function Nav() {
@@ -29,9 +31,9 @@ export default function Nav() {
 				<ActionBar.Group pull='right'>
 					<ActionBar.Item>
 						<User
-							avatar={{ text: 'Ашот Свазян', theme: 'brand' }}
-							name='Ашот'
-							description='ashot.svazyan@yandex.ru'
+							avatar={{ text: accountFullName, theme: 'brand' }}
+							name={account?.firstName}
+							description={account?.email}
 							size='m'
 						/>
 					</ActionBar.Item>

@@ -9,6 +9,7 @@ export const BaseBookSchema = z.object({
 	title: zShape.title,
 	description: zShape.text,
 	publisher: zShape.title,
+	author: zShape.title,
 	holder: zShape.string.nullable(),
 	translator: zShape.string.nullable(),
 	age: zShape.range(1, 120),
@@ -30,10 +31,19 @@ export const BookSchema = BaseBookSchema.extend({
 })
 
 export const CreateBookSchema = BaseBookSchema.extend({
+	categories: zShape.id.array(),
+	user: zShape.id,
+	image: zShape.image,
+	file: zShape.file,
+})
+
+export const CreateBookFormSchema = BaseBookSchema.extend({
 	categories: z.string().min(1),
 	user: zShape.id,
 	image: zShape.image,
 	file: zShape.file,
+	age: z.string().min(1),
+	pages: z.string().min(1),
 })
 
 export const UpdateBookSchema = BaseBookSchema.extend({

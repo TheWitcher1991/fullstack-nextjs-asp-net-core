@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { ILogin, IRegister, RegisterSchema, useLogin } from '~models/account'
+import { IRegister, RegisterSchema, useRegister } from '~models/account'
 
 import { query } from '~packages/lib'
 import links from '~packages/links'
@@ -28,9 +28,9 @@ export default function RegisterForm() {
 		},
 		resolver: zodResolver(RegisterSchema),
 	})
-	const req = useLogin()
+	const req = useRegister()
 
-	const onSubmit = async (data: ILogin) => {
+	const onSubmit = async (data: IRegister) => {
 		await query(async () => {
 			await req.mutateAsync(data)
 			router.push(links.login)

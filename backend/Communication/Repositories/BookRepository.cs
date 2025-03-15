@@ -3,8 +3,10 @@ using backend.Communication.Contracts;
 using backend.Domain;
 using backend.Domain.Abstractions;
 using backend.Domain.Entities;
+using backend.Domain.Mappers;
 using backend.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace backend.Communication.Repositories
 {
@@ -21,7 +23,8 @@ namespace backend.Communication.Repositories
 
         public async Task<List<Book>> List(FilterBookDto query)
         {
-            var bookQuery = _context.Books.AsNoTracking();
+            var bookQuery = _context.Books
+                .AsNoTracking();
 
             if (!string.IsNullOrEmpty(query.Search))
                 bookQuery = bookQuery.Where(b => b.Title.ToLower().Contains(query.Search.ToLower()));
@@ -34,10 +37,18 @@ namespace backend.Communication.Repositories
             else
                 bookQuery = bookQuery.OrderBy(b => b.CreatedAt);
 
+
+            if (query.Page > 0 && query.PageSize > 0)
+            {
+                bookQuery = bookQuery
+                    .Skip((query.Page - 1) * query.PageSize)
+                    .Take(query.PageSize);
+            }
+
             var bookEntities = await bookQuery
-               .Skip((query.Page - 1) * query.PageSize)
-               .Take(query.PageSize)
-               .ToListAsync();
+                .Include(b => b.User)
+                .Include(b => b.Categories)
+                .ToListAsync();
 
             var books = bookEntities.Select(b => Book.Create(
                 b.Id,
@@ -49,7 +60,7 @@ namespace backend.Communication.Repositories
                 b.Age,
                 b.Pages,
                 _mapper.Map<User>(b.User),
-                _mapper.Map<List<Category>>(b.Categories),
+                b.Categories.Select(c => _mapper.Map<Category>(c)).ToList(),
                 b.Holder,
                 b.Translator))
                 .ToList();
@@ -66,48 +77,45 @@ namespace backend.Communication.Repositories
 
         public async Task<Guid> Create(Book book)
         {
-            using (var transaction = _context.Database.BeginTransaction())
+            var transaction = _context.Database.BeginTransaction();
+
+            try
             {
-                try
+                var bookEntity = new BookEntity
                 {
-                    var bookEntity = new BookEntity
-                    {
-                        Id = book.Id,
-                        ImagePath = book.ImagePath,
-                        FilePath = book.FilePath,
-                        Title = book.Title,
-                        Description = book.Description,
-                        Publisher = book.Publisher,
-                        Holder = book.Holder,
-                        Translator = book.Translator,
-                        Age = book.Age,
-                        Pages = book.Pages,
-                        UserId = book.User.Id
-                    };
+                    Id = book.Id,
+                    ImagePath = book.ImagePath,
+                    FilePath = book.FilePath,
+                    Title = book.Title,
+                    Description = book.Description,
+                    Publisher = book.Publisher,
+                    Holder = book.Holder,
+                    Translator = book.Translator,
+                    Age = book.Age,
+                    Pages = book.Pages,
+                    UserId = book.User.Id
+                };
 
-                    foreach (var category in book.Categories)
+                foreach (var category in book.Categories)
+                {
+                    var existingCategory = await _context.Categories.FindAsync(category.Id);
+                    if (existingCategory == null)
                     {
-                        var categoryEntity = new CategoryEntity
-                        {
-                            Id = category.Id,
-                            Title = category.Title,
-                            TopicId = category.TopicId,
-                        };
-
-                        bookEntity.Categories.Add(categoryEntity);
+                        throw new BadHttpRequestException($"Category with ID {category.Id} not found.");
                     }
-
-                    await _context.Books.AddAsync(bookEntity);
-                    await _context.SaveChangesAsync();
-                    transaction.Commit();
-
-                    return bookEntity.Id;
+                    bookEntity.Categories.Add(existingCategory);
                 }
-                catch
-                {
-                    transaction.Rollback();
-                    return Guid.Empty;
-                }
+
+                await _context.Books.AddAsync(bookEntity);
+                await _context.SaveChangesAsync();
+                transaction.Commit();
+
+                return bookEntity.Id;
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new BadHttpRequestException(e.ToString());
             }
         }
 

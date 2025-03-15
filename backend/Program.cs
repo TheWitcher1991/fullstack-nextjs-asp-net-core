@@ -24,9 +24,10 @@ builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowCors", builder =>
         {
-            builder.AllowAnyOrigin()
+            builder.WithOrigins("https://localhost:3001")
                 .AllowAnyMethod()
-                .AllowAnyHeader();
+                .AllowAnyHeader()
+                .AllowCredentials();
         });
     });
 });
@@ -136,8 +137,8 @@ app.MapControllers();
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), Config.MEDIA_FOLDER_NAME)),
-    RequestPath = $"/{Config.MEDIA_FOLDER_NAME}"
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/{Config.MEDIA_FOLDER_NAME}")),
+    RequestPath = $"/wwwroot/{Config.MEDIA_FOLDER_NAME}"
 });
 
 app.UseHealthChecks("/health");

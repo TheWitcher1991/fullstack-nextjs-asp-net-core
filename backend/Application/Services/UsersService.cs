@@ -1,5 +1,6 @@
 ﻿using backend.Communication.Contracts;
 using backend.Domain.Abstractions;
+using backend.Domain.Mappers;
 using backend.Domain.Models;
 using backend.Shared.Enums;
 
@@ -34,18 +35,25 @@ namespace backend.Application.Services
             await repository.Create(user);
         }
 
-        public async Task<string> Login(string email, string password)
+        public async Task<LoginResponseDto> Login(string email, string password)
         {
             var user = await repository.GetByEmail(email);
 
+            if (user is null)
+                throw new BadHttpRequestException("Failed to login");
+
             var result = _passwordHasher.Verify(password, user.Password);
 
-            if (result)
+            if (!result)
                 throw new BadHttpRequestException("Failed to login");
 
             var token = _jwtProvider.Sign(user);
 
-            return token;
+            return new LoginResponseDto
+            (
+                token,
+                UserMapper.ToUserDto(user)
+            );
         }
 
         private async Task<User> DecodeUserToken(string token)

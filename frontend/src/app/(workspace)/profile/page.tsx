@@ -19,7 +19,7 @@ export default function ProfilePage() {
 				isLoading={isLoading}
 				loadingFallback={<ProfileLoading />}
 			>
-				<ProfileForm profile={data?.data as IAccount} />
+				<ProfileForm profile={data?.data.result as IAccount} />
 			</RenderFetchData>
 		</>
 	)

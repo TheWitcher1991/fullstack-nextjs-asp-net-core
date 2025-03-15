@@ -6,17 +6,20 @@ import 'swiper/swiper-bundle.css'
 
 interface BookSwiperListProps {
 	books: IBook[]
-	spaceBetween: number
-	slidesPerView: number
+	spaceBetween?: number
+	slidesPerView?: number
 }
 
 export default function BookSwiperList({
 	books,
-	spaceBetween = 8,
-	slidesPerView = 7,
+	spaceBetween,
+	slidesPerView,
 }: BookSwiperListProps) {
 	return (
-		<Swiper spaceBetween={spaceBetween} slidesPerView={slidesPerView}>
+		<Swiper
+			spaceBetween={spaceBetween || 8}
+			slidesPerView={slidesPerView || 7}
+		>
 			{books.map(book => (
 				<SwiperSlide key={book.id}>
 					<BookCard book={book} />

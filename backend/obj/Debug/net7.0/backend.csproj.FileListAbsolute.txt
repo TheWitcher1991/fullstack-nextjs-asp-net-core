@@ -62,3 +62,5 @@ C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\runtimes\browser\li
 C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\FluentValidation.dll
 C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
 C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\NuGet.Config
+C:\Project\.NET\nextjs-asp-net-core\backend\bin\Debug\net7.0\backend.staticwebassets.runtime.json

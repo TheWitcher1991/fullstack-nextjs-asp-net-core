@@ -34,6 +34,7 @@ namespace backend.Communication.Repositories
         public async Task<List<Category>> GetByIds(List<Guid> ids)
         {
             var categoryEntities = await _context.Categories
+                .AsNoTracking()
                 .Where(c => ids.Contains(c.Id))
                 .ToListAsync();
 
@@ -42,9 +43,17 @@ namespace backend.Communication.Repositories
 
         public async Task<Category> GetById(Guid id)
         {
-            var categoryEntity = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id) ?? throw new Exception();
+            var c = await _context.Categories
+                .AsNoTracking()
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Title,
+                    Topic = c.Topic != null ? new TopicEntity { Id = c.Topic.Id, Title = c.Topic.Title, CreatedAt = c.Topic.CreatedAt } : null
+                })
+                .FirstOrDefaultAsync(b => b.Id == id) ?? throw new Exception();
 
-            return _mapper.Map<Category>(categoryEntity);
+            return Category.Create(c.Id, c.Title, _mapper.Map<Topic>(c.Topic));
         }
 
         public async Task<Guid> Create(Category category)

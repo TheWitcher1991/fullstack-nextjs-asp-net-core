@@ -10,7 +10,7 @@ namespace backend.Shared
         public static decimal MIN_PRICE = 1.0m;
         public static int SESSION_EXPIRES_HOURS = 730;
         public static string TOKEN_NAME = "access_token";
-        public static string SECRET_KEY = "*********";
+        public static string SECRET_KEY = "qVzWwz2G6HqZx3tWn4J0uNdJmNz8u2Y0pL3MwO5V3tw=";
         public static byte[] SECRET_KEY_BYTES = Encoding.UTF8.GetBytes(SECRET_KEY);
         public static string MEDIA_FOLDER_NAME = "uploads";
     }

@@ -29,9 +29,9 @@ namespace backend.Domain.Configurations
             builder.Property(b => b.Translator)
                 .HasMaxLength(Config.MAX_TITLE_LENGTH);
 
-            builder.ToTable(b => b.HasCheckConstraint("CK_Age", "Age > 0 AND Age < 120"));
+            // builder.ToTable(b => b.HasCheckConstraint("CK_Book_Age", "Age > 0 AND Age < 120"));
 
-            builder.ToTable(b => b.HasCheckConstraint("CK_Pages", $"Pages >= 1 AND Pages <= {int.MaxValue}"));
+            // builder.ToTable(b => b.HasCheckConstraint("CK_Book_Pages", $"Pages >= 1 AND Pages <= {int.MaxValue}"));
 
             builder.Property(b => b.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");

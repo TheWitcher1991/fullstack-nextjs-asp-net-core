@@ -8,6 +8,6 @@ namespace backend.Domain.Abstractions
         Task<Guid> Create(User user);
         Task<User> GetByEmail(string email);
         Task<User> GetById(Guid id);
-        Task<Guid> Update(Guid id, UpdateUserDto book);
+        Task<Guid> Update(Guid id, UpdateUserDto user);
     }
 }

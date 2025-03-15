@@ -27,12 +27,13 @@ export class BuildBookRepository extends CrudRepository<
 		super(http, URL)
 	}
 
-	async getByTopic(
-		params?: Partial<UseBooks>,
-	): Promise<AxiosResponse<ITopicBooks[]>> {
-		return await this.instance.get(`${bookServiceKeys.booksByTopic}`, {
-			params: prepareRequestParams(params),
-		})
+	async getByTopic(params?: Partial<UseBooks>) {
+		return await this.instance.get<ResultResponse<ITopicBooks[]>>(
+			`${bookServiceKeys.booksByTopic}`,
+			{
+				params: prepareRequestParams(params),
+			},
+		)
 	}
 }
 
