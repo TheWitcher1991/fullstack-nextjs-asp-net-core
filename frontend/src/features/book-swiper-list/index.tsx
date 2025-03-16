@@ -18,7 +18,8 @@ export default function BookSwiperList({
 	return (
 		<Swiper
 			spaceBetween={spaceBetween || 8}
-			slidesPerView={slidesPerView || 7}
+			slidesPerView={slidesPerView || 4}
+			grabCursor={true}
 		>
 			{books.map(book => (
 				<SwiperSlide key={book.id}>

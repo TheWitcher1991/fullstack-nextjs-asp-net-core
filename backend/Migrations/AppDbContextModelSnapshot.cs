@@ -22,19 +22,271 @@ namespace backend.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BookEntityCategoryEntity", b =>
+            modelBuilder.Entity("BookCategory", b =>
                 {
-                    b.Property<Guid>("BooksId")
+                    b.Property<Guid>("BookId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CategoriesId")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("BooksId", "CategoriesId");
+                    b.HasKey("BookId", "CategoryId");
 
-                    b.HasIndex("CategoriesId");
+                    b.HasIndex("CategoryId");
 
-                    b.ToTable("BookEntityCategoryEntity");
+                    b.ToTable("BookCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            BookId = new Guid("dafdc96e-59ad-4e6b-aa31-e6643b5b746b"),
+                            CategoryId = new Guid("c8457fff-b6d8-43e0-9cf3-abc5e05bb8dc")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2aad24ba-f40c-4b17-8093-5c655d22b87c"),
+                            CategoryId = new Guid("4bc78904-c521-4c9a-a141-c02c28e5fd8b")
+                        },
+                        new
+                        {
+                            BookId = new Guid("6418a231-5cfc-4728-b2d6-c68e7843b062"),
+                            CategoryId = new Guid("5bafd2c6-d952-46b2-9ae6-508d4c9de2f0")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2a41bb0c-b824-4c8b-9d4e-8761e1d19c08"),
+                            CategoryId = new Guid("7f05a0db-dd14-4df2-a6ef-ba0ccb99de49")
+                        },
+                        new
+                        {
+                            BookId = new Guid("721bccdf-255b-4eb6-970a-3ec85d8aa667"),
+                            CategoryId = new Guid("f322cd5d-4841-45ba-845e-90c1a2ff967f")
+                        },
+                        new
+                        {
+                            BookId = new Guid("d53697ba-797f-468f-850e-dadbd54d9004"),
+                            CategoryId = new Guid("4bc78904-c521-4c9a-a141-c02c28e5fd8b")
+                        },
+                        new
+                        {
+                            BookId = new Guid("20de4cde-1e7c-43c3-b2ef-59c61bc2cf6c"),
+                            CategoryId = new Guid("894fcac2-4b8e-40e2-b03d-119d77c3be14")
+                        },
+                        new
+                        {
+                            BookId = new Guid("3de850ae-2691-4de0-ba50-00cebc0e098c"),
+                            CategoryId = new Guid("e00dc6e2-efff-4891-aa5e-84dcdbd3dec2")
+                        },
+                        new
+                        {
+                            BookId = new Guid("96d5389e-6976-4e2f-9379-de41f0e5f729"),
+                            CategoryId = new Guid("1f9bc60a-27a7-426f-88db-3c1341aabc16")
+                        },
+                        new
+                        {
+                            BookId = new Guid("63145ddd-d3e5-46d8-8117-ea95d45e7b1a"),
+                            CategoryId = new Guid("bc6fb040-506d-46df-a040-ea370c5ca6b0")
+                        },
+                        new
+                        {
+                            BookId = new Guid("bcab2742-ac2e-4759-a525-82ddd9b8461d"),
+                            CategoryId = new Guid("186ac534-4c6e-4c16-9a44-1fa73f8db668")
+                        },
+                        new
+                        {
+                            BookId = new Guid("52029771-c00c-427c-ac4d-53b6cd3426a5"),
+                            CategoryId = new Guid("dfb76f27-1727-4c03-8886-afd8e80183de")
+                        },
+                        new
+                        {
+                            BookId = new Guid("30f07986-d5f9-4a3b-a379-b474fd860802"),
+                            CategoryId = new Guid("03aa504c-c8c9-45e1-b456-f196834ace41")
+                        },
+                        new
+                        {
+                            BookId = new Guid("b519dc03-ca6b-4cd4-a713-5a084484ff0b"),
+                            CategoryId = new Guid("7f3af4af-f1cc-48cd-a53f-87c69c6bfc34")
+                        },
+                        new
+                        {
+                            BookId = new Guid("116972fc-5026-4fac-a495-4407122faa80"),
+                            CategoryId = new Guid("7917c7a5-5a60-4ac9-bd8e-91f0eb4ba92a")
+                        },
+                        new
+                        {
+                            BookId = new Guid("ce21341a-21d9-4f46-a42e-a378188709c9"),
+                            CategoryId = new Guid("5bafd2c6-d952-46b2-9ae6-508d4c9de2f0")
+                        },
+                        new
+                        {
+                            BookId = new Guid("7254a633-a520-40a3-ab1a-3efd53d6574b"),
+                            CategoryId = new Guid("2e5cf54d-8717-42b4-8dd3-5e01790daa26")
+                        },
+                        new
+                        {
+                            BookId = new Guid("d1b1fe1b-72c8-4974-abbc-122c1d970b56"),
+                            CategoryId = new Guid("c8457fff-b6d8-43e0-9cf3-abc5e05bb8dc")
+                        },
+                        new
+                        {
+                            BookId = new Guid("139c4188-c913-4765-ba68-f73a14b5eeea"),
+                            CategoryId = new Guid("4bc78904-c521-4c9a-a141-c02c28e5fd8b")
+                        },
+                        new
+                        {
+                            BookId = new Guid("6118162e-5b1c-4646-bc58-166b36a4b613"),
+                            CategoryId = new Guid("ddf8c566-a91b-4c83-9f6a-afcbb634f881")
+                        },
+                        new
+                        {
+                            BookId = new Guid("8f85b04c-e5c4-4035-980f-cd79decd5201"),
+                            CategoryId = new Guid("8e637311-c3f4-4e5b-82fc-0a1a0d3a6bb1")
+                        },
+                        new
+                        {
+                            BookId = new Guid("af66c22c-04d9-4c3a-abe1-45064f236f1f"),
+                            CategoryId = new Guid("b1d38b75-4f26-482a-b017-b8ee2b838fdc")
+                        },
+                        new
+                        {
+                            BookId = new Guid("12c6d34b-ec89-40eb-8024-b35a05967932"),
+                            CategoryId = new Guid("4bc78904-c521-4c9a-a141-c02c28e5fd8b")
+                        },
+                        new
+                        {
+                            BookId = new Guid("498bd352-80f0-4127-ad3f-ee8f33855f64"),
+                            CategoryId = new Guid("03aa504c-c8c9-45e1-b456-f196834ace41")
+                        },
+                        new
+                        {
+                            BookId = new Guid("3d2335e7-87c8-4eff-9dba-8bf0ab2c67f7"),
+                            CategoryId = new Guid("2bc30f2b-cba3-453e-839c-24bee14f945d")
+                        },
+                        new
+                        {
+                            BookId = new Guid("7435a598-77ba-4240-9ec3-041edc464cc6"),
+                            CategoryId = new Guid("9ad32ac1-8e8f-423e-b02d-73ddc353c339")
+                        },
+                        new
+                        {
+                            BookId = new Guid("c19eacf8-1688-4cf7-92d2-ac687b5722bd"),
+                            CategoryId = new Guid("fff5aefc-fecb-4402-a23b-e2455ed1808d")
+                        },
+                        new
+                        {
+                            BookId = new Guid("b5257a2c-409f-4792-8183-8f6f7ca81f92"),
+                            CategoryId = new Guid("b8b69d68-d0b8-4e2f-96ca-7ca2f715b52b")
+                        },
+                        new
+                        {
+                            BookId = new Guid("bf8f736a-1df8-46ba-a2b7-d92c0d5f596f"),
+                            CategoryId = new Guid("570e742c-fad0-4f6f-a6c9-539897ee17d6")
+                        },
+                        new
+                        {
+                            BookId = new Guid("81a56285-f872-42ab-8a20-0256f35f2d0d"),
+                            CategoryId = new Guid("d6d3e8e2-7cb4-44c6-aeb9-3653fb0988cd")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2e122ce9-98b8-405b-aedc-633467b59d3f"),
+                            CategoryId = new Guid("03aa504c-c8c9-45e1-b456-f196834ace41")
+                        },
+                        new
+                        {
+                            BookId = new Guid("04e03ada-0b50-4ed1-a28c-d85f42562964"),
+                            CategoryId = new Guid("8e637311-c3f4-4e5b-82fc-0a1a0d3a6bb1")
+                        },
+                        new
+                        {
+                            BookId = new Guid("31be812a-4912-4f87-a8ba-79b9b074c46d"),
+                            CategoryId = new Guid("58401406-bca2-4ff4-a77a-ff30d0905535")
+                        },
+                        new
+                        {
+                            BookId = new Guid("84279083-1fc9-4f8b-9a0a-eea474cc38e1"),
+                            CategoryId = new Guid("fff5aefc-fecb-4402-a23b-e2455ed1808d")
+                        },
+                        new
+                        {
+                            BookId = new Guid("cec8a85b-589d-42aa-a6a3-c65fd6a04f81"),
+                            CategoryId = new Guid("894fcac2-4b8e-40e2-b03d-119d77c3be14")
+                        },
+                        new
+                        {
+                            BookId = new Guid("a17da579-a47c-4257-b42d-aec975f733e4"),
+                            CategoryId = new Guid("fff5aefc-fecb-4402-a23b-e2455ed1808d")
+                        },
+                        new
+                        {
+                            BookId = new Guid("9dd98284-745a-430a-a7fa-dd4ad1889cd6"),
+                            CategoryId = new Guid("7f05a0db-dd14-4df2-a6ef-ba0ccb99de49")
+                        },
+                        new
+                        {
+                            BookId = new Guid("611f08fa-0e78-4cde-a01c-a00307148c51"),
+                            CategoryId = new Guid("c8457fff-b6d8-43e0-9cf3-abc5e05bb8dc")
+                        },
+                        new
+                        {
+                            BookId = new Guid("74e1e7eb-93a6-42e6-af95-4fd307488676"),
+                            CategoryId = new Guid("c8457fff-b6d8-43e0-9cf3-abc5e05bb8dc")
+                        },
+                        new
+                        {
+                            BookId = new Guid("e0102735-aa39-47fe-9b78-5dae1da09e85"),
+                            CategoryId = new Guid("9a7b6af2-79f3-457d-bbfa-2b6bf5726db4")
+                        },
+                        new
+                        {
+                            BookId = new Guid("ad523690-0061-4317-9539-e69a0c82a9a0"),
+                            CategoryId = new Guid("683da31e-af9b-43b7-8654-7da110c19428")
+                        },
+                        new
+                        {
+                            BookId = new Guid("d6dc2c60-1843-4822-a016-eb59dbd24606"),
+                            CategoryId = new Guid("570e742c-fad0-4f6f-a6c9-539897ee17d6")
+                        },
+                        new
+                        {
+                            BookId = new Guid("543fdb46-de92-4278-99fa-d3f821593911"),
+                            CategoryId = new Guid("06d5f66c-7896-4c24-9843-dba6021b2a64")
+                        },
+                        new
+                        {
+                            BookId = new Guid("f91cc47d-709c-4730-9822-b6883d012bc7"),
+                            CategoryId = new Guid("683da31e-af9b-43b7-8654-7da110c19428")
+                        },
+                        new
+                        {
+                            BookId = new Guid("e94030bc-2769-431a-83a6-71a24e75631b"),
+                            CategoryId = new Guid("139e8271-39bd-48c5-aad2-d62ee20ffaf0")
+                        },
+                        new
+                        {
+                            BookId = new Guid("d3314f02-ad06-4e11-88b0-e76d45b03d8a"),
+                            CategoryId = new Guid("b3a7ee49-0c15-4c26-b0a5-63d03d5e1c47")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2d568103-41a8-4739-95e5-b3582827f56e"),
+                            CategoryId = new Guid("62973166-cc3b-44fd-8bdd-76ac5b1f7922")
+                        },
+                        new
+                        {
+                            BookId = new Guid("2282bd75-9ecb-41da-bf2c-59926b58d0cd"),
+                            CategoryId = new Guid("032dfe50-1dfc-40aa-a17b-9415b0e0343c")
+                        },
+                        new
+                        {
+                            BookId = new Guid("e9edb617-2afc-4194-a086-3db471f18b1a"),
+                            CategoryId = new Guid("b8b69d68-d0b8-4e2f-96ca-7ca2f715b52b")
+                        },
+                        new
+                        {
+                            BookId = new Guid("22df7911-938c-4cee-a752-28842e00f807"),
+                            CategoryId = new Guid("7f3af4af-f1cc-48cd-a53f-87c69c6bfc34")
+                        });
                 });
 
             modelBuilder.Entity("EmotionEntityImpressionEntity", b =>
@@ -52,6 +304,104 @@ namespace backend.Migrations
                     b.ToTable("EmotionEntityImpressionEntity");
                 });
 
+            modelBuilder.Entity("backend.Domain.Entities.AuthorEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasMaxLength(3000)
+                        .HasColumnType("character varying(3000)");
+
+                    b.Property<string>("AvatarPath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FullName");
+
+                    b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            About = "Анджей Сапковский (1948) — польский писатель-фантаст, автор фэнтези-цикла о ведьмаке, лауреат множества литературных премий, второй самый печатаемый польский автор в мире после Станислава Лема.",
+                            AvatarPath = "/authors/sab.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5496),
+                            FullName = "Анджей Сапковский"
+                        },
+                        new
+                        {
+                            Id = new Guid("c9a19a03-c71b-47d1-82e5-fd0e0ff43889"),
+                            About = "Дмитрий Глуховский (1979 г. р.) — российский писатель. С момента окончания университета профессия Дмитрия Глуховского — журналист. Работал на телевидении, радио, в печатных СМИ. Автор фантастического романа «Метро 2033», переведенного на 37 языков.",
+                            AvatarPath = "/authors/dgx.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5498),
+                            FullName = "Дмитрий Глуховский"
+                        },
+                        new
+                        {
+                            Id = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            About = "Американский писатель, работавший в жанрах литературы ужасов, мистики и научной фантастики и, на их основе создавший узнаваемый стиль «лавкрафтовского хоррора».",
+                            AvatarPath = "/authors/gov.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5499),
+                            FullName = "Говард Филлипс Лавкрафт"
+                        },
+                        new
+                        {
+                            Id = new Guid("1b5121c4-fe52-4d22-80f1-2625c00fc484"),
+                            About = "Всемирно известный английский писатель, лингвист, профессор Оксфордского университета и один из основателей «высокого фэнтези» Джон Рональд Руэл Толкин родился в 1892 году в Блумфонтейне, Оранжевая республика (сейчас ЮАР). В Англию будущий писатель с мамой и братом переехал четыре года спустя.",
+                            AvatarPath = "/authors/tol.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5501),
+                            FullName = "Джон Рональд Руэл Толкин"
+                        },
+                        new
+                        {
+                            Id = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            About = "Английский писатель, автор сатирической повести «Скотный двор» и романа-антиутопии «1984», журналист и общественный деятель. Имя при рождении — Эрик Артур Блэр.",
+                            AvatarPath = "/authors/ou.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5502),
+                            FullName = "Джордж Оруэлл"
+                        },
+                        new
+                        {
+                            Id = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            About = "Лев Толстой — русский писатель. Родился и провел детство в семейном имении Ясная Поляна. Поступил в университет, но, не окончив его, вернулся домой, чтобы заниматься делами поместья.",
+                            AvatarPath = "/authors/lev.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5504),
+                            FullName = "Лев Толстой"
+                        },
+                        new
+                        {
+                            Id = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            About = "Лев Толстой — русский писатель. Родился и провел детство в семейном имении Ясная Поляна. Поступил в университет, но, не окончив его, вернулся домой, чтобы заниматься делами поместья.",
+                            AvatarPath = "/authors/lev.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5505),
+                            FullName = "Лев Толстой"
+                        },
+                        new
+                        {
+                            Id = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            About = "Советский и российский писатель-фантаст, представитель поджанра твердой научной фантастики, работавший в писательском тандеме со своим братом — Борисом Стругацким.",
+                            AvatarPath = "/authors/str.jpg",
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5506),
+                            FullName = "Аркадий Стругацкий"
+                        });
+                });
+
             modelBuilder.Entity("backend.Domain.Entities.BookEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -60,6 +410,9 @@ namespace backend.Migrations
 
                     b.Property<int>("Age")
                         .HasColumnType("integer");
+
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -105,11 +458,815 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AuthorId");
+
                     b.HasIndex("Title");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("dafdc96e-59ad-4e6b-aa31-e6643b5b746b"),
+                            Age = 18,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4527),
+                            Description = "Описание книги Последнее желание",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/pos.jpg",
+                            Pages = 241,
+                            Publisher = "Издательство АСТ",
+                            Title = "Последнее желание",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("2aad24ba-f40c-4b17-8093-5c655d22b87c"),
+                            Age = 16,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4652),
+                            Description = "Описание книги Меч Предназначения",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/sword.jpg",
+                            Pages = 125,
+                            Publisher = "Издательство АСТ",
+                            Title = "Меч Предназначения",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("6418a231-5cfc-4728-b2d6-c68e7843b062"),
+                            Age = 16,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4686),
+                            Description = "Описание книги Кровь эльфов",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/blood.jpg",
+                            Pages = 283,
+                            Publisher = "Издательство АСТ",
+                            Title = "Кровь эльфов",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("2a41bb0c-b824-4c8b-9d4e-8761e1d19c08"),
+                            Age = 12,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4696),
+                            Description = "Описание книги Час презрения",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/hour.jpg",
+                            Pages = 222,
+                            Publisher = "Издательство АСТ",
+                            Title = "Час презрения",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("721bccdf-255b-4eb6-970a-3ec85d8aa667"),
+                            Age = 12,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4704),
+                            Description = "Описание книги Крещение огнем",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/fire.jpg",
+                            Pages = 159,
+                            Publisher = "Издательство АСТ",
+                            Title = "Крещение огнем",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("d53697ba-797f-468f-850e-dadbd54d9004"),
+                            Age = 16,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4714),
+                            Description = "Описание книги Башня ласточки",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/tower.jpg",
+                            Pages = 190,
+                            Publisher = "Издательство АСТ",
+                            Title = "Башня ласточки",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("20de4cde-1e7c-43c3-b2ef-59c61bc2cf6c"),
+                            Age = 16,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4724),
+                            Description = "Описание книги Сезон гроз",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/sezon.jpg",
+                            Pages = 123,
+                            Publisher = "Издательство АСТ",
+                            Title = "Сезон гроз",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("3de850ae-2691-4de0-ba50-00cebc0e098c"),
+                            Age = 16,
+                            AuthorId = new Guid("162cb5f4-36bd-4c2a-aef0-971742f5f0b6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4732),
+                            Description = "Описание книги Владычица озера",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Анджей Сапковский",
+                            ImagePath = "/books/ozero.jpg",
+                            Pages = 153,
+                            Publisher = "Издательство АСТ",
+                            Title = "Владычица озера",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("96d5389e-6976-4e2f-9379-de41f0e5f729"),
+                            Age = 18,
+                            AuthorId = new Guid("c9a19a03-c71b-47d1-82e5-fd0e0ff43889"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4742),
+                            Description = "Описание книги Метро 2033",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Дмитрий Глуховский",
+                            ImagePath = "/books/2033.jpg",
+                            Pages = 215,
+                            Publisher = "Издательство АСТ",
+                            Title = "Метро 2033",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("63145ddd-d3e5-46d8-8117-ea95d45e7b1a"),
+                            Age = 16,
+                            AuthorId = new Guid("c9a19a03-c71b-47d1-82e5-fd0e0ff43889"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4752),
+                            Description = "Описание книги Метро 2034",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Дмитрий Глуховский",
+                            ImagePath = "/books/2034.jpg",
+                            Pages = 293,
+                            Publisher = "Издательство АСТ",
+                            Title = "Метро 2034",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("bcab2742-ac2e-4759-a525-82ddd9b8461d"),
+                            Age = 16,
+                            AuthorId = new Guid("c9a19a03-c71b-47d1-82e5-fd0e0ff43889"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4760),
+                            Description = "Описание книги Метро 2035",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Дмитрий Глуховский",
+                            ImagePath = "/books/2035.jpg",
+                            Pages = 263,
+                            Publisher = "Издательство АСТ",
+                            Title = "Метро 2035",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("52029771-c00c-427c-ac4d-53b6cd3426a5"),
+                            Age = 12,
+                            AuthorId = new Guid("c9a19a03-c71b-47d1-82e5-fd0e0ff43889"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4768),
+                            Description = "Описание книги Третий Рим. ВДНХ",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Дмитрий Глуховский",
+                            ImagePath = "/books/rim.jpg",
+                            Pages = 295,
+                            Publisher = "Издательство АСТ",
+                            Title = "Третий Рим. ВДНХ",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("30f07986-d5f9-4a3b-a379-b474fd860802"),
+                            Age = 12,
+                            AuthorId = new Guid("c9a19a03-c71b-47d1-82e5-fd0e0ff43889"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4776),
+                            Description = "Описание книги Метро 2033: Последнее убежище",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Дмитрий Глуховский",
+                            ImagePath = "/books/lost.jpg",
+                            Pages = 240,
+                            Publisher = "Издательство АСТ",
+                            Title = "Метро 2033: Последнее убежище",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("b519dc03-ca6b-4cd4-a713-5a084484ff0b"),
+                            Age = 12,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4808),
+                            Description = "Описание книги Зов Ктулху",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/zov.jpg",
+                            Pages = 250,
+                            Publisher = "Издательство АСТ",
+                            Title = "Зов Ктулху",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("116972fc-5026-4fac-a495-4407122faa80"),
+                            Age = 18,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4817),
+                            Description = "Описание книги Тень над Иннсмутом",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/innsmouth.jpg",
+                            Pages = 279,
+                            Publisher = "Издательство АСТ",
+                            Title = "Тень над Иннсмутом",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("ce21341a-21d9-4f46-a42e-a378188709c9"),
+                            Age = 12,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4826),
+                            Description = "Описание книги Хребты безумия",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/bez.jpg",
+                            Pages = 211,
+                            Publisher = "Издательство АСТ",
+                            Title = "Хребты безумия",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("7254a633-a520-40a3-ab1a-3efd53d6574b"),
+                            Age = 16,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4832),
+                            Description = "Описание книги Дагон",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/dagon.jpg",
+                            Pages = 186,
+                            Publisher = "Издательство АСТ",
+                            Title = "Дагон",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("d1b1fe1b-72c8-4974-abbc-122c1d970b56"),
+                            Age = 16,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4842),
+                            Description = "Описание книги Шепчущий во тьме",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/vo_tme.jpg",
+                            Pages = 195,
+                            Publisher = "Издательство АСТ",
+                            Title = "Шепчущий во тьме",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("139c4188-c913-4765-ba68-f73a14b5eeea"),
+                            Age = 16,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4850),
+                            Description = "Описание книги Некрономикон",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/nekro.jpg",
+                            Pages = 298,
+                            Publisher = "Издательство АСТ",
+                            Title = "Некрономикон",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("6118162e-5b1c-4646-bc58-166b36a4b613"),
+                            Age = 12,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4859),
+                            Description = "Описание книги Цвет из иных миров",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/chvet.jpg",
+                            Pages = 272,
+                            Publisher = "Издательство АСТ",
+                            Title = "Цвет из иных миров",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("8f85b04c-e5c4-4035-980f-cd79decd5201"),
+                            Age = 12,
+                            AuthorId = new Guid("0bc9f987-bebf-472a-8efc-3a9477ee9e2c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4867),
+                            Description = "Описание книги Таящийся у порога",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Говард Филлипс Лавкрафт",
+                            ImagePath = "/books/porog.jpg",
+                            Pages = 254,
+                            Publisher = "Издательство АСТ",
+                            Title = "Таящийся у порога",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("af66c22c-04d9-4c3a-abe1-45064f236f1f"),
+                            Age = 12,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4879),
+                            Description = "Описание книги Сильмариллион",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/sim.jpg",
+                            Pages = 125,
+                            Publisher = "Издательство АСТ",
+                            Title = "Сильмариллион",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("12c6d34b-ec89-40eb-8024-b35a05967932"),
+                            Age = 12,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4887),
+                            Description = "Описание книги Природа Средиземья",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/prid.jpg",
+                            Pages = 207,
+                            Publisher = "Издательство АСТ",
+                            Title = "Природа Средиземья",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("498bd352-80f0-4127-ad3f-ee8f33855f64"),
+                            Age = 12,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4895),
+                            Description = "Описание книги Две твердыни",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/dvet.jpg",
+                            Pages = 138,
+                            Publisher = "Издательство АСТ",
+                            Title = "Две твердыни",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("3d2335e7-87c8-4eff-9dba-8bf0ab2c67f7"),
+                            Age = 18,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4923),
+                            Description = "Описание книги Две крепости",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/devk.jpg",
+                            Pages = 179,
+                            Publisher = "Издательство АСТ",
+                            Title = "Две крепости",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("7435a598-77ba-4240-9ec3-041edc464cc6"),
+                            Age = 16,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4932),
+                            Description = "Описание книги Дети Хурина",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/child.jpg",
+                            Pages = 244,
+                            Publisher = "Издательство АСТ",
+                            Title = "Дети Хурина",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("c19eacf8-1688-4cf7-92d2-ac687b5722bd"),
+                            Age = 16,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4940),
+                            Description = "Описание книги Хоббит",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/xob.jpg",
+                            Pages = 129,
+                            Publisher = "Издательство АСТ",
+                            Title = "Хоббит",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("b5257a2c-409f-4792-8183-8f6f7ca81f92"),
+                            Age = 16,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4948),
+                            Description = "Описание книги Властелин колец",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/vlas.jpg",
+                            Pages = 168,
+                            Publisher = "Издательство АСТ",
+                            Title = "Властелин колец",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("bf8f736a-1df8-46ba-a2b7-d92c0d5f596f"),
+                            Age = 16,
+                            AuthorId = new Guid("4cc8c804-88ab-43da-b9b7-a2eaadb6786b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4955),
+                            Description = "Описание книги Падение Гондолина",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Джордж Оруэлл",
+                            ImagePath = "/books/gondor.jpg",
+                            Pages = 222,
+                            Publisher = "Издательство АСТ",
+                            Title = "Падение Гондолина",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("81a56285-f872-42ab-8a20-0256f35f2d0d"),
+                            Age = 16,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4967),
+                            Description = "Описание книги 1984",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/1984.jpg",
+                            Pages = 171,
+                            Publisher = "Издательство АСТ",
+                            Title = "1984",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("2e122ce9-98b8-405b-aedc-633467b59d3f"),
+                            Age = 12,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4975),
+                            Description = "Описание книги Скотный двор",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/skot.jpg",
+                            Pages = 259,
+                            Publisher = "Издательство АСТ",
+                            Title = "Скотный двор",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("04e03ada-0b50-4ed1-a28c-d85f42562964"),
+                            Age = 16,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4983),
+                            Description = "Описание книги Дочь священника",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/doch.jpg",
+                            Pages = 252,
+                            Publisher = "Издательство АСТ",
+                            Title = "Дочь священника",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("31be812a-4912-4f87-a8ba-79b9b074c46d"),
+                            Age = 16,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4990),
+                            Description = "Описание книги Дни в Бирме",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/birma.jpg",
+                            Pages = 278,
+                            Publisher = "Издательство АСТ",
+                            Title = "Дни в Бирме",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("84279083-1fc9-4f8b-9a0a-eea474cc38e1"),
+                            Age = 18,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(4999),
+                            Description = "Описание книги Глотнуть воздуха",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/voz.jpg",
+                            Pages = 194,
+                            Publisher = "Издательство АСТ",
+                            Title = "Глотнуть воздуха",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("cec8a85b-589d-42aa-a6a3-c65fd6a04f81"),
+                            Age = 16,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5030),
+                            Description = "Описание книги Фунты лиха в Париже и Лондоне",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/funt.jpg",
+                            Pages = 281,
+                            Publisher = "Издательство АСТ",
+                            Title = "Фунты лиха в Париже и Лондоне",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("a17da579-a47c-4257-b42d-aec975f733e4"),
+                            Age = 12,
+                            AuthorId = new Guid("dc16ebbf-5dc6-4491-9b0e-abfe79657fca"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5039),
+                            Description = "Описание книги Дорога на Уиган-Пирс",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/doroga.jpg",
+                            Pages = 228,
+                            Publisher = "Издательство АСТ",
+                            Title = "Дорога на Уиган-Пирс",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("9dd98284-745a-430a-a7fa-dd4ad1889cd6"),
+                            Age = 16,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5050),
+                            Description = "Описание книги Воскресенье",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/vosk.jpg",
+                            Pages = 289,
+                            Publisher = "Издательство АСТ",
+                            Title = "Воскресенье",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("611f08fa-0e78-4cde-a01c-a00307148c51"),
+                            Age = 18,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5058),
+                            Description = "Описание книги Анна Каренина",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/anna.jpg",
+                            Pages = 252,
+                            Publisher = "Издательство АСТ",
+                            Title = "Анна Каренина",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("74e1e7eb-93a6-42e6-af95-4fd307488676"),
+                            Age = 12,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5066),
+                            Description = "Описание книги Детство",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/det.jpg",
+                            Pages = 132,
+                            Publisher = "Издательство АСТ",
+                            Title = "Детство",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("e0102735-aa39-47fe-9b78-5dae1da09e85"),
+                            Age = 18,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5074),
+                            Description = "Описание книги Война и мир",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/w.jpg",
+                            Pages = 259,
+                            Publisher = "Издательство АСТ",
+                            Title = "Война и мир",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("ad523690-0061-4317-9539-e69a0c82a9a0"),
+                            Age = 18,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5081),
+                            Description = "Описание книги Смерть Ивана Ильича",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/dead.jpg",
+                            Pages = 185,
+                            Publisher = "Издательство АСТ",
+                            Title = "Смерть Ивана Ильича",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("d6dc2c60-1843-4822-a016-eb59dbd24606"),
+                            Age = 18,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5089),
+                            Description = "Описание книги Крейцерова соната",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/son.jpg",
+                            Pages = 297,
+                            Publisher = "Издательство АСТ",
+                            Title = "Крейцерова соната",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("543fdb46-de92-4278-99fa-d3f821593911"),
+                            Age = 16,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5096),
+                            Description = "Описание книги Хаджи-Мурат",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/murat.jpg",
+                            Pages = 217,
+                            Publisher = "Издательство АСТ",
+                            Title = "Хаджи-Мурат",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("f91cc47d-709c-4730-9822-b6883d012bc7"),
+                            Age = 12,
+                            AuthorId = new Guid("8a0c90e6-7764-4056-ad6e-66bdfb92db5d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5104),
+                            Description = "Описание книги Дьявол",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Лев Толстой",
+                            ImagePath = "/books/dia.jpg",
+                            Pages = 200,
+                            Publisher = "Издательство АСТ",
+                            Title = "Дьявол",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("e94030bc-2769-431a-83a6-71a24e75631b"),
+                            Age = 12,
+                            AuthorId = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5115),
+                            Description = "Описание книги Пикник на обочине",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Аркадий Стругацкий",
+                            ImagePath = "/books/pick.jpg",
+                            Pages = 276,
+                            Publisher = "Издательство АСТ",
+                            Title = "Пикник на обочине",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("d3314f02-ad06-4e11-88b0-e76d45b03d8a"),
+                            Age = 12,
+                            AuthorId = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5124),
+                            Description = "Описание книги Забытый эксперимент",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Аркадий Стругацкий",
+                            ImagePath = "/books/zab.jpg",
+                            Pages = 121,
+                            Publisher = "Издательство АСТ",
+                            Title = "Забытый эксперимент",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("2d568103-41a8-4739-95e5-b3582827f56e"),
+                            Age = 12,
+                            AuthorId = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5153),
+                            Description = "Описание книги Трудно быть богом",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Аркадий Стругацкий",
+                            ImagePath = "/books/god.jpg",
+                            Pages = 200,
+                            Publisher = "Издательство АСТ",
+                            Title = "Трудно быть богом",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("2282bd75-9ecb-41da-bf2c-59926b58d0cd"),
+                            Age = 16,
+                            AuthorId = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5161),
+                            Description = "Описание книги Врата космоса",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Аркадий Стругацкий",
+                            ImagePath = "/books/kos.jpg",
+                            Pages = 162,
+                            Publisher = "Издательство АСТ",
+                            Title = "Врата космоса",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("e9edb617-2afc-4194-a086-3db471f18b1a"),
+                            Age = 18,
+                            AuthorId = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5168),
+                            Description = "Описание книги Звездолет Астра-12",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Аркадий Стругацкий",
+                            ImagePath = "/books/a12.jpg",
+                            Pages = 199,
+                            Publisher = "Издательство АСТ",
+                            Title = "Звездолет Астра-12",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        },
+                        new
+                        {
+                            Id = new Guid("22df7911-938c-4cee-a752-28842e00f807"),
+                            Age = 16,
+                            AuthorId = new Guid("2bfbfe36-e5e2-49f3-ac06-88a8ba589560"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5176),
+                            Description = "Описание книги Экспедиция в преисподнюю",
+                            FilePath = "/books/book.pdf",
+                            Holder = "Аркадий Стругацкий",
+                            ImagePath = "/books/spes.jpg",
+                            Pages = 277,
+                            Publisher = "Издательство АСТ",
+                            Title = "Экспедиция в преисподнюю",
+                            Translator = "Костина Анна",
+                            UserId = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4")
+                        });
                 });
 
             modelBuilder.Entity("backend.Domain.Entities.CategoryEntity", b =>
@@ -142,295 +1299,295 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("50e7f784-3fed-40a1-936e-0ff00dbf0d42"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3021),
+                            Id = new Guid("c8457fff-b6d8-43e0-9cf3-abc5e05bb8dc"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5299),
                             Title = "Клиническая",
                             TopicId = new Guid("ceaae55b-1d51-45b5-8a9b-10a4b20720ab")
                         },
                         new
                         {
-                            Id = new Guid("c3bb6d98-f732-4580-a869-f1be5bde4907"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3076),
+                            Id = new Guid("4f9728af-2514-465b-b14c-4153a3e9b624"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5301),
                             Title = "Социальная",
                             TopicId = new Guid("ceaae55b-1d51-45b5-8a9b-10a4b20720ab")
                         },
                         new
                         {
-                            Id = new Guid("11c262b0-9d0e-4607-9cc4-23b87e59f2c2"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3078),
+                            Id = new Guid("4bc78904-c521-4c9a-a141-c02c28e5fd8b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5302),
                             Title = "Когнитивная",
                             TopicId = new Guid("ceaae55b-1d51-45b5-8a9b-10a4b20720ab")
                         },
                         new
                         {
-                            Id = new Guid("dfacecd8-5375-45c0-9102-be09583b84dd"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3082),
+                            Id = new Guid("139e8271-39bd-48c5-aad2-d62ee20ffaf0"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5303),
                             Title = "Личная эффективность",
                             TopicId = new Guid("77a24f9e-92cb-47ea-9081-20e304d0c265")
                         },
                         new
                         {
-                            Id = new Guid("0bfa266f-511b-4257-aa28-27a538cb4aa2"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3083),
+                            Id = new Guid("e00dc6e2-efff-4891-aa5e-84dcdbd3dec2"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5304),
                             Title = "Мотивация",
                             TopicId = new Guid("77a24f9e-92cb-47ea-9081-20e304d0c265")
                         },
                         new
                         {
-                            Id = new Guid("5610063f-50e8-4544-94ae-9fdf150151f0"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3085),
+                            Id = new Guid("d6d3e8e2-7cb4-44c6-aeb9-3653fb0988cd"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5306),
                             Title = "Навыки общения",
                             TopicId = new Guid("77a24f9e-92cb-47ea-9081-20e304d0c265")
                         },
                         new
                         {
-                            Id = new Guid("c3d6ad34-06fd-464c-b468-02272aaf7368"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3089),
+                            Id = new Guid("570e742c-fad0-4f6f-a6c9-539897ee17d6"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5307),
                             Title = "История",
                             TopicId = new Guid("2423895f-d942-43c9-a9e6-0780cc8e951f")
                         },
                         new
                         {
-                            Id = new Guid("8d574d0d-9a49-4c5c-9a18-eadcaf66368c"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3090),
+                            Id = new Guid("186ac534-4c6e-4c16-9a44-1fa73f8db668"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5308),
                             Title = "Наука",
                             TopicId = new Guid("2423895f-d942-43c9-a9e6-0780cc8e951f")
                         },
                         new
                         {
-                            Id = new Guid("a74c1be4-44ee-40ce-9dcf-ff8e9c1e7758"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3091),
+                            Id = new Guid("bf17f164-8b99-4973-8fc9-3d10d6ac1609"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5309),
                             Title = "Биографии",
                             TopicId = new Guid("2423895f-d942-43c9-a9e6-0780cc8e951f")
                         },
                         new
                         {
-                            Id = new Guid("59ae8a73-7a05-4f0f-ad71-b3b0514b50c7"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3098),
+                            Id = new Guid("1f9bc60a-27a7-426f-88db-3c1341aabc16"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5333),
                             Title = "Любовные романы",
                             TopicId = new Guid("d8401754-a668-4dfb-bf8f-4285b09f2ae2")
                         },
                         new
                         {
-                            Id = new Guid("6cc9ffbc-ad3b-4bad-8a98-12ab77b23d02"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3099),
+                            Id = new Guid("5bafd2c6-d952-46b2-9ae6-508d4c9de2f0"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5334),
                             Title = "Драма",
                             TopicId = new Guid("d8401754-a668-4dfb-bf8f-4285b09f2ae2")
                         },
                         new
                         {
-                            Id = new Guid("843a2dcf-0a5d-4c73-b727-5b33db7289f9"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3100),
+                            Id = new Guid("7f05a0db-dd14-4df2-a6ef-ba0ccb99de49"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5335),
                             Title = "Эротика",
                             TopicId = new Guid("d8401754-a668-4dfb-bf8f-4285b09f2ae2")
                         },
                         new
                         {
-                            Id = new Guid("645a9d1b-8125-4445-a85b-ca935ff88496"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3103),
+                            Id = new Guid("b3a7ee49-0c15-4c26-b0a5-63d03d5e1c47"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5336),
                             Title = "Современная",
                             TopicId = new Guid("bbc92f51-4ce7-4951-930b-25c81a077fb1")
                         },
                         new
                         {
-                            Id = new Guid("83fe682e-e364-4493-a62a-68a4712ca8b0"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3104),
+                            Id = new Guid("25b4fe4f-4a30-4fed-a5cd-db7fdab89c8f"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5338),
                             Title = "Классическая",
                             TopicId = new Guid("bbc92f51-4ce7-4951-930b-25c81a077fb1")
                         },
                         new
                         {
-                            Id = new Guid("5eeab460-0554-467c-93d8-ca388a5f0c2c"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3105),
+                            Id = new Guid("7b3fe946-dac1-40f9-8828-11b1c1c4ed75"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5338),
                             Title = "Экспериментальная",
                             TopicId = new Guid("bbc92f51-4ce7-4951-930b-25c81a077fb1")
                         },
                         new
                         {
-                            Id = new Guid("c12c5d47-f78c-441e-943b-cb4e94239ec4"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3108),
+                            Id = new Guid("9a7b6af2-79f3-457d-bbfa-2b6bf5726db4"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5340),
                             Title = "Классические",
                             TopicId = new Guid("bd922041-23f5-4ad2-8ad3-9619acd1987d")
                         },
                         new
                         {
-                            Id = new Guid("73044955-3afa-48e8-82f1-bc10330ed7bb"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3109),
+                            Id = new Guid("0f323869-f631-4c91-ba12-c812f8358e92"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5341),
                             Title = "Полицейские",
                             TopicId = new Guid("bd922041-23f5-4ad2-8ad3-9619acd1987d")
                         },
                         new
                         {
-                            Id = new Guid("b9e4c150-a9d1-4e48-bc94-9574344d393b"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3113),
+                            Id = new Guid("032dfe50-1dfc-40aa-a17b-9415b0e0343c"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5342),
                             Title = "Психологические",
                             TopicId = new Guid("bd922041-23f5-4ad2-8ad3-9619acd1987d")
                         },
                         new
                         {
-                            Id = new Guid("7b33e9e6-5919-4734-9b14-33e59ba65850"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3116),
+                            Id = new Guid("62973166-cc3b-44fd-8bdd-76ac5b1f7922"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5343),
                             Title = "Финансы",
                             TopicId = new Guid("d0698f7c-bfef-4f30-a207-8ffb81aa9c99")
                         },
                         new
                         {
-                            Id = new Guid("ff79412d-1249-4afd-ae71-3af05922deb3"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3117),
+                            Id = new Guid("ebe0653c-b3f7-43d8-a4db-ba8df169936d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5345),
                             Title = "Менеджмент",
                             TopicId = new Guid("d0698f7c-bfef-4f30-a207-8ffb81aa9c99")
                         },
                         new
                         {
-                            Id = new Guid("30f92c1e-901e-4418-904d-574469ff2acc"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3118),
+                            Id = new Guid("894fcac2-4b8e-40e2-b03d-119d77c3be14"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5346),
                             Title = "Стартапы",
                             TopicId = new Guid("d0698f7c-bfef-4f30-a207-8ffb81aa9c99")
                         },
                         new
                         {
-                            Id = new Guid("cc582c5d-0546-43d0-afdf-80ed48172e86"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3121),
+                            Id = new Guid("7917c7a5-5a60-4ac9-bd8e-91f0eb4ba92a"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5347),
                             Title = "Фэнтези",
                             TopicId = new Guid("8621520d-751d-453e-a5b8-f159806b3cd6")
                         },
                         new
                         {
-                            Id = new Guid("74c52b65-8f99-474d-9ec8-370bc3f762de"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3123),
+                            Id = new Guid("8e637311-c3f4-4e5b-82fc-0a1a0d3a6bb1"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5348),
                             Title = "Реализм",
                             TopicId = new Guid("8621520d-751d-453e-a5b8-f159806b3cd6")
                         },
                         new
                         {
-                            Id = new Guid("22e9feeb-7045-4988-a3b0-94c73e11bbfb"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3124),
+                            Id = new Guid("3c50913b-a568-4de3-92fd-41577604e70b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5349),
                             Title = "Дружба",
                             TopicId = new Guid("8621520d-751d-453e-a5b8-f159806b3cd6")
                         },
                         new
                         {
-                            Id = new Guid("2af47c33-9b70-45f7-9a16-29cf77a56b73"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3127),
+                            Id = new Guid("b1d38b75-4f26-482a-b017-b8ee2b838fdc"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5350),
                             Title = "Научная",
                             TopicId = new Guid("a7dcde27-4593-4678-b41d-035ac02b50da")
                         },
                         new
                         {
-                            Id = new Guid("18d8216f-424d-427d-939e-a8dbcb39e752"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3130),
+                            Id = new Guid("dfb76f27-1727-4c03-8886-afd8e80183de"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5351),
                             Title = "Космическая",
                             TopicId = new Guid("a7dcde27-4593-4678-b41d-035ac02b50da")
                         },
                         new
                         {
-                            Id = new Guid("c309af06-4625-49a2-9e52-149ef5a29243"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3131),
+                            Id = new Guid("fff5aefc-fecb-4402-a23b-e2455ed1808d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5352),
                             Title = "Альтернативная история",
                             TopicId = new Guid("a7dcde27-4593-4678-b41d-035ac02b50da")
                         },
                         new
                         {
-                            Id = new Guid("c8d8ad7f-b489-4e94-80a1-a87ae76a6410"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3134),
+                            Id = new Guid("683da31e-af9b-43b7-8654-7da110c19428"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5353),
                             Title = "Эпическое",
                             TopicId = new Guid("ec548451-9cf2-4a7c-aaa3-3c45a5bc556a")
                         },
                         new
                         {
-                            Id = new Guid("657674b6-f310-4a96-818e-48cca4a0342d"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3135),
+                            Id = new Guid("7f3af4af-f1cc-48cd-a53f-87c69c6bfc34"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5354),
                             Title = "Темное",
                             TopicId = new Guid("ec548451-9cf2-4a7c-aaa3-3c45a5bc556a")
                         },
                         new
                         {
-                            Id = new Guid("39c5321f-66e6-4d79-8af6-c5dfa04bce85"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3136),
+                            Id = new Guid("ddf8c566-a91b-4c83-9f6a-afcbb634f881"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5355),
                             Title = "Мифологическое",
                             TopicId = new Guid("ec548451-9cf2-4a7c-aaa3-3c45a5bc556a")
                         },
                         new
                         {
-                            Id = new Guid("e9f103b6-c782-45e9-9feb-723d4e434cd2"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3139),
+                            Id = new Guid("2e5cf54d-8717-42b4-8dd3-5e01790daa26"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5357),
                             Title = "Автобиографии",
                             TopicId = new Guid("a93cc00e-9698-4b25-8af2-2be8c1419d02")
                         },
                         new
                         {
-                            Id = new Guid("42b73148-ef2d-4cfb-b597-8d32c153feb9"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3140),
+                            Id = new Guid("9c3405fc-368b-4082-9cee-c02fe6fa87c1"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5358),
                             Title = "Исторические",
                             TopicId = new Guid("a93cc00e-9698-4b25-8af2-2be8c1419d02")
                         },
                         new
                         {
-                            Id = new Guid("23174870-a90b-4b48-81d1-d034444ea930"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3141),
+                            Id = new Guid("06d5f66c-7896-4c24-9843-dba6021b2a64"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5359),
                             Title = "Литературные",
                             TopicId = new Guid("a93cc00e-9698-4b25-8af2-2be8c1419d02")
                         },
                         new
                         {
-                            Id = new Guid("96b3f268-1132-4d8a-b86d-baa86988e440"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3146),
+                            Id = new Guid("bc6fb040-506d-46df-a040-ea370c5ca6b0"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5361),
                             Title = "Политические",
                             TopicId = new Guid("6e2f95ea-1f6e-4a4c-9426-0163d8fe96b6")
                         },
                         new
                         {
-                            Id = new Guid("9adf744c-ca21-48b7-9926-9770c2c8827a"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3148),
+                            Id = new Guid("c0127b2a-777a-44f2-863a-f09b80ebd577"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5362),
                             Title = "Шпионские",
                             TopicId = new Guid("6e2f95ea-1f6e-4a4c-9426-0163d8fe96b6")
                         },
                         new
                         {
-                            Id = new Guid("e016898a-e433-4326-8fa4-5217dfacfae6"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3149),
+                            Id = new Guid("b273dccc-8d62-433e-9d58-e567e373dfa3"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5363),
                             Title = "Психологические",
                             TopicId = new Guid("6e2f95ea-1f6e-4a4c-9426-0163d8fe96b6")
                         },
                         new
                         {
-                            Id = new Guid("208aa1cf-e7e6-493b-a99b-3e7245f7d046"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3151),
+                            Id = new Guid("2bc30f2b-cba3-453e-839c-24bee14f945d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5364),
                             Title = "Готические",
                             TopicId = new Guid("36638e3f-0125-45a5-b319-5168f5204bd6")
                         },
                         new
                         {
-                            Id = new Guid("47effecc-3145-4e3c-ade1-763cfb751779"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3153),
+                            Id = new Guid("9ad32ac1-8e8f-423e-b02d-73ddc353c339"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5365),
                             Title = "Паранормальные",
                             TopicId = new Guid("36638e3f-0125-45a5-b319-5168f5204bd6")
                         },
                         new
                         {
-                            Id = new Guid("a5c25fe0-3aae-4ca4-ac64-27397bb56cc9"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3154),
+                            Id = new Guid("b8b69d68-d0b8-4e2f-96ca-7ca2f715b52b"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5366),
                             Title = "Маньяки",
                             TopicId = new Guid("36638e3f-0125-45a5-b319-5168f5204bd6")
                         },
                         new
                         {
-                            Id = new Guid("3e722743-88a6-44cc-a06c-a7405bbe662c"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3156),
+                            Id = new Guid("f322cd5d-4841-45ba-845e-90c1a2ff967f"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5367),
                             Title = "Питание",
                             TopicId = new Guid("5267e8c7-a191-417c-93ac-287800972997")
                         },
                         new
                         {
-                            Id = new Guid("4a2e6de0-6374-4574-8d2c-29f0bb3e60df"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3157),
+                            Id = new Guid("03aa504c-c8c9-45e1-b456-f196834ace41"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5368),
                             Title = "Фитнес",
                             TopicId = new Guid("5267e8c7-a191-417c-93ac-287800972997")
                         },
                         new
                         {
-                            Id = new Guid("8d29a165-aa11-432f-a20c-349c417a3716"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3160),
+                            Id = new Guid("58401406-bca2-4ff4-a77a-ff30d0905535"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5369),
                             Title = "Психосоматика",
                             TopicId = new Guid("5267e8c7-a191-417c-93ac-287800972997")
                         });
@@ -469,120 +1626,120 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0c00c1f6-e3a4-45b3-9c6f-618c90421ed8"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3220),
+                            Id = new Guid("4ea98907-8351-4881-8a7b-48ef8403d2ab"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5403),
                             Label = "Советую",
                             Name = "thumbsup",
                             Unicode = "👍"
                         },
                         new
                         {
-                            Id = new Guid("54a7ec3a-df40-4664-b0ae-546a1a34aab7"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3224),
+                            Id = new Guid("881fc2bc-7db9-4657-9f08-3b7a20ad2ff5"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5409),
                             Label = "Не советую",
                             Name = "thumbsdown",
                             Unicode = "👎"
                         },
                         new
                         {
-                            Id = new Guid("a6e94fac-d9c5-437f-842d-cff0db0bd994"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3226),
+                            Id = new Guid("374f3388-ecdc-4773-97b2-d6c7872de12e"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5410),
                             Label = "До слез",
                             Name = "droplet",
                             Unicode = "💧"
                         },
                         new
                         {
-                            Id = new Guid("06b4438b-ef60-426a-99f3-fe82ec54cd0d"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3227),
+                            Id = new Guid("d944b372-78bf-47c3-9582-c2fa83c4720d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5414),
                             Label = "Мило",
                             Name = "panda_face",
                             Unicode = "🐼"
                         },
                         new
                         {
-                            Id = new Guid("0bc340f2-27e5-4d89-9c2f-ba24657653b2"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3229),
+                            Id = new Guid("fffa75bc-879a-490d-9a35-c1573ec73d1a"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5415),
                             Label = "Скучно",
                             Name = "zzz",
                             Unicode = "😴"
                         },
                         new
                         {
-                            Id = new Guid("e607b72b-619a-4352-896b-5dce081f73c8"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3231),
+                            Id = new Guid("74aea603-bfff-44a6-b359-5977c051129d"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5418),
                             Label = "Фууу",
                             Name = "shit",
                             Unicode = "💩"
                         },
                         new
                         {
-                            Id = new Guid("c3a81a37-e762-4d99-aa35-2cb80e7dfd4d"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3232),
+                            Id = new Guid("c9eb2503-a063-4e19-bb78-1b9ee7f161e1"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5419),
                             Label = "Страшно",
                             Name = "skull",
                             Unicode = "💀"
                         },
                         new
                         {
-                            Id = new Guid("19c00d77-d421-4915-b05b-cd0801804dde"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3236),
+                            Id = new Guid("175600e6-6cd0-479f-8b64-8b4a1ad08ace"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5421),
                             Label = "Ничего не понятно",
                             Name = "confusing",
                             Unicode = "🙈"
                         },
                         new
                         {
-                            Id = new Guid("ece72794-6466-4bf7-8756-2d96ff2d4503"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3237),
+                            Id = new Guid("d7edc1e8-9338-4d7d-8e49-749af84eb83a"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5422),
                             Label = "Мудро",
                             Name = "wise",
                             Unicode = "🔮"
                         },
                         new
                         {
-                            Id = new Guid("b0282a18-af1c-4532-9910-57cf4f3f875a"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3239),
+                            Id = new Guid("b22e3a22-b3cf-43ec-9e85-ac97d9097b38"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5425),
                             Label = "Познавательно",
                             Name = "bulb",
                             Unicode = "💡"
                         },
                         new
                         {
-                            Id = new Guid("74f01d46-9071-495c-a4f8-7058bd484b7e"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3241),
+                            Id = new Guid("5f3a1238-2a89-434b-8bd2-58d8e3d3ddc8"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5426),
                             Label = "Полезно",
                             Name = "useful",
                             Unicode = "🎯"
                         },
                         new
                         {
-                            Id = new Guid("f10c4011-9c64-492e-8047-4c90507286fe"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3242),
+                            Id = new Guid("a9dc7e29-7cef-456a-b4ca-030c100b31c7"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5429),
                             Label = "Романтично",
                             Name = "romantic",
                             Unicode = "💞"
                         },
                         new
                         {
-                            Id = new Guid("9cba8230-bf44-459c-ab1e-86bc59fe4ed6"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3244),
+                            Id = new Guid("8d43b2f9-8725-405e-972a-ee75b782e055"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5431),
                             Label = "В отпуск",
                             Name = "palm_tree",
                             Unicode = "🏝"
                         },
                         new
                         {
-                            Id = new Guid("f3338be6-4613-406b-8f63-a9aba4989cfb"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3245),
+                            Id = new Guid("6823a787-5e80-41d8-9e07-baf04d63c8bf"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5432),
                             Label = "Не оторваться",
                             Name = "rocket",
                             Unicode = "🚀"
                         },
                         new
                         {
-                            Id = new Guid("91eae0db-2e67-4bb8-96d3-662d2f8c6fb6"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(3247),
+                            Id = new Guid("24516925-3420-40ad-aaa5-962b8565df9e"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5434),
                             Label = "Весело",
                             Name = "fun",
                             Unicode = "😆"
@@ -673,85 +1830,85 @@ namespace backend.Migrations
                         new
                         {
                             Id = new Guid("ceaae55b-1d51-45b5-8a9b-10a4b20720ab"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2872),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5203),
                             Title = "Психология"
                         },
                         new
                         {
                             Id = new Guid("77a24f9e-92cb-47ea-9081-20e304d0c265"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2893),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5206),
                             Title = "Саморазвитие"
                         },
                         new
                         {
                             Id = new Guid("2423895f-d942-43c9-a9e6-0780cc8e951f"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2894),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5207),
                             Title = "Нон-фикшн"
                         },
                         new
                         {
                             Id = new Guid("d8401754-a668-4dfb-bf8f-4285b09f2ae2"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2895),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5208),
                             Title = "Романтика"
                         },
                         new
                         {
                             Id = new Guid("bbc92f51-4ce7-4951-930b-25c81a077fb1"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2897),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5209),
                             Title = "Проза"
                         },
                         new
                         {
                             Id = new Guid("bd922041-23f5-4ad2-8ad3-9619acd1987d"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2899),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5211),
                             Title = "Детективы"
                         },
                         new
                         {
                             Id = new Guid("d0698f7c-bfef-4f30-a207-8ffb81aa9c99"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2901),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5212),
                             Title = "Бизнес"
                         },
                         new
                         {
                             Id = new Guid("8621520d-751d-453e-a5b8-f159806b3cd6"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2902),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5213),
                             Title = "Young Adult"
                         },
                         new
                         {
                             Id = new Guid("a7dcde27-4593-4678-b41d-035ac02b50da"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2903),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5214),
                             Title = "Фантастика"
                         },
                         new
                         {
                             Id = new Guid("ec548451-9cf2-4a7c-aaa3-3c45a5bc556a"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2905),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5215),
                             Title = "Фэнтези"
                         },
                         new
                         {
                             Id = new Guid("a93cc00e-9698-4b25-8af2-2be8c1419d02"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2906),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5216),
                             Title = "Мемуары"
                         },
                         new
                         {
                             Id = new Guid("6e2f95ea-1f6e-4a4c-9426-0163d8fe96b6"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2908),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5217),
                             Title = "Триллеры"
                         },
                         new
                         {
                             Id = new Guid("36638e3f-0125-45a5-b319-5168f5204bd6"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2909),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5218),
                             Title = "Хорроры"
                         },
                         new
                         {
                             Id = new Guid("5267e8c7-a191-417c-93ac-287800972997"),
-                            CreatedAt = new DateTime(2025, 3, 15, 9, 55, 45, 124, DateTimeKind.Utc).AddTicks(2910),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5219),
                             Title = "Здоровье"
                         });
                 });
@@ -803,19 +1960,32 @@ namespace backend.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6ed817db-645d-4fbd-96bc-6984049758d4"),
+                            CreatedAt = new DateTime(2025, 3, 16, 16, 37, 1, 831, DateTimeKind.Utc).AddTicks(5478),
+                            Email = "ashot.svazyan@yandex.ru",
+                            FirstName = "Ашот",
+                            LastName = "Свазян",
+                            Password = "$2a$11$6gNRPxWDFoeAaYcCPIvlHunXNKDIjStIjcuxHMJr8dWanHgNVBbq6",
+                            Phone = "+79097677217",
+                            Role = 2
+                        });
                 });
 
-            modelBuilder.Entity("BookEntityCategoryEntity", b =>
+            modelBuilder.Entity("BookCategory", b =>
                 {
                     b.HasOne("backend.Domain.Entities.BookEntity", null)
                         .WithMany()
-                        .HasForeignKey("BooksId")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("backend.Domain.Entities.CategoryEntity", null)
                         .WithMany()
-                        .HasForeignKey("CategoriesId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -837,11 +2007,19 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Domain.Entities.BookEntity", b =>
                 {
+                    b.HasOne("backend.Domain.Entities.AuthorEntity", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("backend.Domain.Entities.UserEntity", "User")
                         .WithMany("Books")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
 
                     b.Navigation("User");
                 });
@@ -893,6 +2071,11 @@ namespace backend.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("backend.Domain.Entities.AuthorEntity", b =>
+                {
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("backend.Domain.Entities.BookEntity", b =>

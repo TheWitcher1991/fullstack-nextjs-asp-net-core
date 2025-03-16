@@ -56,6 +56,7 @@ namespace backend.Domain.Models
         public virtual Author Author { get; }
         public virtual List<Category> Categories { get; } = new List<Category>();
         public virtual List<Impression> Impressions { get; } = new List<Impression>();
+        // public virtual List<BookCategory> BookCategories { get; } = new List<BookCategory>();
 
         public static Book Create(
             Guid id,

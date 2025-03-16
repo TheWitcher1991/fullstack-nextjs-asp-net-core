@@ -1,11 +1,14 @@
 .book__card {
-    width: fit-content;
+    display: block;
     padding: 5px;
+    background: var(--g-color-base-generic);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s linear;
+    border-color: transparent;
+    overflow: hidden;
 
     &:hover {
-        opacity: 0.9;
+        border-color: transparent;
     }
 }

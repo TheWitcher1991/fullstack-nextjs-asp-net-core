@@ -8,5 +8,6 @@
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public virtual TopicEntity Topic { get; set; } = null!;
         public virtual List<BookEntity> Books { get; set; } = new List<BookEntity>();
+        // public virtual List<BookCategoryEntity> BookCategories { get; set; } = new List<BookCategoryEntity>();
     }
 }

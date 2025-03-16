@@ -4,7 +4,7 @@ export function BookSkeleton() {
 	return (
 		<Skeleton
 			style={{
-				height: '312px',
+				height: '333px',
 			}}
 		/>
 	)

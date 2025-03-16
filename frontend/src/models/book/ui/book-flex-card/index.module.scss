@@ -1,0 +1,21 @@
+.book__flex__card {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border-radius: 8px;
+    padding: 16px;
+    height: 146px;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    overflow: hidden;
+
+    &:hover {
+        border-color: transparent;
+        background: var(--g-color-base-generic);
+    }
+}
+
+.book__tag {
+    display: flex;
+    align-items: center;
+}

@@ -1,14 +1,22 @@
 'use client'
 
-import BookCreate from '~widgets/book-create'
+import { use } from 'react'
+
+import { useBook } from '~models/book'
 
 import { BreadcrumbsTitle } from '~packages/ui'
 
-export default function BookCreatePage() {
+export default function BookPage({
+	params,
+}: {
+	params: Promise<{ id: string }>
+}) {
+	const { id } = use(params)
+	const { isLoading, data } = useBook(id)
+
 	return (
 		<>
-			<BreadcrumbsTitle title={'Новая книга'} />
-			<BookCreate />
+			<BreadcrumbsTitle title={'Книга'} />
 		</>
 	)
 }

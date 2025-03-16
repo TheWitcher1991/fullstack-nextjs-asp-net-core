@@ -48,10 +48,10 @@ const links = {
 		get create() {
 			return `${this.index}/create`
 		},
-		edit(id: number) {
+		edit(id?: string) {
 			return `${this.index}/${id}/edit`
 		},
-		byId(id?: number) {
+		byId(id?: string) {
 			return `${this.index}/${id}`
 		},
 	},

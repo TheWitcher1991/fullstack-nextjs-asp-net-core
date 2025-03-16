@@ -5,7 +5,7 @@ export default function TopicsMostSkeletons() {
 		<Skeleton
 			key={i}
 			style={{
-				width: Math.random() * 30 + 100,
+				width: Math.random() * 30 + 70,
 				height: 28,
 				borderRadius: 'var(--g-border-radius-m)',
 			}}

@@ -1,21 +1,60 @@
-import { Flex } from '@gravity-ui/uikit'
+import { Flex, Text } from '@gravity-ui/uikit'
+import { CSSProperties, useEffect } from 'react'
 
 import BooksSearchInput from '~widgets/books-search/books-search-input'
-import BooksSearchList from '~widgets/books-search/books-search-list'
+import { useBooksSearchStore } from '~widgets/books-search/books-search.store'
 
+import BookList from '~features/book-list'
 import BookSkeletonList from '~features/book-skeleton-list/index.tsx'
 
-import { Spacing } from '~packages/ui'
+import { useBooks } from '~models/book'
+
+import { RenderFetchData } from '~packages/lib'
+
+const textStyle: CSSProperties = {
+	display: 'block',
+	textAlign: 'center',
+}
+
+function EmptyMessage() {
+	return (
+		<Text variant={'body-3'} style={textStyle}>
+			Ничего не найдено
+		</Text>
+	)
+}
 
 export default function BooksSearch() {
+	const { setLoading, setList, setCount, loading, count, list, filter } =
+		useBooksSearchStore()
+	const { isLoading, data } = useBooks(filter)
+
+	useEffect(() => {
+		setLoading(isLoading)
+		if (!isLoading && data?.data) {
+			setList(data.data.result)
+			setCount(data.data.result.length)
+		}
+	}, [isLoading, data])
+
 	return (
-		<div>
+		<>
 			<BooksSearchInput />
-			<Spacing />
-			<Flex gap={2} direction={'column'}>
-				<BookSkeletonList count={3} />
-				<BooksSearchList />
+
+			<Flex gap={4} direction={'column'}>
+				<RenderFetchData
+					isLoading={loading}
+					countData={count}
+					emptyFallback={<EmptyMessage />}
+					loadingFallback={<BookSkeletonList />}
+				>
+					{!filter.search ? (
+						<EmptyMessage />
+					) : (
+						<BookList books={list} />
+					)}
+				</RenderFetchData>
 			</Flex>
-		</div>
+		</>
 	)
 }

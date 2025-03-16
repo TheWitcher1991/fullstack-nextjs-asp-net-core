@@ -32,7 +32,7 @@ export const useSelectableAuthors = () => {
 			setAuthors(
 				data.data.result.map(author => ({
 					value: author.id.toString(),
-					content: author.fullName.title,
+					content: author.fullName,
 				})),
 			)
 		}

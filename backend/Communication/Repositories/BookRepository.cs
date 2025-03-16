@@ -48,7 +48,6 @@ namespace backend.Communication.Repositories
 
             var bookEntities = await bookQuery
                 .Include(b => b.User)
-                .Include(b => b.Author)
                 .Include(b => b.Categories)
                 .ToListAsync();
 
@@ -62,7 +61,7 @@ namespace backend.Communication.Repositories
                 b.Age,
                 b.Pages,
                 _mapper.Map<User>(b.User),
-                _mapper.Map<Author>(b.Author),
+                _mapper.Map<Author>(_context.Authors.AsNoTracking().FirstOrDefault(a => a.Id == b.AuthorId)),
                 b.Categories.Select(c => _mapper.Map<Category>(c)).ToList(),
                 b.Holder,
                 b.Translator))
@@ -73,7 +72,11 @@ namespace backend.Communication.Repositories
 
         public async Task<Book> GetById(Guid id)
         {
-            var bookEntity = await _context.Books.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id) ?? throw new Exception();
+            var bookEntity = await _context.Books
+                .AsNoTracking()
+                .Include(b => b.User)
+                .Include(b => b.Categories)
+                .FirstOrDefaultAsync(b => b.Id == id) ?? throw new Exception();
 
             return _mapper.Map<Book>(bookEntity);
         }

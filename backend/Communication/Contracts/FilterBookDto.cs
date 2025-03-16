@@ -6,7 +6,7 @@
         Guid? Category,
         Guid? User,
         Guid? Author,
-        int Page = 1,
-        int PageSize = 15
+        int Page,
+        int PageSize
     );
 }

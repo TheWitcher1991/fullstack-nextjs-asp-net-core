@@ -22,7 +22,20 @@ namespace backend.Domain.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(c => c.Books)
-                .WithMany(b => b.Categories);
+                .WithMany(b => b.Categories)
+                .UsingEntity<Dictionary<string, object>>(
+                    "BookCategory",
+                    j => j.HasOne<BookEntity>()
+                          .WithMany()
+                          .HasForeignKey("BookId"),
+                    j => j.HasOne<CategoryEntity>()
+                          .WithMany()
+                          .HasForeignKey("CategoryId"),
+                    j =>
+                    {
+                        j.HasKey("BookId", "CategoryId");
+                    }
+                );
 
             builder.HasIndex(c => c.Title);
             builder.HasIndex(c => c.TopicId);

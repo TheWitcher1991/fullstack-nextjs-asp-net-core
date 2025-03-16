@@ -23,5 +23,6 @@ namespace backend.Domain.Entities
         public virtual AuthorEntity Author { get; set; } = null!;
         public virtual List<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
         public virtual List<ImpressionEntity> Impressions { get; set; } = new List<ImpressionEntity>();
+        // public virtual List<BookCategoryEntity> BookCategories { get; set; } = new List<BookCategoryEntity>();
     }
 }

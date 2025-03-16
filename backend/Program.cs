@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowCors", builder =>
         {
-            builder.WithOrigins("https://localhost:3001")
+            builder.WithOrigins("https://localhost:3000", "https://localhost:3001")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
@@ -38,6 +38,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
+    options.EnableSensitiveDataLogging();
     options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(AppDbContext)));
 });
 

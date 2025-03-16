@@ -37,7 +37,20 @@ namespace backend.Domain.Configurations
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.HasMany(b => b.Categories)
-                .WithMany(c => c.Books);
+                .WithMany(c => c.Books)
+                .UsingEntity<Dictionary<string, object>>(
+                    "BookCategory",
+                    j => j.HasOne<CategoryEntity>()
+                          .WithMany()
+                          .HasForeignKey("CategoryId"),
+                    j => j.HasOne<BookEntity>()
+                          .WithMany()
+                          .HasForeignKey("BookId"),
+                    j =>
+                    {
+                        j.HasKey("BookId", "CategoryId");
+                    }
+                );
 
             builder.HasOne(b => b.User)
                 .WithMany(u => u.Books)

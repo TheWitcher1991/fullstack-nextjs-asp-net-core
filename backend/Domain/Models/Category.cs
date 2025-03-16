@@ -16,6 +16,7 @@
         public DateTime CreatedAt { get; } = DateTime.UtcNow;
         public virtual Topic Topic { get; }
         public virtual List<Book> Books { get; } = new List<Book>();
+        // public virtual List<BookCategory> BookCategories { get; } = new List<BookCategory>();
 
         public static Category Create(Guid id, string title, Topic topic)
         {
