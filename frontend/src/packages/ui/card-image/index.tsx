@@ -16,6 +16,7 @@ export function CardImage({ width, height, src, radius = 8 }: CardImageProps) {
 			style={{
 				width: `${width}px`,
 				height: `${height}px`,
+				flex: `0 0 ${width}px`,
 				borderRadius: `${radius}px`,
 			}}
 		>

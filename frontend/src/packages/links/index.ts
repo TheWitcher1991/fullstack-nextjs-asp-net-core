@@ -54,6 +54,12 @@ const links = {
 		byId(id?: string) {
 			return `${this.index}/${id}`
 		},
+		impressions(id?: string) {
+			return `${this.index}/${id}/impressions`
+		},
+		author(id?: string) {
+			return `${this.index}/${id}/author`
+		},
 	},
 }
 

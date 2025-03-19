@@ -149,16 +149,6 @@ export default function BookCreate() {
 					/>
 				</FormSection>
 
-				<FormSection label={'Автор'}>
-					<TextInput
-						size={'l'}
-						placeholder={'Введите автора'}
-						error={errors.author?.message}
-						errorMessage={errors.author?.message}
-						{...register('author')}
-					/>
-				</FormSection>
-
 				<FormSection label={'Издатель'}>
 					<TextInput
 						size={'l'}
