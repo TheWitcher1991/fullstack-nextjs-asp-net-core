@@ -6,9 +6,8 @@ import { useRouter } from 'next/navigation'
 import { IBook } from '~models/book'
 
 import links from '~packages/links'
-import { STATIC_URL } from '~packages/system'
 import { CardImage, Spacing } from '~packages/ui'
-import { trimText } from '~packages/utils'
+import { staticPath, trimText } from '~packages/utils'
 
 import styles from './index.module.scss'
 
@@ -27,7 +26,7 @@ export function BookCard({ book }: BookCardProps) {
 			onClick={() => router.push(links.books.byId(book.id))}
 		>
 			<CardImage
-				src={`${STATIC_URL}${book.imagePath}`}
+				src={staticPath(book.imagePath)}
 				width={175}
 				height={275}
 			/>

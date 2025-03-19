@@ -1,10 +1,13 @@
 'use client'
 
 import { use } from 'react'
+import BookLoading from '~app/(workspace)/books/[id]/loading'
 
-import { useBook } from '~models/book'
+import BookOverview from '~widgets/book-overview'
 
-import { BreadcrumbsTitle } from '~packages/ui'
+import { IBook, useBook } from '~models/book'
+
+import { RenderFetchData } from '~packages/lib'
 
 export default function BookPage({
 	params,
@@ -16,7 +19,12 @@ export default function BookPage({
 
 	return (
 		<>
-			<BreadcrumbsTitle title={'Книга'} />
+			<RenderFetchData
+				isLoading={isLoading}
+				loadingFallback={<BookLoading />}
+			>
+				<BookOverview book={data?.data.result as IBook} />
+			</RenderFetchData>
 		</>
 	)
 }

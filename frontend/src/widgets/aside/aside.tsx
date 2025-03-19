@@ -74,7 +74,7 @@ export default function Aside({ children }: PropsWithChildren) {
 					title: 'Биллинг',
 					icon: CreditCard,
 					current: pathname.startsWith(links.billing),
-					onItemClick: () => router.replace(links.billing),
+					hidden: true,
 				},
 				{
 					id: 'logout',

@@ -5,6 +5,7 @@ using backend.Domain.Abstractions;
 using backend.Domain.Entities;
 using backend.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using static backend.Domain.Permissions;
 
 namespace backend.Communication.Repositories
 {
@@ -76,6 +77,22 @@ namespace backend.Communication.Repositories
                 .AsNoTracking()
                 .Include(b => b.User)
                 .Include(b => b.Categories)
+                .Select(book => new BookEntity
+                {
+                    Id = book.Id,
+                    ImagePath = book.ImagePath,
+                    FilePath = book.FilePath,
+                    Title = book.Title,
+                    Description = book.Description,
+                    Publisher = book.Publisher,
+                    Holder = book.Holder,
+                    Translator = book.Translator,
+                    Age = book.Age,
+                    Categories = book.Categories,
+                    Pages = book.Pages,
+                    User = book.User,
+                    Author = _context.Authors.FirstOrDefault(a => a.Id == book.AuthorId) ?? new AuthorEntity()
+                })
                 .FirstOrDefaultAsync(b => b.Id == id) ?? throw new Exception();
 
             return _mapper.Map<Book>(bookEntity);

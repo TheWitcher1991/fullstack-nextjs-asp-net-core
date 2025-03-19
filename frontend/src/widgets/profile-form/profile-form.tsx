@@ -1,7 +1,7 @@
 'use client'
 
 import { CloudCheck } from '@gravity-ui/icons'
-import { Button, Icon, PasswordInput, TextInput } from '@gravity-ui/uikit'
+import { Button, Icon, TextInput } from '@gravity-ui/uikit'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -38,7 +38,7 @@ export default function ProfileForm({ profile }: ProfileFormProps) {
 
 	const onSubmit = async (data: IUpdateAccount) => {
 		await query(async () => {
-			const res = await req.mutateAsync(data)
+			await req.mutateAsync(data)
 			toast.success('Профиль обновлен')
 		})
 	}

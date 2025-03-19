@@ -7,6 +7,9 @@ namespace backend.Domain.Mappers
     {
         public static BookDto ToBookDto(this Book b, HashSet<Guid> favoriteIds)
         {
+            if (b.Author == null) throw new InvalidOperationException("Author cannot be null.");
+            var author = b.Author.ToAuthorDto();
+
             return new BookDto(
                 b.Id,
                 b.ImagePath,
@@ -20,7 +23,7 @@ namespace backend.Domain.Mappers
                 b.Pages,
                 b.Categories.ToListCategoryDto(),
                 b.User.ToUserBookDto(),
-                b.Author.ToAuthorDto(),
+                author,
                 b.CreatedAt,
                 favoriteIds.Contains(b.Id)
             );

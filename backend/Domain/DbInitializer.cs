@@ -278,7 +278,7 @@ namespace backend.Domain
                         new("Таящийся у порога", "/books/porog.jpg")
                     }
                 },
-                { authors[4].Id, new()
+                { authors[3].Id, new()
                     {
                         new("Сильмариллион", "/books/sim.jpg"),
                         new("Природа Средиземья", "/books/prid.jpg"),
@@ -290,7 +290,7 @@ namespace backend.Domain
                         new("Падение Гондолина", "/books/gondor.jpg")
                     }
                 },
-                { authors[5].Id, new()
+                { authors[4].Id, new()
                     {
                         new("1984", "/books/1984.jpg"),
                         new("Скотный двор", "/books/skot.jpg"),
@@ -301,7 +301,7 @@ namespace backend.Domain
                         new("Дорога на Уиган-Пирс", "/books/doroga.jpg")
                     }
                 },
-                { authors[6].Id, new()
+                { authors[5].Id, new()
                     {
                         new("Воскресенье", "/books/vosk.jpg"),
                         new("Анна Каренина", "/books/anna.jpg"),
@@ -313,7 +313,7 @@ namespace backend.Domain
                         new("Дьявол", "/books/dia.jpg")
                     }
                 },
-                { authors[7].Id, new()
+                { authors[6].Id, new()
                     {
                         new("Пикник на обочине", "/books/pick.jpeg"),
                         new("Забытый эксперимент", "/books/zab.jpg"),

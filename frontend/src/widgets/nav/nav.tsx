@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
-import { Icon, RadioButton, User } from '@gravity-ui/uikit'
+import { Icon, SegmentedRadioGroup, User } from '@gravity-ui/uikit'
 
 import { account, accountFullName } from '~models/account'
 
@@ -12,20 +12,18 @@ export default function Nav() {
 	return (
 		<ActionBar aria-label='Actions bar' className={styles.nav}>
 			<ActionBar.Group pull='left'>
-				<RadioButton
-					disabled={true}
-					defaultValue={'light'}
-					options={[
-						{
-							value: 'light',
-							content: <Icon data={Sun} />,
-						},
-						{
-							value: 'dark',
-							content: <Icon data={Moon} />,
-						},
-					]}
-				/>
+				<SegmentedRadioGroup
+					name='group1'
+					defaultValue='light'
+					disabled
+				>
+					<SegmentedRadioGroup.Option value='light'>
+						<Icon data={Sun} />
+					</SegmentedRadioGroup.Option>
+					<SegmentedRadioGroup.Option value='dark'>
+						<Icon data={Moon} />
+					</SegmentedRadioGroup.Option>
+				</SegmentedRadioGroup>
 			</ActionBar.Group>
 			<ActionBar.Section>
 				<ActionBar.Group pull='right'>

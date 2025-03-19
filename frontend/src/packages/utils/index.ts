@@ -1,4 +1,9 @@
 import { format } from 'date-fns'
+import { STATIC_URL } from '~packages/system'
+
+export const staticPath = (path: string) => {
+	return `${STATIC_URL}${path}`
+}
 
 export const calcPercent = (a: number, b: number) => {
 	return Math.round((a * 100) / (b || 1))

@@ -12,11 +12,11 @@ importers:
         specifier: ^2.11.0
         version: 2.13.0(react@19.0.0)
       '@gravity-ui/navigation':
-        specifier: ^2.29.0
-        version: 2.34.1(@bem-react/classname@1.6.0)(@gravity-ui/components@3.13.2(@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@gravity-ui/icons@2.13.0(react@19.0.0))(@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^3.0.2
+        version: 3.3.2(@bem-react/classname@1.6.0)(@gravity-ui/components@3.13.2(@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@gravity-ui/icons@2.13.0(react@19.0.0))(@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@gravity-ui/uikit':
-        specifier: ^6.38.0
-        version: 6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^7.5.1
+        version: 7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@hookform/resolvers':
         specifier: ^4.1.3
         version: 4.1.3(react-hook-form@7.54.2(react@19.0.0))
@@ -1007,6 +1007,27 @@ packages:
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@floating-ui/core@1.6.9':
+    resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
+
+  '@floating-ui/dom@1.6.13':
+    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
+
+  '@floating-ui/react-dom@2.1.2':
+    resolution: {integrity: sha512-06okr5cgPzMNBy+Ycse2A6udMi4bqwW/zgBF/rwjcNqWkyr82Mcg8b0vjX8OJpZFy/FKjJmw6wV7t44kK6kW7A==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
+  '@floating-ui/react@0.27.5':
+    resolution: {integrity: sha512-BX3jKxo39Ba05pflcQmqPPwc0qdNsdNi/eweAFtoIdrJWNen2sVEWMEac3i6jU55Qfx+lOcdMNKYn2CtWmlnOQ==}
+    peerDependencies:
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+
+  '@floating-ui/utils@0.2.9':
+    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
   '@gravity-ui/components@3.13.2':
     resolution: {integrity: sha512-bILrtZ/iq2QWbyGyq1R4hxFRBELHzmULBbscd+JfUfp99quzqFugwUVW77qo1n8tEk+XQdqnAoOPw58NZRxE8g==}
     peerDependencies:
@@ -1037,21 +1058,21 @@ packages:
       react:
         optional: true
 
-  '@gravity-ui/navigation@2.34.1':
-    resolution: {integrity: sha512-G33mQhR5cVojblUNeHwuPeb7n50AkNU88JSjNTG6cfKLWMgZQItIetYprSef8LAt7kLHqUMXSZf4qZoatO3oGg==}
+  '@gravity-ui/navigation@3.3.2':
+    resolution: {integrity: sha512-aY2R9p1TSGrvJdCjARYFZUjSLi4VubE03jvafGceqlPiCHjPBnKEop3v13vbR3pWI9qdLUx/tTIi2zj8b2u5gg==}
     peerDependencies:
       '@bem-react/classname': ^1.6.0
-      '@gravity-ui/components': ^3.0.0
+      '@gravity-ui/components': ^4.0.1
       '@gravity-ui/icons': ^2.2.0
-      '@gravity-ui/uikit': ^6.15.0
-      react: ^16.0.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+      '@gravity-ui/uikit': ^7.2.0
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@gravity-ui/tsconfig@1.0.0':
     resolution: {integrity: sha512-C7uWrCTD6g+rvSFYTPaOMMf4YUWyA5eRSXsJ1AsigGc7yQC/lhugGNqeUo5efz+zpmZ80oG/BIJPCx0nIZizDg==}
 
-  '@gravity-ui/uikit@6.43.1':
-    resolution: {integrity: sha512-uY/LR3xV2z0xYNOXzvP+jvlLB/AiT9C75dU/i7TsXzNSrqMyw0jQ/JuwtcVgVu3/ZjolZuXxNcoRd7anUMQang==}
+  '@gravity-ui/uikit@7.5.1':
+    resolution: {integrity: sha512-8CiQwslEWP+irqwRxvc1FoYDrro27Q39p+m534psr1yUtzYpOX56KkuFuZY2ZMbwi6boMDyuLPVOnBR31dgGcQ==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -1363,9 +1384,6 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@popperjs/core@2.11.8':
-    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
-
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
@@ -1488,6 +1506,15 @@ packages:
     resolution: {integrity: sha512-z3sYixFQJe8hndFnXgWu7C79ctL+pI0KAelYyW+khaNJ1m22lWrhJU2QrsTcRKMuVPtoZvfBYrTStIdKo+x0Xw==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@tanstack/react-virtual@3.13.4':
+    resolution: {integrity: sha512-jPWC3BXvVLHsMX67NEHpJaZ+/FySoNxFfBEiF4GBc1+/nVwdRm+UcSCYnKP3pXQr0eEsDpXi/PQZhNfJNopH0g==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@tanstack/virtual-core@3.13.4':
+    resolution: {integrity: sha512-fNGO9fjjSLns87tlcto106enQQLycCKR4DPNpgq3djP5IdcPFdPAmaKjsgzIeRhH7hWrELgW12hYnRthS5kLUw==}
 
   '@trivago/prettier-plugin-sort-imports@5.2.2':
     resolution: {integrity: sha512-fYDQA9e6yTNmA13TLVSA+WMQRc5Bn/c0EUBditUHNfMMxN7M82c38b1kEggVE3pLpZ0FwkwJkUEKMiOi52JXFA==}
@@ -2255,9 +2282,6 @@ packages:
 
   flatted@3.3.2:
     resolution: {integrity: sha512-AiwGJM8YcNOaobumgtng+6NHuOqC3A7MixFeDafM3X9cIUM+xUXoS5Vfgf+OihAYe20fxqNM9yPBXJzRtZ/4eA==}
-
-  focus-trap@7.6.4:
-    resolution: {integrity: sha512-xx560wGBk7seZ6y933idtjJQc1l+ck+pI3sKvhKozdBV1dRZoKhkW5xoCaFv9tQiX5RH1xfSxjuNu6g+lmN/gw==}
 
   follow-redirects@1.15.9:
     resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
@@ -3182,8 +3206,8 @@ packages:
   raf-schd@4.0.3:
     resolution: {integrity: sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==}
 
-  rc-slider@10.6.2:
-    resolution: {integrity: sha512-FjkoFjyvUQWcBo1F3RgSglky3ar0+qHLM41PlFVYB4Bj3RD8E/Mv7kqMouLFBU+3aFglMzzctAIWRwajEuueSw==}
+  rc-slider@11.1.8:
+    resolution: {integrity: sha512-2gg/72YFSpKP+Ja5AjC5DPL1YnV8DEITDQrcc1eASrUYjl0esptaBVJBh5nLTXCCp15eD8EuGjwezVGSHhs9tQ==}
     engines: {node: '>=8.x'}
     peerDependencies:
       react: '>=16.9.0'
@@ -3202,11 +3226,6 @@ packages:
       react: ^16.8.5 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.5 || ^17.0.0 || ^18.0.0
 
-  react-copy-to-clipboard@5.1.0:
-    resolution: {integrity: sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==}
-    peerDependencies:
-      react: ^15.3.0 || 16 || 17 || 18
-
   react-dom@19.0.0:
     resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
     peerDependencies:
@@ -3217,9 +3236,6 @@ packages:
     peerDependencies:
       react: '>=16.4.0'
       react-dom: '>=16.4.0'
-
-  react-fast-compare@3.2.2:
-    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
 
   react-hook-form@7.54.2:
     resolution: {integrity: sha512-eHpAUgUjWbZocoQYUHposymRb4ZP6d0uwUnooL2uOybA9/3tPUvoAKqEWK1WaSiTxxOfTpffNZP7QwlnM3/gEg==}
@@ -3242,13 +3258,6 @@ packages:
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
-
-  react-popper@2.3.0:
-    resolution: {integrity: sha512-e1hj8lL3uM+sgSR4Lxzn5h1GxBlpa4CQz0XLF8kx4MDrDRWY0Ena4c97PUeSX9i5W3UAfDP0z0FXCTQkoXUl3Q==}
-    peerDependencies:
-      '@popperjs/core': ^2.0.0
-      react: ^16.8.0 || ^17 || ^18
-      react-dom: ^16.8.0 || ^17 || ^18
 
   react-redux@7.2.9:
     resolution: {integrity: sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==}
@@ -3687,9 +3696,6 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-
-  warning@4.0.3:
-    resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
 
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
@@ -4812,13 +4818,38 @@ snapshots:
       '@eslint/core': 0.10.0
       levn: 0.4.1
 
-  '@gravity-ui/components@3.13.2(@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@floating-ui/core@1.6.9':
+    dependencies:
+      '@floating-ui/utils': 0.2.9
+
+  '@floating-ui/dom@1.6.13':
+    dependencies:
+      '@floating-ui/core': 1.6.9
+      '@floating-ui/utils': 0.2.9
+
+  '@floating-ui/react-dom@2.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@floating-ui/dom': 1.6.13
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
+  '@floating-ui/react@0.27.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@floating-ui/react-dom': 2.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@floating-ui/utils': 0.2.9
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      tabbable: 6.2.0
+
+  '@floating-ui/utils@0.2.9': {}
+
+  '@gravity-ui/components@3.13.2(@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@bem-react/classname': 1.6.0
       '@gravity-ui/date-utils': 2.5.6
       '@gravity-ui/i18n': 1.7.0
       '@gravity-ui/icons': 2.13.0(react@19.0.0)
-      '@gravity-ui/uikit': 6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@gravity-ui/uikit': 7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       lodash: 4.17.21
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
@@ -4861,12 +4892,12 @@ snapshots:
     optionalDependencies:
       react: 19.0.0
 
-  '@gravity-ui/navigation@2.34.1(@bem-react/classname@1.6.0)(@gravity-ui/components@3.13.2(@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@gravity-ui/icons@2.13.0(react@19.0.0))(@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@gravity-ui/navigation@3.3.2(@bem-react/classname@1.6.0)(@gravity-ui/components@3.13.2(@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@gravity-ui/icons@2.13.0(react@19.0.0))(@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@bem-react/classname': 1.6.0
-      '@gravity-ui/components': 3.13.2(@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@gravity-ui/components': 3.13.2(@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@gravity-ui/icons': 2.13.0(react@19.0.0)
-      '@gravity-ui/uikit': 6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@gravity-ui/uikit': 7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       react-transition-group: 4.4.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -4874,21 +4905,19 @@ snapshots:
 
   '@gravity-ui/tsconfig@1.0.0': {}
 
-  '@gravity-ui/uikit@6.43.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@gravity-ui/uikit@7.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@bem-react/classname': 1.6.0
+      '@floating-ui/react': 0.27.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@gravity-ui/i18n': 1.7.0
       '@gravity-ui/icons': 2.13.0(react@19.0.0)
-      '@popperjs/core': 2.11.8
+      '@tanstack/react-virtual': 3.13.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       blueimp-md5: 2.19.0
-      focus-trap: 7.6.4
       lodash: 4.17.21
-      rc-slider: 10.6.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      rc-slider: 11.1.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-beautiful-dnd: 13.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-copy-to-clipboard: 5.1.0(react@19.0.0)
       react-dom: 19.0.0(react@19.0.0)
-      react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-transition-group: 4.4.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-virtualized-auto-sizer: 1.0.25(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-window: 1.8.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -5118,8 +5147,6 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@popperjs/core@2.11.8': {}
-
   '@rtsao/scc@1.1.0': {}
 
   '@rushstack/eslint-patch@1.10.5': {}
@@ -5254,6 +5281,14 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.66.0
       react: 19.0.0
+
+  '@tanstack/react-virtual@3.13.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@tanstack/virtual-core': 3.13.4
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
+  '@tanstack/virtual-core@3.13.4': {}
 
   '@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.4.2)':
     dependencies:
@@ -6252,10 +6287,6 @@ snapshots:
 
   flatted@3.3.2: {}
 
-  focus-trap@7.6.4:
-    dependencies:
-      tabbable: 6.2.0
-
   follow-redirects@1.15.9: {}
 
   for-each@0.3.4:
@@ -7206,7 +7237,7 @@ snapshots:
 
   raf-schd@4.0.3: {}
 
-  rc-slider@10.6.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  rc-slider@11.1.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@babel/runtime': 7.26.9
       classnames: 2.5.1
@@ -7235,12 +7266,6 @@ snapshots:
     transitivePeerDependencies:
       - react-native
 
-  react-copy-to-clipboard@5.1.0(react@19.0.0):
-    dependencies:
-      copy-to-clipboard: 3.3.3
-      prop-types: 15.8.1
-      react: 19.0.0
-
   react-dom@19.0.0(react@19.0.0):
     dependencies:
       react: 19.0.0
@@ -7252,8 +7277,6 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       tslib: 2.8.1
-
-  react-fast-compare@3.2.2: {}
 
   react-hook-form@7.54.2(react@19.0.0):
     dependencies:
@@ -7271,14 +7294,6 @@ snapshots:
   react-is@17.0.2: {}
 
   react-is@18.3.1: {}
-
-  react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      '@popperjs/core': 2.11.8
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      react-fast-compare: 3.2.2
-      warning: 4.0.3
 
   react-redux@7.2.9(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
@@ -7791,10 +7806,6 @@ snapshots:
       react: 19.0.0
 
   util-deprecate@1.0.2: {}
-
-  warning@4.0.3:
-    dependencies:
-      loose-envify: 1.4.0
 
   which-boxed-primitive@1.1.1:
     dependencies:

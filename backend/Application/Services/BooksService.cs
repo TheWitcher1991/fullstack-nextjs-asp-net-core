@@ -111,7 +111,7 @@ namespace backend.Application.Services
         public async Task<BookDto> GetBook(Guid id)
         {
             var book = await repository.GetById(id);
-            return _mapper.Map<BookDto>(book);
+            return BookMapper.ToBookDto(book, new HashSet<Guid>());
         }
 
         private async Task<(string imagePath, string filePath)> SaveFiles(CreateBookDto dto)

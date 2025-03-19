@@ -26,8 +26,8 @@ export class CrudRepository<
 		})
 	}
 
-	async getById(id: string): Promise<AxiosResponse<GET>> {
-		return await this.instance.get<GET>(`${this.URL}/${id}`)
+	async getById(id: string): Promise<AxiosResponse<ResultResponse<GET>>> {
+		return await this.instance.get(`${this.URL}/${id}`)
 	}
 
 	async create(data: CREATE): Promise<AxiosResponse<GET>> {
