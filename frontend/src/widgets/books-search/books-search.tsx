@@ -1,4 +1,4 @@
-import { Flex, Text } from '@gravity-ui/uikit'
+import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 import { CSSProperties, useEffect } from 'react'
 
 import BooksSearchInput from '~widgets/books-search/books-search-input'
@@ -10,6 +10,7 @@ import BookSkeletonList from '~features/book-skeleton-list/index.tsx'
 import { useBooks } from '~models/book'
 
 import { RenderFetchData } from '~packages/lib'
+import { Spacing } from '~packages/ui'
 
 const textStyle: CSSProperties = {
 	display: 'block',
@@ -25,8 +26,16 @@ function EmptyMessage() {
 }
 
 export default function BooksSearch() {
-	const { setLoading, setList, setCount, loading, count, list, filter } =
-		useBooksSearchStore()
+	const {
+		setLoading,
+		setList,
+		setCount,
+		loading,
+		count,
+		list,
+		filter,
+		setFilter,
+	} = useBooksSearchStore()
 	const { isLoading, data } = useBooks(filter)
 
 	useEffect(() => {
@@ -51,7 +60,23 @@ export default function BooksSearch() {
 					{!filter.search ? (
 						<EmptyMessage />
 					) : (
-						<BookList books={list} />
+						<>
+							<BookList books={list} />
+							<div></div>
+							<Pagination
+								page={filter.page || 1}
+								pageSize={filter.pageSize || 15}
+								total={count}
+								compact={true}
+								showPages={true}
+								onUpdate={(page, pageSize) => {
+									setFilter({
+										page,
+										pageSize,
+									})
+								}}
+							/>
+						</>
 					)}
 				</RenderFetchData>
 			</Flex>

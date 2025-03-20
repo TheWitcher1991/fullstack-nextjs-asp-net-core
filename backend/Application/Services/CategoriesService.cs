@@ -20,9 +20,9 @@ namespace backend.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<List<CategoryDto>> GetAllCategories()
+        public async Task<List<CategoryDto>> GetAllCategories(FilterCategoryDto query)
         {
-            var categories = await repository.List();
+            var categories = await repository.List(query);
             return categories.Select(c => CategoryMapper.ToCategoryDto(c)).ToList();
         }
 

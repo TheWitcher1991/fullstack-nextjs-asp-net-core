@@ -19,9 +19,9 @@ namespace backend.Api.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IResult> GetCategories()
+        public async Task<IResult> GetCategories([FromQuery] FilterCategoryDto query)
         {
-            var categories = await service.GetAllCategories();
+            var categories = await service.GetAllCategories(query);
 
             return ResultResponse.Ok(categories);
         }

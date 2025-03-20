@@ -41,6 +41,15 @@ const links = {
 		return `${this.root}favorites`
 	},
 
+	topics: {
+		get index() {
+			return `${BASE_ROOT_URL}topics`
+		},
+		byId(id?: string) {
+			return `${this.index}/${id}`
+		},
+	},
+
 	books: {
 		get index() {
 			return `${BASE_ROOT_URL}books`

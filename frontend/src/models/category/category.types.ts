@@ -12,4 +12,6 @@ export type ICreateCategory = z.infer<typeof CreateCategorySchema>
 
 export type IUpdateCategory = z.infer<typeof UpdateCategorySchema>
 
-export type UseCategories = UseModelOptions
+export type UseCategories = UseModelOptions & {
+	topic: string
+}

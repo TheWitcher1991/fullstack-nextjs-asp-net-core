@@ -1,4 +1,5 @@
-﻿using backend.Domain.Models;
+﻿using backend.Communication.Contracts;
+using backend.Domain.Models;
 
 namespace backend.Domain.Abstractions
 {
@@ -8,6 +9,6 @@ namespace backend.Domain.Abstractions
         Task<Guid> Delete(Guid id);
         Task<List<Category>> GetByIds(List<Guid> ids);
         Task<Category> GetById(Guid id);
-        Task<List<Category>> List();
+        Task<List<Category>> List(FilterCategoryDto query);
     }
 }

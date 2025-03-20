@@ -6,7 +6,7 @@ namespace backend.Domain.Abstractions
     {
         Task<Guid> CreateCategory(CreateCategoryDto dto);
         Task<Guid> DeleteCategory(Guid id);
-        Task<List<CategoryDto>> GetAllCategories();
+        Task<List<CategoryDto>> GetAllCategories(FilterCategoryDto query);
         Task<CategoryDto> GetCategory(Guid id);
     }
 }

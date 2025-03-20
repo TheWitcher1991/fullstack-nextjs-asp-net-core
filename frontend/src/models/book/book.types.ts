@@ -15,4 +15,8 @@ export type IUpdateBook = z.infer<typeof UpdateBookSchema>
 
 export type ICreateBookForm = z.infer<typeof CreateBookFormSchema>
 
-export type UseBooks = UseModelOptions
+export type UseBooks = UseModelOptions & {
+	category?: string
+	user?: string
+	author?: string
+}

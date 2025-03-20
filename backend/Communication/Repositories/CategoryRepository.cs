@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using backend.Communication.Contracts;
 using backend.Domain;
 using backend.Domain.Abstractions;
 using backend.Domain.Entities;
@@ -18,9 +19,16 @@ namespace backend.Communication.Repositories
             _mapper = mapper;
         }
 
-        public async Task<List<Category>> List()
+        public async Task<List<Category>> List(FilterCategoryDto query)
         {
-            var categoryEntities = await _context.Categories.AsNoTracking().ToListAsync();
+            var categoriesQuery = _context.Categories.AsNoTracking();
+
+            if (query.Topic.HasValue)
+            {
+                categoriesQuery = categoriesQuery.Where(c => c.TopicId == query.Topic.Value);
+            }
+
+            var categoryEntities = await categoriesQuery.ToListAsync();
 
             var categories = categoryEntities.Select(c => Category.Create(
                 c.Id,
